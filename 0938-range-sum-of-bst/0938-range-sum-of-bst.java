@@ -25,12 +25,10 @@ class Solution {
             return ;
         if (root.val >= low && root.val <= high) {
             ans += root.val;
-            bst(root.left, low, high);
-            bst(root.right, low, high);
         }
-        if (root.val < low)
-            bst(root.right, low, high);
-        if (root.val > high)
+        if (root.val > low)
             bst(root.left, low, high);
+        if (root.val < high)
+            bst(root.right, low, high);
     }
 }
