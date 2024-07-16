@@ -1,20 +1,22 @@
 class Solution {
-    int ans = 0;
+    boolean[][] seen;
     int m;
     int n;
     public int numIslands(char[][] grid) {
-        int i = 0;
-        int j = 0;
         m = grid.length;
         n = grid[0].length;
-        boolean[][] seen = new boolean[m][n];
+        seen = new boolean[m][n];
+        int i = 0;
+        int j = 0;
+        int ans = 0;
 
         while (i < m) {
             j = 0;
             while (j < n) {
                 if (grid[i][j] == '1' && !seen[i][j]) {
                     ans++;
-                    dfs(i, j, grid, seen);
+                    seen[i][j] = true;
+                    dfs(i, j, grid);
                 }
                 j++;
             }
@@ -23,17 +25,22 @@ class Solution {
         return (ans);
     }
 
-    public void dfs(int i, int j, char[][] grid, boolean[][] seen) {
-        if (seen[i][j] || grid[i][j] == '0')
-            return ;
-        seen[i][j] = true;
-        if (i - 1 >= 0)
-            dfs(i - 1, j, grid, seen);
-        if (i + 1 < m)
-            dfs(i + 1, j, grid, seen);
-        if (j + 1 < n)
-            dfs(i, j + 1, grid, seen);
-        if (j - 1 >= 0)
-            dfs(i, j - 1, grid, seen);
+    public void dfs(int row, int col, char[][] grid) {
+        if (row - 1 >= 0 && grid[row - 1][col] == '1' && !seen[row - 1][col]) {
+            seen[row - 1][col] = true;
+            dfs(row - 1, col, grid);
+        }
+         if (row + 1 < m && grid[row + 1][col] == '1' && !seen[row + 1][col]) {
+            seen[row + 1][col] = true;
+            dfs(row + 1, col, grid);
+        }
+         if (col - 1 >= 0 && grid[row][col - 1] == '1' && !seen[row][col - 1]) {
+            seen[row][col - 1] = true;
+            dfs(row, col - 1, grid);
+        }
+         if (col + 1 < n && grid[row][col + 1] == '1' && !seen[row][col + 1]) {
+            seen[row][col + 1] = true;
+            dfs(row, col + 1, grid);
+        }
     }
 }
