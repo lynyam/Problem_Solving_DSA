@@ -1,45 +1,40 @@
 class Solution {
-    List<List<Integer>> graph;
+    List<List<Integer>> adjList;
     boolean[] seen;
-    int ans = 1;
+    int ans = 0;
 
-    public void buildGraph(int[][] edges) {
-        for (int[] edge : edges) {
-            graph.get(edge[0]).add(edge[1]);
-            graph.get(edge[1]).add(edge[0]);
-        }
-    }
-
-    public void initGraph(int n) {
+    public void buildGraph(int n, int[][] edges) {
         int i = 0;
-    
         while (i < n) {
-            graph.add(new ArrayList<Integer>());
+            adjList.add(new ArrayList<Integer>());
             i++;
+        }
+        for (int[] edge : edges) {
+            adjList.get(edge[0]).add(edge[1]);
+            adjList.get(edge[1]).add(edge[0]);
         }
     }
 
     public int reachableNodes(int n, int[][] edges, int[] restricted) {
-        graph = new ArrayList<>();
+        adjList = new ArrayList<>();
         seen = new boolean[n];
         int i = 0;
 
-        initGraph(n);
-        buildGraph(edges);
+        buildGraph(n, edges);
         seen[0] = true;
         while (i < restricted.length) {
             seen[restricted[i]] = true;
             i++;
         }
         dfs(0);
-        return (ans);
+        return (ans + 1);
     }
 
     public void dfs(int node) {
-        for (int neighbor : graph.get(node)) {
+        for (int neighbor :  adjList.get(node)) {
             if (!seen[neighbor]) {
-                seen[neighbor] = true;
                 ans++;
+                seen[neighbor] = true;
                 dfs(neighbor);
             }
         }
