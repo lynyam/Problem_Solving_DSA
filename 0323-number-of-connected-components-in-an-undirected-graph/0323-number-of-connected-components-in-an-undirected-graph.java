@@ -1,27 +1,30 @@
 class Solution {
-    HashMap<Integer, List<Integer>> graph;
+    List<List<Integer>> graph;
     boolean[] seen;
 
-    public void buildGraph(int[][] edges) {
-        for (int [] edge : edges) {
-            graph.putIfAbsent(edge[0], new ArrayList<Integer>());
-            graph.putIfAbsent(edge[1], new ArrayList<Integer>());
+    public void builGraph(int n, int[][] edges) {
+        int i = 0;
+        while (i < n) {
+            graph.add(new ArrayList<Integer>());
+            i++;
+        }
+        for (int[] edge : edges) {
             graph.get(edge[0]).add(edge[1]);
             graph.get(edge[1]).add(edge[0]);
         }
     }
-
     public int countComponents(int n, int[][] edges) {
-        graph = new HashMap<>();
+        graph = new ArrayList<>();
         seen = new boolean[n];
-        int i = 0;
         int ans = 0;
+        int i = 0;
 
-        buildGraph(edges);
+        builGraph(n, edges);
+        i = 0;
         while (i < n) {
             if (!seen[i]) {
-                seen[i] = true;
                 ans++;
+                seen[i] = true;
                 dfs(i);
             }
             i++;
@@ -30,7 +33,7 @@ class Solution {
     }
 
     public void dfs(int node) {
-        for (int neighbor : graph.getOrDefault(node, new ArrayList<Integer>())) {
+        for (int neighbor : graph.get(node)) {
             if (!seen[neighbor]) {
                 seen[neighbor] = true;
                 dfs(neighbor);
