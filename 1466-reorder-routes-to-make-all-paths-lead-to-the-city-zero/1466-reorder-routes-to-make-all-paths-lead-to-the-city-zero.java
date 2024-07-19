@@ -1,41 +1,45 @@
 class Solution {
-    HashMap<Integer, List<Integer>> graph;
+    List<List<Integer>> adjList;
+    HashSet<String> roads;
     boolean[] seen;
-    HashSet<String> currentRoads;
     int ans = 0;
 
-    public String convertToHash(int n1, int n2) {
-        return (String.valueOf(n1) + "," + String.valueOf(n2));
-    }
+    public void builGraph(int n, int[][] connections) {
+        int i = 0;
 
-    public void buildGraph(int[][] connections) {
+        while (i < n) {
+            adjList.add(new ArrayList<Integer>());
+            i++;
+        }
         for (int[] connection : connections) {
-            graph.putIfAbsent(connection[0], new ArrayList<Integer>());
-            graph.putIfAbsent(connection[1], new ArrayList<Integer>());
-            graph.get(connection[0]).add(connection[1]);
-            graph.get(connection[1]).add(connection[0]);
-            currentRoads.add(convertToHash(connection[0], connection[1]));
+            adjList.get(connection[0]).add(connection[1]);
+            adjList.get(connection[1]).add(connection[0]);
+            roads.add(convertToHash(connection[0], connection[1]));
         }
     }
-    public int minReorder(int n, int[][] connections) {
-        graph = new HashMap<>();
-        seen = new boolean[n];
-        currentRoads = new HashSet<>();
 
-        buildGraph(connections);
+    public String convertToHash(int from, int to) {
+        return (String.valueOf(from) + "," + String.valueOf(to));
+    }
+    public int minReorder(int n, int[][] connections) {
+        seen = new boolean[n];
+        adjList = new ArrayList<>();
+        roads = new HashSet<>();
+
+        builGraph(n, connections);
         seen[0] = true;
         dfs(0);
         return (ans);
     }
 
-    public void dfs(int city) {
-        for (int neighbor : graph.get(city)) {
+    public void dfs(int node) {
+        for (int neighbor : adjList.get(node)) {
             if (!seen[neighbor]) {
-                if (currentRoads.contains(convertToHash(city, neighbor)))
-                    ans++;
                 seen[neighbor] = true;
+                if (roads.contains(convertToHash(node, neighbor)))
+                    ans++;
                 dfs(neighbor);
             }
         }
-    }
+    } 
 }
