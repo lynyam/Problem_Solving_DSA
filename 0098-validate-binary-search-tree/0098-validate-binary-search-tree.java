@@ -14,19 +14,19 @@
  * }
  */
 class Solution {
-    boolean ans = true;
     long prev = Long.MIN_VALUE;
     public boolean isValidBST(TreeNode root) {
-    bst(root);
-       return(ans);
+        return (bst(root));
     }
 
-    public void bst(TreeNode root) {
+    public boolean bst(TreeNode root) {
+        boolean ans = true;
         if (root == null)
-            return ;
-        bst(root.left);
+            return (true);
+        ans &= bst(root.left);
         ans &= prev < root.val;
         prev = root.val;
-        bst(root.right);   
+        ans &= bst(root.right);
+        return (ans);
     }
 }
