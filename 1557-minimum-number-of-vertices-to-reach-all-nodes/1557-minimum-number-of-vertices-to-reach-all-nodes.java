@@ -1,14 +1,19 @@
 class Solution {
-    public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
-        boolean[] seen = new boolean[n];
-        List<Integer> ans = new ArrayList<>();
-        int i = 0;
+    boolean[] seen;
+    List<Integer> ans;
 
+    public void builGraph(List<List<Integer>> edges) {
         for (List<Integer> edge : edges) {
             seen[edge.get(1)] = true;
         }
+    }
+    public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
+        seen = new boolean[n];
+        ans = new ArrayList<>();
+        int i = 0;
+        builGraph(edges);
         while (i < n) {
-            if (seen[i] == false) {
+            if (!seen[i]) {
                 ans.add(i);
             }
             i++;
