@@ -25,8 +25,7 @@ class Solution {
     public void dfs(TreeNode root, int max) {
         if (root == null)
             return ;
-        if (max <= root.val)
-            ans++;
+        ans += root.val >= max ? 1 : 0;
         max = Math.max(max, root.val);
         dfs(root.left, max);
         dfs(root.right, max);
