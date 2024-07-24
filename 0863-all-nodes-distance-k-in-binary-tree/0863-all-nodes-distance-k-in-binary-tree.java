@@ -8,58 +8,53 @@
  * }
  */
 class Solution {
-    HashMap< TreeNode, List<TreeNode>> graph;
+    HashMap<TreeNode, TreeNode> graph;
     HashSet<TreeNode> seen;
 
     public void buildGraph(TreeNode root) {
         if (root == null)
-            return;
-        graph.putIfAbsent(root, new ArrayList<TreeNode>());
+            return ;
         if (root.left != null) {
-            graph.putIfAbsent(root.left, new ArrayList<TreeNode>());
-            graph.get(root).add(root.left);
-            graph.get(root.left).add(root);
+            graph.putIfAbsent(root.left, root);
+            buildGraph(root.left);
         }
         if (root.right != null) {
-            graph.putIfAbsent(root.right, new ArrayList<TreeNode>());
-            graph.get(root).add(root.right);
-            graph.get(root.right).add(root);
+            graph.putIfAbsent(root.right, root);
+            buildGraph(root.right);
         }
-        buildGraph(root.left);
-        buildGraph(root.right);
     }
 
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
-        if (root == null) return (new ArrayList<>());
+        if (root == null)
+            return (new ArrayList<>());
         graph = new HashMap<>();
-        seen = new HashSet<TreeNode>();
-
-        buildGraph(root);
-
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(target);
-        seen.add(target);
+        seen = new HashSet<>();
         List<Integer> ans = new ArrayList<>();
         int level = 0;
-        if (k == 0) {
-            ans.add(target.val);
-            return (ans);
-        }
-        
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        buildGraph(root);
+        seen.add(target);
+        queue.add(target);
         while (!queue.isEmpty() && level <= k) {
-            ans = new ArrayList<>();
             int size = queue.size();
             int i = 0;
+            ans = new ArrayList<>();
             while (i < size) {
                 TreeNode node = queue.remove();
-                if (node != target) {
-                    ans.add(node.val);
+                ans.add(node.val);
+                TreeNode parent = graph.getOrDefault(node, null);
+                if (parent != null && !seen.contains(parent)) {
+                    seen.add(parent);
+                    queue.add(parent);
                 }
-                for (TreeNode neighbor : graph.get(node)) {
-                    if (!seen.contains(neighbor)) {
-                        seen.add(neighbor);
-                        queue.add(neighbor);
-                    }
+                if (node.left != null && !seen.contains(node.left)) {
+                    seen.add(node.left);
+                    queue.add(node.left);
+                }
+                if (node.right != null && !seen.contains(node.right)) {
+                    seen.add(node.right);
+                    queue.add(node.right);
                 }
                 i++;
             }
