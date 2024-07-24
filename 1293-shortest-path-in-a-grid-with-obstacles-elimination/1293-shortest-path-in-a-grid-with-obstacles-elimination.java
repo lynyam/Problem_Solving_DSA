@@ -1,22 +1,23 @@
 class Cell {
     int row;
     int col;
-    int obs;
-    public Cell(int row, int col, int obs) {
+    int obst;
+
+    public Cell(int row, int col, int obst) {
         this.row = row;
         this.col = col;
-        this.obs = obs;
-    }
+        this.obst = obst;
+    }    
 }
-    
+
 class Solution {
-    int[][] directions = new int[][] {
+    int[][] directions = new int[][]{
         {1, 0},{0, 1},
         {-1, 0},{0, -1}
     };
     int n;
     int m;
-
+    
     public boolean isValid(int x, int y) {
         return (x >= 0 && x < m && y >= 0 && y < n);
     }
@@ -24,16 +25,13 @@ class Solution {
     public int shortestPath(int[][] grid, int k) {
         m = grid.length;
         n = grid[0].length;
-        boolean[][][] seen = new boolean[m][n][k + 1];
-        int ans = Integer.MAX_VALUE;
-        if ((grid[0][0] == 1 || grid[m - 1][n - 1] == 1) && k == 0)
-            return (-1);
-        if (grid[0][0] == 1)
-            k--;
+        boolean[][][] seen = new boolean[m][n][k+1];
+        int level = 0;
         Queue<Cell> queue = new LinkedList<>();
+
         queue.add(new Cell(0, 0, 0));
         seen[0][0][0] = true;
-        int level = 0;
+
         while (!queue.isEmpty()) {
             int size = queue.size();
             int i = 0;
@@ -41,18 +39,17 @@ class Solution {
                 Cell cell = queue.remove();
                 int row = cell.row;
                 int col = cell.col;
-                int obs = cell.obs;
-                if (row == m - 1 && col == n - 1 && obs <= k) {
+                int obst = cell.obst;
+                if (row == m - 1 && col == n - 1 && obst <= k)
                     return (level);
-                }
                 for (int[] direction : directions) {
                     int x = row + direction[0];
                     int y = col + direction[1];
                     if (isValid(x, y)) {
-                        int neiObs = grid[x][y] == 1 ? obs + 1 : obs;
-                        if (neiObs <= k && !seen[x][y][neiObs]) {
-                            seen[x][y][neiObs] = true;
-                            queue.add(new Cell(x, y, neiObs));
+                        int neibObst = grid[x][y] == 1 ? obst + 1 : obst;
+                        if (neibObst <= k && !seen[x][y][neibObst]) {
+                            seen[x][y][neibObst] = true;
+                            queue.add(new Cell(x, y, neibObst));
                         }
                     }
                 }
@@ -63,19 +60,3 @@ class Solution {
         return (-1);
     }
 }
-/*
-[0,0],
-[1,0],
-[1,0],
-[1,0],
-[1,0],
-[1,0],
-[0,0],
-[0,1],
-[0,1],
-[0,1],
-[0,0],
-[1,0],
-[1,0],
-[0,0]]
-*/
