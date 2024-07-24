@@ -10,12 +10,7 @@
  *         this.val = val;
  *         this.left = left;
  *         this.right = right;
- *     }        1
-               2 3
-              5 6
-             7
-             1 2 (5 (7 ((null) (null)))
-             ans = 1, ret 2
+ *     }
  * }
  */
 class Solution {
