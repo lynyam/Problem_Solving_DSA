@@ -17,12 +17,12 @@ class Solution {
     public List<Integer> largestValues(TreeNode root) {
         if (root == null) return (new ArrayList<>());
         Queue<TreeNode> queue = new LinkedList<>();
-        List<Integer> values = new ArrayList<>();
-        queue.add(root);
+        List<Integer> ans = new ArrayList<>();
 
+        queue.add(root);
         while (!queue.isEmpty()) {
-            int size = queue.size();
             int i = 0;
+            int size = queue.size();
             int max = Integer.MIN_VALUE;
             while (i < size) {
                 TreeNode node = queue.remove();
@@ -33,8 +33,8 @@ class Solution {
                     queue.add(node.right);
                 i++;
             }
-            values.add(max);
+            ans.add(max);
         }
-        return (values);
+        return (ans);
     }
 }
