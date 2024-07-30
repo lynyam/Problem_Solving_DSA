@@ -1,16 +1,10 @@
 class Solution {
     List<List<Integer>> adjList;
-    HashSet<String> roads;
     boolean[] seen;
     int ans = 0;
+    HashSet<String> roads;
 
-    public void builGraph(int n, int[][] connections) {
-        int i = 0;
-
-        while (i < n) {
-            adjList.add(new ArrayList<Integer>());
-            i++;
-        }
+    public void buildGraph(int[][] connections) {
         for (int[] connection : connections) {
             adjList.get(connection[0]).add(connection[1]);
             adjList.get(connection[1]).add(connection[0]);
@@ -19,27 +13,34 @@ class Solution {
     }
 
     public String convertToHash(int from, int to) {
-        return (String.valueOf(from) + "," + String.valueOf(to));
+        return (String.valueOf(from) + "_" + String.valueOf(to));
     }
-    public int minReorder(int n, int[][] connections) {
-        seen = new boolean[n];
-        adjList = new ArrayList<>();
-        roads = new HashSet<>();
 
-        builGraph(n, connections);
+    public int minReorder(int n, int[][] connections) {
+        adjList = new ArrayList<>();
+        int i = 0;
+        seen = new boolean[n];
         seen[0] = true;
+        roads = new HashSet<>();
+        
+        while (i < n) {
+            adjList.add(new ArrayList<>());
+            i++;
+        }
+        i = 0;
+        buildGraph(connections);
         dfs(0);
         return (ans);
     }
 
-    public void dfs(int node) {
-        for (int neighbor : adjList.get(node)) {
-            if (!seen[neighbor]) {
-                seen[neighbor] = true;
-                if (roads.contains(convertToHash(node, neighbor)))
-                    ans++;
-                dfs(neighbor);
+    public void dfs(int capital) {
+        for (int city : adjList.get(capital)) {
+            if (!seen[city]) {
+                seen[city] = true;
+                ans += roads.contains(convertToHash(capital,
+                    city)) ? 1 : 0;
+                    dfs(city);
             }
         }
-    } 
+    }
 }
