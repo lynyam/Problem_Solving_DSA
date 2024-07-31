@@ -14,13 +14,12 @@
  * }
  */
 class Solution {
-    double target;
     double diff = Double.MAX_VALUE;
     int ans = Integer.MAX_VALUE;
+    double target;
     public int closestValue(TreeNode root, double target) {
-        if (root == null)
-            return (0);
         this.target = target;
+        if (root == null) return (0);
         bst(root);
         return (ans);
     }
@@ -28,14 +27,12 @@ class Solution {
     public void bst(TreeNode root) {
         if (root == null)
             return ;
-        if (Math.abs(root.val - target) <= diff) {
-            ans = Math.abs(root.val - target) == diff ? Math.min(ans, root.val) : root.val;
-            diff = Math.abs(root.val - target);
-        }
+        ans = diff > Math.abs(root.val - target) ? root.val : diff == 
+            Math.abs(root.val - target) ? Math.min(ans, root.val) : ans;
+        diff = Math.min(diff , Math.abs(root.val - target));
         if (root.val < target)
             bst(root.right);
-        bst(root.left);
+        if (root.val > target)
+            bst(root.left);
     }
-
-
 }
