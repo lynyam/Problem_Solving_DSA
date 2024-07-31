@@ -16,7 +16,8 @@
 class Solution {
     long prev = Long.MIN_VALUE;
     public boolean isValidBST(TreeNode root) {
-        return (bst(root));
+        if (root == null) return (true);
+        return(bst(root));
     }
 
     public boolean bst(TreeNode root) {
@@ -24,9 +25,11 @@ class Solution {
         if (root == null)
             return (true);
         ans &= bst(root.left);
-        ans &= prev < root.val;
+        if (prev >= root.val)
+            ans &= false;
         prev = root.val;
         ans &= bst(root.right);
         return (ans);
+
     }
 }
