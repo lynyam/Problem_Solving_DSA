@@ -15,14 +15,14 @@
  */
 class Solution {
     int ans = Integer.MAX_VALUE;
-    int prev = Integer.MAX_VALUE;
+    int prev;
     public int getMinimumDifference(TreeNode root) {
-        if (root == null) 
-            return (0);
+        if (root == null) return (0);
+        prev = Integer.MAX_VALUE;
         bst(root);
         return (ans);
     }
-    
+
     public void bst(TreeNode root) {
         if (root == null)
             return ;
