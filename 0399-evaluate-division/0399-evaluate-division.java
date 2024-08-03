@@ -34,11 +34,6 @@ class Solution {
                     i++;
                     continue ;
             }
-            if (dividend.equals(diviseur)) {
-                ans[i] = 1.0;
-                i++;
-                continue ;
-            }
             HashSet<String> seen = new HashSet<>();
             seen.add(dividend);
             double res = dfs(dividend, diviseur, 1.0, seen);
