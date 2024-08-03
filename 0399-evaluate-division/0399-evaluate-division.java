@@ -23,14 +23,11 @@ class Solution {
         double[] ans = new double[m];
 
         buildGraph(equations, values);
-        System.out.println(graph);
         while (i < m) {
             String dividend = queries.get(i).get(0);
             String diviseur = queries.get(i).get(1);
             if (!graph.containsKey(dividend) || !graph.containsKey(diviseur)) {
                     ans[i] = -1.0;
-                    System.out.println(graph.containsKey(dividend));
-                    System.out.println(graph.containsKey(diviseur));
                     i++;
                     continue ;
             }
