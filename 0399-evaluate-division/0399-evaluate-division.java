@@ -1,61 +1,63 @@
 class Solution {
     HashMap<String, HashMap<String, Double>> graph;
-    int n;
 
-    public void buildGraph(List<List<String>> equations, double[] values) {
+    public void buildGraph(List<List<String>> eq, double[] v) {
         int i = 0;
+        int n = eq.size();
         while (i < n) {
-            String dividend = equations.get(i).get(0);
-            String diviseur = equations.get(i).get(1);
-            graph.putIfAbsent(dividend, new HashMap<String, Double>());
-            graph.putIfAbsent(diviseur, new HashMap<String, Double>());
-            graph.get(dividend).put(diviseur, values[i]);
-            graph.get(diviseur).put(dividend, (1 / values[i]));
+            String from = eq.get(i).get(0);
+            String to = eq.get(i).get(1);
+            graph.putIfAbsent(from, new HashMap<String, Double>());
+            graph.putIfAbsent(to, new HashMap<String, Double>());
+            graph.get(from).put(to, v[i]);
+            graph.get(to).put(from, (1 / v[i]));
             i++;
         }
-
     }
+
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         graph = new HashMap<>();
+        int n = queries.size();
+        double[] ans = new double[n];
         int i = 0;
-        n = equations.size();
-        int m = queries.size();
-        double[] ans = new double[m];
-
+        
         buildGraph(equations, values);
-        while (i < m) {
-            String dividend = queries.get(i).get(0);
-            String diviseur = queries.get(i).get(1);
-            if (!graph.containsKey(dividend) || !graph.containsKey(diviseur)) {
-                    ans[i] = -1.0;
-                    i++;
-                    continue ;
+        for (List<String> query : queries) {
+            if (!graph.containsKey(query.get(0)) || !graph.containsKey(query.get(1))) {
+                ans[i] = -1.0;
+                i++;
+                continue ;
             }
-            HashSet<String> seen = new HashSet<>();
-            seen.add(dividend);
-            double res = dfs(dividend, diviseur, 1.0, seen);
-            
-            ans[i] = res == Double.MIN_VALUE ? -1 : res;
+            Double ret = dfs(query.get(0), query.get(1), 1.0, new HashSet<String>());
+            ans[i] = ret == Double.MIN_VALUE ? -1 : ret;
             i++;
         }
         return (ans);
     }
 
-    public double dfs(String dividend, String diviseur, double ans, HashSet<String> seen) {
-        if (dividend.equals(diviseur))
+    public double dfs(String from, String to, double ans, HashSet<String> seen) {
+        double ret = Double.MIN_VALUE;
+        seen.add(from);
+        if (from.equals(to))
             return (ans);
-        if (graph.containsKey(dividend)) {
-            HashMap<String, Double> couples = graph.get(dividend);
-            for (String neighbor : couples.keySet()) {
+        HashMap<String, Double> neighborMap = graph.get(from);
+        if (neighborMap != null) {
+            for (String neighbor : neighborMap.keySet()) {
                 if (!seen.contains(neighbor)) {
-                    seen.add(neighbor);
-                    double res = dfs(neighbor, diviseur, ans * couples.get(neighbor), seen);
-                    if (res == Double.MIN_VALUE)
-                        continue ;
-                    return (res);
+                    ret = Math.max(ret, dfs(neighbor, to, ans * neighborMap.get(neighbor), seen));
                 }
             }
         }
-        return (Double.MIN_VALUE);
+        return (ret);
     }
 }
+/*
+    - eq Pair<>[]
+        - eq[i] = [Ai, Bi]
+    - val int[]
+        - val[i] = Ai/Bi, Ai, Bi String single variable
+    - q/ q[j] = [Cj, Dj] jth query to find for Cj/Dj
+    -ret: ans of all q[j] not sigle ans ret -1
+    - no division by 0, if var not in list res = -1;
+ 
+*/
