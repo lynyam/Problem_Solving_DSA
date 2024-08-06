@@ -1,63 +1,59 @@
 class Solution {
-    Map<String, List<String>> graph;
+    HashMap<String, List<String>> graph;
 
-    public boolean isConnected(String s1, String s2) {
-        if (s1.length() != s2.length())
-            return (false);
-        int k = 1;
+    public void buildGraph(String bW, List<String> wL) {
+        for (String w : wL) {
+            if (isConnect(bW, w)) {
+                graph.putIfAbsent(bW, new ArrayList<String>());
+                graph.putIfAbsent(w, new ArrayList<String>());
+                graph.get(bW).add(w);
+                graph.get(w).add(bW);
+            }
+            for (String co : wL) {
+                if (isConnect(w, co)) {
+                    graph.putIfAbsent(w, new ArrayList<String>());
+                    graph.putIfAbsent(co, new ArrayList<String>());
+                    graph.get(w).add(co);
+                    graph.get(co).add(w);
+                }
+            }
+        }
+    }
+
+    public boolean isConnect(String w1, String w2) {
         int i = 0;
-        int n = s1.length();
-        while (i < n) {
-            k += s1.charAt(i) != s2.charAt(i) ? -1 : 0;
-            if (k < 0)
+        int k = 1;
+        int n1 = w1.length();
+        if (n1 != w2.length())
+            return (false);
+        while (i < n1) {
+            k += w1.charAt(i) != w2.charAt(i) ? -1 : 0;
+            if(k < 0)
                 return (false);
             i++;
         }
         return (true);
     }
 
-    public void buildGraph(String beginWord, List<String> worldList) {
-        graph.put(beginWord, new ArrayList<>());
-
-        for (String word : worldList) {
-            if (isConnected(beginWord, word)) {
-                graph.get(beginWord).add(word);
-                graph.putIfAbsent(word, new ArrayList<String>());
-                graph.get(word).add(beginWord);
-            }
-        }
-        for (String from : worldList) {
-            for (String to : worldList) {
-                if (from.equals(to))
-                    continue ;
-                if (isConnected(from, to)) {
-                    graph.putIfAbsent(from, new ArrayList<String>());
-                    graph.putIfAbsent(to, new ArrayList<String>());
-                    graph.get(from).add(to);
-                    graph.get(to).add(from);
-                }
-            }
-        }
-    }
-
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        graph = new HashMap<>();
-        HashSet<String> seen = new HashSet<>();
-        Queue<String> queue = new LinkedList<>();
         int level = 1;
-
+        HashSet<String> seen = new HashSet<>();
+        graph = new HashMap<>();
+        Queue<String> queue = new LinkedList<>();
+        
         buildGraph(beginWord, wordList);
+        if (!graph.containsKey(beginWord) || !graph.containsKey(endWord))
+            return (0);
         queue.add(beginWord);
         seen.add(beginWord);
-        if (graph.get(beginWord).size() == 0 || !graph.containsKey(endWord))
-            return (0);
         while (!queue.isEmpty()) {
             int i = 0;
             int size = queue.size();
             while (i < size) {
                 String node = queue.remove();
-                if (node.equals(endWord))
+                if (node.equals(endWord)) {
                     return (level);
+                }
                 for (String neighbor : graph.getOrDefault(node, new ArrayList<>())) {
                     if (!seen.contains(neighbor)) {
                         seen.add(neighbor);
@@ -71,3 +67,12 @@ class Solution {
         return (0);
     }
 }
+/*
+    - bW->eW use dic wL
+        - bW->s1->s2...->sk
+            - si, si+1 diff by 1 single char
+            - si/ 1<= i <= k is in wL. bW dnt need
+            - sk == eW
+    - input: 2 words bW , eW ans dic wL
+    - ret: nb of words si from bW->eW| 0 if not exist
+*/
