@@ -1,36 +1,55 @@
 class Solution {
-    HashMap<Integer, List<Integer>> graph;
+    List<List<Integer>> adjList;
     boolean[] seen;
-    int destination;
-    public boolean validPath(int n, int[][] edges, int source, int destination) {
-        if (source == destination)
-            return (true);
-        seen = new boolean[n];
-        graph = new HashMap<>();
-        this.destination = destination;
 
-        buildGraph(edges);
-        seen[source] = true;
-        return(dfs(source)); 
-    }
+    public void buildGraph(int[][] edges, int n) {
+        int i = 0;
 
-    public void buildGraph(int[][] edges) {
+        while (i < n) {
+            adjList.add(new ArrayList<Integer>());
+            i++;
+        }
         for (int[] edge : edges) {
-                graph.putIfAbsent(edge[0], new ArrayList<Integer>());
-                graph.putIfAbsent(edge[1], new ArrayList<Integer>());
-                graph.get(edge[0]).add(edge[1]);
-                graph.get(edge[1]).add(edge[0]);
+            int from = edge[0];
+            int to = edge[1];
+            adjList.get(from).add(to);
+            adjList.get(to).add(from);
         }
     }
 
-    public boolean dfs(int source) {
+    public boolean validPath(int n, int[][] edges, int source, int destination) {
+        adjList = new ArrayList<>();
+        seen = new boolean[n];
+        
+        if (source == destination)
+            return (true);
+        buildGraph(edges, n);
+        if (adjList.get(source).isEmpty() || adjList.get(destination).isEmpty())
+            return (false);
+        seen[source] = true;
+        return (dfs(source, destination));
+    }
+
+    public boolean dfs(int s, int d) {
         boolean ans = false;
-        for (int neighbor : graph.get(source)) {
-            if (!seen[neighbor]) {
-                seen[neighbor] = true;
-                ans |= (neighbor == destination ? true : dfs(neighbor));
+        if (s == d)
+            return (true);
+        for (int nei : adjList.get(s)) {
+            if (!seen[nei]) {
+                seen[nei] = true;
+                ans |= dfs(nei, d);
             }
         }
         return (ans);
     }
 }
+/*
+    - bi-direction graph
+    - n vertices 0 to n - 1 (inclu..)
+    - edges is. 2D int[] edges
+        - edges[i] = [ui, vi] => ui-><-vi
+        - every vertes is connected / one edge mini / no vertex edge itself
+    - det if valid path exist s -> d
+    - in: edges, n, d, s, 
+    - ret true if  or false
+*/
