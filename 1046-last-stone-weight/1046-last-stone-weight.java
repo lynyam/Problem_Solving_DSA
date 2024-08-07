@@ -1,32 +1,30 @@
 class Solution {
     public int lastStoneWeight(int[] stones) {
-        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>();
 
-        for (int num : stones) {
-            heap.add(-1 * num);
+        for (int n : stones) {
+            maxHeap.add(-1 * n);
         }
-        while (!heap.isEmpty()) {
-            int heav1 = heap.remove();
-            if (!heap.isEmpty()) {
-                int heav2 = heap.remove();
-                if (heav2 != heav1) {
-                    heap.add(heav1 - heav2);
-                }
-            }
-            else
-                return (-1 * heav1);
+        while (maxHeap.size() > 1) {
+            int max1 = maxHeap.remove();
+            int max2 = maxHeap.remove();
+            if (max1 != max2)
+                maxHeap.add(max1 - max2);
         }
-        return (0);
-        
+        return (!maxHeap.isEmpty() ? -1 * maxHeap.remove() : 0);
     }
-}
-/*
+}/*
     - stones int[]
         - stones[i] weight of ith stone
-    - each turn/ chooz heaviest 2 stones and smash them togeteher
-        ex: s1 x, s2 y x <=y sm = 
-        - x = y destroy s1 and 2
-        - s != y destr s1 x and s2 y = y - x
-    - end game one stone
-    - ret: wei of last remanig stone | if no 0
+    - each turn, choose max two stones[i] ans smash
+        - x, y stones turn i x<= y smatch =>
+            - x == y delete x && y
+            - x != y delete x and y = y - x
+    - end game: one stone left, return or 0
+    result:nlogn time n space 
+        - convert arr on heap max //nlogn time n space
+        - while heapMax not empty
+            - remove max1 and max2 //nlogn time reduce space => 0(1)
+            - if (max1 != max2)
+                - add to heap (max2 - max1) //n/2logn
 */
