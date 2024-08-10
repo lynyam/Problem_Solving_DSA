@@ -17,9 +17,9 @@ class Solution {
     public List<Integer> largestValues(TreeNode root) {
         if (root == null) return (new ArrayList<>());
         Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
         List<Integer> ans = new ArrayList<>();
 
-        queue.add(root);
         while (!queue.isEmpty()) {
             int i = 0;
             int size = queue.size();
