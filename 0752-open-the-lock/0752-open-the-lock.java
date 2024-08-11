@@ -1,24 +1,28 @@
 class Solution {
     public int openLock(String[] deadends, String target) {
-        HashSet<String> seen = new HashSet<>();
-        Queue<String> queue = new LinkedList<>();
         int level = 0;
-        
-        for (String dead : deadends) {
-            if (dead.equals("0000"))
-                return (-1);
-            seen.add(dead);
-        }
-        seen.add("0000");
+        Queue<String>  queue = new LinkedList<>();
         queue.add("0000");
+        int dead_n = deadends.length;
+        HashSet<String> seen = new HashSet<>();
+        int i = 0;
+
+        while (i < dead_n) {
+            seen.add(deadends[i++]);
+        }
+        if (seen.contains("0000"))
+            return (-1);
+        seen.add("0000");
+
         while (!queue.isEmpty()) {
-            int i = 0;
+            i = 0;
             int size = queue.size();
             while (i < size) {
                 String curr = queue.remove();
-                if (curr.equals(target))
+                if (curr.equals(target)) {
                     return (level);
-                for (String neighbor : searchNeighbor(curr)) {
+                }
+                for (String neighbor : allConnected(curr)) {
                     if (!seen.contains(neighbor)) {
                         seen.add(neighbor);
                         queue.add(neighbor);
@@ -31,31 +35,34 @@ class Solution {
         return (-1);
     }
 
-    public List<String> searchNeighbor(String curr) {
+    public List<String> allConnected(String curr) {
         List<String> ans = new ArrayList<>();
         int i = 0;
-        while (i < 4) {
-            int slot = curr.charAt(i) - 48;
-            int[] bound = new int[] {-1, 1};
-            int j = 0;
-            while (j < 2) {
-                int next = (10 + slot + bound[j]) % 10;
-                ans.add(curr.substring(0, i) + "" + next + curr.substring(i + 1));
-                j++;
+        int n = curr.length();
+        while (i < n) {
+            char c = curr.charAt(i);
+            int nbr = c - '0';
+            int[] range = new int[]{-1, 1};
+            for (int r : range) {
+                int nei = (10 + nbr + r) % 10;
+                ans.add(curr.substring(0, i) + "" + nei + curr.substring(i + 1));
             }
             i++;
         }
         return (ans);
     }
+
+
 }
 /*
-    - 1 lock
-        - 4 wheels
-            - 1 wheel 10 slots
-                - 1 slot : '0' .. '9' rotate 0-1 -> 9, 9 + 1-> 0 => 10 + x -+ 1 % 10
-        - init lock "0000" 
-    - deadends => 4 weals stop turning
-    - target = value unlock lock
-    - ret : mini total nb of turn to open lock| -1  BFS
-    Goal : open the lock without lock him with deadend
+    - 1 lock 
+        - 4 weels
+            - 10 slots '0'to '9' circular
+                - each moov => state
+    - start 0000
+    - list<String> deadends
+        - deadends[i]-> wheels stop turning -> open it
+    - target value to unlock lock
+    - ret: minimum total number of turns required to open lock, or -1 if not possible
+    
 */
