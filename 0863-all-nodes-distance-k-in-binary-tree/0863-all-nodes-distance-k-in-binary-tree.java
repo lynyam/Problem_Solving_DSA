@@ -12,8 +12,8 @@ class Solution {
 
     public void buildGraph(TreeNode root, TreeNode parent) {
         if (root == null)
-            return ;
-        graph.put(root, parent);
+            return;
+        graph.putIfAbsent(root, parent);
         parent = root;
         buildGraph(root.left, parent);
         buildGraph(root.right, parent);
@@ -21,46 +21,42 @@ class Solution {
 
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         if (root == null) return (new ArrayList<>());
-        HashSet<TreeNode> seen = new HashSet<>();
         graph = new HashMap<>();
+        HashSet<TreeNode> seen = new HashSet<>();
         Queue<TreeNode> queue = new LinkedList<>();
         List<Integer> ans = new ArrayList<>();
-
+        int level = 0;
+    
         buildGraph(root, null);
-        seen.add(target);
         queue.add(target);
-        while (!queue.isEmpty() && k >= 0) {
+        seen.add(target);
+        ans.add(target.val);
+        while (!queue.isEmpty() && level < k) {
             int i = 0;
             int size = queue.size();
             ans = new ArrayList<>();
             while (i < size) {
                 TreeNode node = queue.remove();
-                ans.add(node.val);
-                if (node.left != null && !seen.contains(node.left)) {
-                    seen.add(node.left);
-                    queue.add(node.left);
-                }
-                if (node.right != null && !seen.contains(node.right)) {
-                    seen.add(node.right);
-                    queue.add(node.right);
-                }
-                TreeNode parent = graph.get(node);
-                if (parent != null && !seen.contains(parent)) {
-                    seen.add(parent);
-                    queue.add(parent);
+                TreeNode[] connection = new TreeNode[]{
+                    graph.get(node), node.left, node.right
+                };
+                for (TreeNode neighbor : connection) {
+                    if (neighbor != null && !seen.contains(neighbor)) {
+                        ans.add(neighbor.val);
+                        seen.add(neighbor);
+                        queue.add(neighbor);
+                    }
                 }
                 i++;
             }
-            k--;
+            level++;
         }
-        return (k < 0 ? ans : new ArrayList<>());
+        return (ans);
     }
 }
 /*
     - root binary tree
-    - target.val
-    - k
-    - ret array ans/ ans[i] / node - target = k
-    --> buildGraph <node, parent>
-    start at atrget and pul all level k in ans
+    - val of node target
+    - k = int
+    - ret an array : val of all nodes that have a dist k from target
 */
