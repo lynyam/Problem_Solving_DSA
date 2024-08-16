@@ -1,9 +1,9 @@
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        return (typedString(s).toString().equals(typedString(t).toString()));
+        return (typedString(s).equals(typedString(t)));
     }
 
-    public StringBuilder typedString(String s) {
+    public String typedString(String s) {
         StringBuilder sb = new StringBuilder();
 
         for (char c : s.toCharArray()) {
@@ -14,6 +14,6 @@ class Solution {
             if (c != '#')
             sb.append(c);
         }
-        return (sb);
+        return (sb.toString());
     }
 }
