@@ -2,27 +2,22 @@ class Solution {
     public String simplifyPath(String path) {
         String[] dirs = path.split("/");
         int n = dirs.length;
-        Deque<String> deque = new LinkedList<>();
-        StringBuilder sb = new StringBuilder();
-        int i = 0;
+        List<String> stack = new ArrayList<>();
 
-        while (i < n) {
-            if (dirs[i].isEmpty() || dirs[i].equals(".")) {
-                i++;
+        for (String dir : dirs) {
+            if (stack.size() > 0 && dir.equals("..")) {
+                stack.remove(stack.size() - 1);
                 continue ;
             }
-            if (dirs[i].equals("..") && !deque.isEmpty()) {
-                deque.removeLast();
+            if (!dir.isEmpty() && !dir.equals(".") && !dir.equals("..")) {
+                stack.add(dir);
             }
-            else if (!dirs[i].equals("..")) {
-                deque.add(dirs[i]);
-            }
-            i++;
         }
-        while (!deque.isEmpty()) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : stack) {
             sb.append("/");
-            sb.append(deque.removeFirst());
+            sb.append(s);
         }
-        return (sb.length() == 0 ? new String("/") : sb.toString());
+        return (sb.isEmpty() ? "/" : sb.toString());
     }
 }
