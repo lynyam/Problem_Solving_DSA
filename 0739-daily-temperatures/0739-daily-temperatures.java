@@ -1,31 +1,20 @@
-class Temp {
-    int temp;
-    int day;
-    public Temp(int temp, int day) {
-        this.temp = temp;
-        this.day = day; 
-    }
-}
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
-        int n = temperatures.length;
-        int[] ans = new int[n];
-        List<Temp> stack = new ArrayList<>();
         int i = 0;
+        int n = temperatures.length;
+        List<Integer> stack = new ArrayList<>();
+        int[] answer = new int[n];
 
         while (i < n) {
-            int temp = temperatures[i];
-            while (stack.size() > 0 && stack.get(stack.size() - 1).temp < temp) {
-                ans[stack.get(stack.size() - 1).day] = i - stack.get(stack.size() - 1).day;
-                stack.remove(stack.size() - 1);
+            int t = temperatures[i];
+            int days = 0;
+            while (stack.size() > 0 && temperatures[stack.get(stack.size() - 1)] < t) {
+                int curr = stack.remove(stack.size() - 1);
+                answer[curr] = i - curr;
             }
-            stack.add(new Temp(temp, i));
+            stack.add(i);
             i++;
         }
-        return (ans);
+        return (answer);
     }
 }
-// 8 3 4 1 7 9
-// 5 1 2 1 1 0
-// 8,0 7,4 9,5
-// 5 1 2 1 1 0
