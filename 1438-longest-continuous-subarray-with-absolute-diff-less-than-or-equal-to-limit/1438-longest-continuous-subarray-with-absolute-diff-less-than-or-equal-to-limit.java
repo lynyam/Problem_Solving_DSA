@@ -1,29 +1,30 @@
 class Solution {
     public int longestSubarray(int[] nums, int limit) {
-        Deque<Integer> minDeque = new LinkedList<>();
-        Deque<Integer> maxDeque = new LinkedList<>();
-        int n = nums.length;
-        int right = 0;
-        int size = 0;
         int left = 0;
-        int ans = 0;
+        int right = 0;
+        int n = nums.length;
+        int ans = Integer.MIN_VALUE;
+        Deque<Integer> dequeMax = new LinkedList<>();
+        Deque<Integer> dequeMin = new LinkedList<>();
+
 
         while (right < n) {
-            int numR = nums[right];
-            while (!minDeque.isEmpty() && minDeque.peekLast() > numR) {
-                minDeque.removeLast();
+            int numr = nums[right];
+            while (!dequeMax.isEmpty() && dequeMax.peekLast() < numr) {
+                dequeMax.removeLast();
             }
-            while (!maxDeque.isEmpty() && maxDeque.peekLast() < numR) {
-                maxDeque.removeLast();
+            while (!dequeMin.isEmpty() && dequeMin.peekLast() > numr) {
+                dequeMin.removeLast();
             }
-            minDeque.add(numR);
-            maxDeque.add(numR);
-            while (Math.abs(minDeque.peekFirst() - Math.abs(maxDeque.peekFirst())) > limit) {
-                int numl = nums[left++];
-                if (numl == minDeque.peekFirst())
-                    minDeque.removeFirst();
-                if (numl == maxDeque.peekFirst())
-                    maxDeque.removeFirst();
+            dequeMax.add(numr);
+            dequeMin.add(numr);
+            while (Math.abs(numr - dequeMax.peekFirst()) > limit || Math.abs(numr - dequeMin.peekFirst()) > limit) {
+                    int numl = nums[left];
+                    if (numl == dequeMax.peekFirst())
+                        dequeMax.removeFirst();
+                    if (numl == dequeMin.peekFirst())
+                        dequeMin.removeFirst();
+                    left++;
             }
             ans = Math.max(ans, right - left + 1);
             right++;
@@ -32,21 +33,17 @@ class Solution {
     }
 }
 /*
- 8      | 4
+    1 4 8 2 5 1.   3
 
- min: 2
- max: 8 2
-[8]
-min.top() - 8 = 0 <= 4
-max.top() - 8 = 0 <= 4
+    1 1-1 <=3 ans = 1 max = 1 min =1
+    1 4 1-4 <= 3 ans = 2 max = 4 min =1
+    1 4 8 8-1 > 3 
+        DEL(1) si 1== max || min change max and min with the nex max/ min of the array
+        => need to store max and min (use 2 deque monotonique inc decr) 
+        max = 8 min = 4
+        8-4>3
+        DEL(4) min is empty as is empty 
+        max = 8 min = 8
 
-while (numl != 2)
-    min.top() - 2 = 0 <= 4
-    max.top() - 8 = 6 > 4
-        - l = 0, numl = 8
-        - if (min.peekLast == numl) => delete
-        - if (max.peekLast == numl) => delete
-min:2
-max:2
 
 */
