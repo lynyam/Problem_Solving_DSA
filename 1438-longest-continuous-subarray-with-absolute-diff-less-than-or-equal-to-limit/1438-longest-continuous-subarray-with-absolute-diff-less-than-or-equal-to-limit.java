@@ -1,29 +1,29 @@
 class Solution {
     public int longestSubarray(int[] nums, int limit) {
-        int left = 0;
-        int right = 0;
+        Deque<Integer> minDeque = new LinkedList<>();
+        Deque<Integer> maxDeque = new LinkedList<>();
         int n = nums.length;
-        int ans = Integer.MIN_VALUE;
-        Deque<Integer> queueMax = new LinkedList<>();
-        Deque<Integer> queueMin = new LinkedList<>();
+        int right = 0;
+        int size = 0;
+        int left = 0;
+        int ans = 0;
 
         while (right < n) {
-            while (!queueMax.isEmpty() && queueMax.peekLast() < nums[right]) {
-                queueMax.removeLast();
+            int numR = nums[right];
+            while (!minDeque.isEmpty() && minDeque.peekLast() > numR) {
+                minDeque.removeLast();
             }
-            while (!queueMin.isEmpty() && queueMin.peekLast() > nums[right]) {
-                queueMin.removeLast();
+            while (!maxDeque.isEmpty() && maxDeque.peekLast() < numR) {
+                maxDeque.removeLast();
             }
-            queueMax.add(nums[right]);
-            queueMin.add(nums[right]);
-            while (Math.abs(nums[right] - queueMax.peekFirst()) > limit || 
-                    Math.abs(nums[right] - queueMin.peekFirst()) > limit) {
-                    int numl = nums[left];
-                    if (numl == queueMax.peekFirst())
-                        queueMax.removeFirst();
-                    if (numl == queueMin.peekFirst())
-                        queueMin.removeFirst();
-                    left++;
+            minDeque.add(numR);
+            maxDeque.add(numR);
+            while (Math.abs(minDeque.peekFirst() - Math.abs(maxDeque.peekFirst())) > limit) {
+                int numl = nums[left++];
+                if (numl == minDeque.peekFirst())
+                    minDeque.removeFirst();
+                if (numl == maxDeque.peekFirst())
+                    maxDeque.removeFirst();
             }
             ans = Math.max(ans, right - left + 1);
             right++;
@@ -32,24 +32,21 @@ class Solution {
     }
 }
 /*
-    8 2 4 7.     4
-    int l, r
-    r = 0 | 8 max = 8 min=8 | 8
-        8 - 8 <= 4 && 8 - 8 <= 4
-        ans = r-l+1 = 1
-    r = 1 | 2 max = 8 min = 8 |maxq(dec) = 8->2 minq(incr) = 2
-        max - 2 && min - 2 > 4 max = 8 min = 2
-            l++ | l= 1
-        2-2 <= 4 && 2-2 <=4 max = 2 min = 2 |2-> 2->
-    r = 2 | 4 maxq(dec) 4-> minq(incr)2->4
-        4-4<=4 4-2<= 4 =>[2 4] ans = max(ans, 2 - 1 + 1) = 2
-    r = 3 | 7 maxq(dec) ->7 minq(incr)2->4->7
-        7-7<=4 2-7>=4 [2 4 7]
-            7-7<=4 2-7>=4
-                l = 1 =>2==top minq(incr)2->4->7=> 4->7
-                l++
-            7 - 7<= 4 7-3 <= 4 l = 2
-            ans = (3-2 + 1) = 2
+ 8      | 4
 
+ min: 2
+ max: 8 2
+[8]
+min.top() - 8 = 0 <= 4
+max.top() - 8 = 0 <= 4
+
+while (numl != 2)
+    min.top() - 2 = 0 <= 4
+    max.top() - 8 = 6 > 4
+        - l = 0, numl = 8
+        - if (min.peekLast == numl) => delete
+        - if (max.peekLast == numl) => delete
+min:2
+max:2
 
 */
