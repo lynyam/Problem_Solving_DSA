@@ -1,33 +1,41 @@
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
+        Deque<Integer> deque = new LinkedList<>();
+        int right = 0;
+        int left = 0;
         int n = nums.length;
-        int i = 0;
-        Deque<Integer> queue = new LinkedList<>();
         int[] ans = new int[n - k + 1];
-        int j = 0;
-        int l = 0;
+        int i = 0;
         
-        while (i < k) {
-            while (!queue.isEmpty() && queue.peekLast() < nums[i]) {
-                queue.removeLast();
-            }
-            queue.addLast(nums[i]);
-            i++;
+        while (right < k) {
+            addedQueue(deque, nums, right);
+            right++;
         }
-        ans[j] = queue.peekFirst();
-        j++;
-        while (i < n) {
-            while (!queue.isEmpty() && queue.peekLast() < nums[i]) {
-                queue.removeLast();
-            }
-            queue.addLast(nums[i]);
-            if (nums[l] == queue.peekFirst())
-                queue.removeFirst();
-            ans[j] = queue.peekFirst();
-            l++;
-            j++;
-            i++;
+        ans[i++] = nums[deque.peekLast()];
+        while (right < n) {
+            int numl = nums[left];
+            if (deque.peekLast() == left)
+                deque.removeLast();
+            left++;
+            addedQueue(deque, nums, right);
+            ans[i++] = nums[deque.peekLast()];
+            right++;
         }
         return (ans);
     }
+
+    public void addedQueue(Deque<Integer> deque, int[] nums,  int index) {
+        int num = nums[index];
+        while (!deque.isEmpty() && nums[deque.peekFirst()] < num) {
+            deque.removeFirst();
+        }
+        deque.addFirst(index);
+
+    }
 }
+/*
+    - nums int []
+    - int size k
+    - only see k numbers in windows
+    - windows moove right to one position
+*/
