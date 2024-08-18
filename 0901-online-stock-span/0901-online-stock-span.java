@@ -1,27 +1,23 @@
-class Stock {
-    int price;
-    int days;
-    public Stock(int price, int day) {
-        this.price = price;
-        this.days = day;
-    }
-}
-
 class StockSpanner {
-    Stack<Stock> stack;
-
+    List<Integer> store;   
     public StockSpanner() {
-        stack = new Stack<Stock>();
+        store = new ArrayList<>();
     }
     
     public int next(int price) {
-        int countDay = 1;
-        while (!stack.empty() && stack.peek().price <= price) {
-            Stock old = stack.pop();
-            countDay = countDay + old.days;
+        store.add(price);
+        int n = store.size();
+        int i = n - 1;
+        int count = 0;
+        while (i >= 0) {
+            if (store.get(i) > price) {
+                break ;
+            }
+            count++;
+            i--;
         }
-        stack.push(new Stock(price, countDay));
-        return (countDay);
+        return (count);
+        
     }
 }
 
