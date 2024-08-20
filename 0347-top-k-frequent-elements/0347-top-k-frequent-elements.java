@@ -1,42 +1,22 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         HashMap<Integer, Integer> store = new HashMap<>();
-        int max = 0;
-        
+        int[] ans = new int[k];
+        PriorityQueue<Integer> heap = new PriorityQueue<>((n1, n2) -> (store.get(n1) -
+         store.get(n2)));
+        int i = 0;
+
         for (int num : nums) {
             store.put(num, store.getOrDefault(num, 0) + 1);
-            max = Math.max(max, store.get(num));
         }
-        List<List<Integer>> bucket = new ArrayList<>();
-        int i = 0;
-        while (i <= max) {
-            bucket.add(new ArrayList<Integer>());
-            i++;
+        for (int n : store.keySet()) {
+            heap.add(n);
+            if (heap.size() > k)
+                heap.remove();
         }
-        for (int key : store.keySet()) {
-            bucket.get(store.get(key)).add(key);
+        while (!heap.isEmpty()) {
+            ans[i++] = heap.remove();
         }
-        int[] topK = new int[k];
-        i = max;
-        int j = 0;
-        while (i >= 0 && j < k) {
-            List<Integer> list = bucket.get(i);
-            for (int topi : list) {
-                if (j < k) {
-                    topK[j] = topi;
-                    j++;
-                }
-                else
-                    break ;
-            }
-            i--;
-        }
-        return (topK);
+        return (ans);
     }
 }
-/**
-    - nums int[]
-    - k int
-    - ret: k most frequent elts
-    - ret ans in any order
- */
