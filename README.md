@@ -1,2 +1,2 @@
 # Problem_Solving_DSA
-This repo is store all problem i solve on DSA for ITW prepartion
+This repo store all problems i solved on DSA for ITW prepartion
