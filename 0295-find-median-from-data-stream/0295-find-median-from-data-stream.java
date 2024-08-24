@@ -1,24 +1,22 @@
 class MedianFinder {
-    PriorityQueue<Integer> leftHeap;
-    PriorityQueue<Integer> rightHeap;
+    PriorityQueue<Integer> minHeap;
+    PriorityQueue<Integer> maxHeap;
 
     public MedianFinder() {
-        leftHeap = new PriorityQueue<>(Comparator.reverseOrder());
-        rightHeap = new PriorityQueue<>();
-        
+        minHeap = new PriorityQueue<>(Comparator.reverseOrder());
+        maxHeap = new PriorityQueue<>(); 
     }
     
     public void addNum(int num) {
-        leftHeap.add(num);
-        rightHeap.add(leftHeap.remove());
-        if (rightHeap.size() > leftHeap.size()) {
-            leftHeap.add(rightHeap.remove());
+        minHeap.add(num);
+        maxHeap.add(minHeap.remove());
+        if (maxHeap.size() > minHeap.size()) {
+            minHeap.add(maxHeap.remove());
         }
     }
     
     public double findMedian() {
-        return (leftHeap.size() > rightHeap.size() ? leftHeap.peek() : 
-            ((double)leftHeap.peek() + rightHeap.peek())/ 2.0);
+        return (maxHeap.size() == minHeap.size() ? (minHeap.peek() + maxHeap.peek()) / 2.0 : minHeap.peek());
     }
 }
 
@@ -27,6 +25,13 @@ class MedianFinder {
  * MedianFinder obj = new MedianFinder();
  * obj.addNum(num);
  * double param_2 = obj.findMedian();
-
-    - median = midle val in ordered int list
  */
+ /**
+    - median = middle val in ordered integer list
+    - size % 2 == 2
+        - median = midle1 + midle2 / 2
+    - void addNum(int num)
+        - add num to dsa
+    - double findMedian()
+        - return median of all elt
+  */
