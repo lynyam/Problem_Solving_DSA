@@ -1,71 +1,68 @@
 class Solution {
-    PriorityQueue<Integer> leftHeap;
-    PriorityQueue<Integer> rightHeap;
-    HashMap<Integer, Integer> markAsDelete;
-    int lSize;
-    int rSize;
+    HashMap<Integer, Integer> delMap;
+    PriorityQueue<Integer> minHeap;
+    PriorityQueue<Integer> maxHeap;
+    int leftSize;
+    int rightSize;
     public double[] medianSlidingWindow(int[] nums, int k) {
-       leftHeap = new PriorityQueue<>(Comparator.reverseOrder());
-       rightHeap = new PriorityQueue<>();
-       lSize = 0;
-       rSize = 0;
-       int i = 0;
-       int n = nums.length;
-       double[] ans = new double[n - k + 1];
-       int left = 0;
-       int right = 0;
-       markAsDelete = new HashMap<>();
-       
+        delMap = new HashMap<>();
+        minHeap = new PriorityQueue<>(Comparator.reverseOrder());
+        maxHeap = new PriorityQueue<>();
+        leftSize = 0;
+        rightSize = 0;
+        int left = 0;
+        int right = 0;
+        int n = nums.length;
+        double[] ans = new double[n - k + 1];
+        int i = 0;
+        
         while (right < n) {
-            int num = nums[right];
-            leftHeap.add(num);
-            rightHeap.add(leftHeap.remove());
-            rSize++;
-            if (rSize > lSize) {
-                leftHeap.add(rightHeap.remove());
-                lSize++;
-                rSize--;
+            int numr = nums[right];
+            minHeap.add(numr);
+            maxHeap.add(minHeap.remove());
+            rightSize++;
+            if (rightSize > leftSize) {
+                minHeap.add(maxHeap.remove());
+                leftSize++;
+                rightSize--;
             }
             if (right >= k - 1) {
-                balanceHeaps();
-                ans[i] = k % 2 == 1 ? leftHeap.peek() : ((double)leftHeap.peek() + rightHeap.peek()) / 2.0;
+                updateHeap();
+                ans[i++] = k % 2 == 0 ? ((double)minHeap.peek() + maxHeap.peek()) / 2.0 : minHeap.peek();
                 int numl = nums[left];
-                if (numl <= leftHeap.peek())
-                    lSize--;
+                if (numl <= minHeap.peek())
+                    leftSize--;
                 else
-                    rSize--;
-                markAsDelete.put(numl, markAsDelete.getOrDefault(numl, 0) + 1);
-                balanceHeaps();
+                    rightSize--;
+                delMap.put(numl, delMap.getOrDefault(numl, 0) + 1);
+                
                 left++;
-                i++;
             }
             right++;
         }
         return (ans);
     }
 
-    public void balanceHeaps() {
-        while (!leftHeap.isEmpty() && markAsDelete.
-            getOrDefault(leftHeap.peek(), 0) > 0) {
-                    int remove = leftHeap.remove();
-                    markAsDelete.put(remove, markAsDelete.
-                        getOrDefault(remove, 0) - 1);
-        }
-        while (!rightHeap.isEmpty() && markAsDelete.getOrDefault(
-                rightHeap.peek(), 0) > 0) {
-                    int remove1 = rightHeap.remove();
-                    markAsDelete.put(remove1, markAsDelete.
-                        getOrDefault(remove1, 0) - 1);
-        }
-        if (lSize > rSize + 1) {
-                rightHeap.add(leftHeap.remove());
-                lSize--;
-                rSize++;
-        }
-        if (rSize > lSize) {
-                leftHeap.add(rightHeap.remove());
-                lSize++;
-                rSize--;
+    public void updateHeap() {
+        update(minHeap);
+        update(maxHeap);
+    }
+
+    public void update(PriorityQueue<Integer> heap) {
+        while (!heap.isEmpty() && delMap.containsKey(heap.peek())) {
+            int num = heap.peek();
+            delMap.put(num, delMap.get(num) - 1);
+            if (delMap.get(num) <= 0)
+                delMap.remove(num);
+            heap.remove();
         }
     }
 }
+/**
+    - median = middle value in an ordered int[]
+    - size % 2 == 0, median = (m1 + m2) / 2
+    - nums int[]
+    - int k
+    - slide windows size k, 
+    - ret median array for each window in original array
+ */
