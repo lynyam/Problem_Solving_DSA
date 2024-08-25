@@ -11,11 +11,13 @@ class Solution {
         }
         while (truckSize > 0 && !heap.isEmpty()) {
             int index = heap.remove();
-            ans += boxTypes[index][1];
-            boxTypes[index][0]--;
-            if (boxTypes[index][0] > 0)
-                heap.add(index);
-            truckSize--;
+            if (boxTypes[index][0] < truckSize) {
+                ans += (boxTypes[index][1] * boxTypes[index][0]);
+                truckSize -= boxTypes[index][0];
+            } else {
+                ans += (boxTypes[index][1] * truckSize);
+                break ;
+            }
         }
         return (ans);        
     }
