@@ -1,37 +1,54 @@
 class Solution {
-    int n;
-    public boolean isValid(int x) {
-        return (x >= 0 && x < n);
-    }
-
     public boolean canReach(int[] arr, int start) {
-        n = arr.length;
-        Queue<Integer> queue = new LinkedList<>();
+        int n = arr.length;
         boolean[] seen = new boolean[n];
-        queue.add(start);
-        seen[start] = true;
+        int i = 0;
+        Queue<Integer> queue = new LinkedList<>();
+        int countZeroIndex = 0;
 
-        while (!queue.isEmpty()) {//
-            int curr = queue.remove();//5
-            if (arr[curr] == 0)//1
-                return (true);
-            if (isValid(curr + arr[curr]) && !seen[curr + arr[curr]]) {//
-                seen[curr + arr[curr]] = true;
-                queue.add(curr + arr[curr]);
-            }
-            if (isValid(curr - arr[curr]) && !seen[curr - arr[curr]]) {
-                seen[curr - arr[curr]] = true;
-                queue.add(curr - arr[curr]);
+        while (i < n) {
+            if (arr[i] == 0)
+                countZeroIndex++;
+            i++;
+        }
+        if (countZeroIndex == 0)
+            return (false);
+        seen[start] = true;
+        queue.add(start);
+        while (!queue.isEmpty()) {
+            i = 0;
+            int size = queue.size();
+            while (i < size) {
+                int node = queue.remove();
+                if (arr[node] == 0)
+                    return (true);
+                int n1 = node + arr[node];
+                int n2 = node - arr[node];
+                if (n1 < n && !seen[n1]) {
+                    seen[n1] = true;
+                    queue.add(n1);
+                }
+                if (n2 >= 0 && !seen[n2]) {
+                    seen[n2] = true;
+                    queue.add(n2);
+                }
+                i++;
             }
         }
         return (false);
     }
 }
-/**
-    - arr 
-        - arr[i] >= 0;
-    - u are positioned at start index of array
-    - u are index i => jump i+arr[i] or i-arr[i]
-    - can u reach any index with val 0?
-    - u can not jump outside
- */
+/*
+    - arr int[] >= 0
+    - pos start index
+    - index i => jump to i + arr[i] / i - arr[i]
+    - check if u can rich any index with arr[i] = 0
+    - cannot jump outside
+    result
+    - state = i
+    - edge i+arr[i] / i - arr[i]
+    - senn [false, ...3=true, ...]
+    - bfs
+        - if valid et see
+
+*/
