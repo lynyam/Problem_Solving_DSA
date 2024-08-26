@@ -1,20 +1,22 @@
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> heap = new PriorityQueue<>();
+        int i = 0;
 
-        for (int num : nums) {
-            heap.add(num);
+        while (i < nums.length) {
+            heap.add(nums[i]);
             if (heap.size() > k) {
                 heap.remove();
             }
+            i++;
         }
-        return (heap.remove());
+        return (heap.peek());
     }
 }
 /**
     - nums int[]
-    - int k
-    - ret kth largest elt in the array
-        - kth lasgest elt in sorted order, not kth disting elt
-        - not sort array
+    - k int
+    - ret kth largest elt in array
+    - kth largest elt in sorted array, not kth distinct elt
+    - solve withoup solving
  */
