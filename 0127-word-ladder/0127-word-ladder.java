@@ -67,12 +67,3 @@ class Solution {
         return (0);
     }
 }
-/*
-    - bW->eW use dic wL
-        - bW->s1->s2...->sk
-            - si, si+1 diff by 1 single char
-            - si/ 1<= i <= k is in wL. bW dnt need
-            - sk == eW
-    - input: 2 words bW , eW ans dic wL
-    - ret: nb of words si from bW->eW| 0 if not exist
-*/
