@@ -1,34 +1,25 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        int m = matrix.length;
-        int n = matrix[0].length;
         int left = 0;
-        int right = m * n - 1;
-        //x*n + y = 6
-
+        int n = matrix[0].length;
+        int right = matrix.length * n - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             int midx = mid / n;
             int midy = mid % n;
             if (matrix[midx][midy] == target)
                 return (true);
-            if (matrix[midx][midy] > target) {
+            if (matrix[midx][midy] >= target)
                 right = mid - 1;
-            }
-            else
+            else 
                 left = mid + 1;
         }
         return (false);
     }
 }
 /**
-    - matrix mxn int[]
-        - row sort in nn decreasing order
-        - first int row(i) > last int row(i-1)
-    - target int
-    - ret true if int is in matrix | false if not
-
-    (0, 0) => 0*n + 0 = 0
-    (0, 1) => 0*n + 1
-    (1, 0) => 1*n + 1
- */ 
+    - matrix[m][n]
+        - row sorted
+        - 1st int of row > last int prev row
+        - search target in matrix, ret true if seen or false other .. in 0(log(m*n));
+ */
