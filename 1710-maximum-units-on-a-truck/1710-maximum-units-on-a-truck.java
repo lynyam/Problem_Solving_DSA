@@ -1,34 +1,31 @@
 class Solution {
     public int maximumUnits(int[][] boxTypes, int truckSize) {
-        PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> (boxTypes[b][1] - boxTypes[a][1]));
+        Arrays.sort(boxTypes, (a, b) -> b[1] - a[1]);
         int i = 0;
         int n = boxTypes.length;
         int ans = 0;
 
         while (i < n) {
-            heap.add(i);
+            int nbrBox = boxTypes[i][0];
+            int units = boxTypes[i][1];
+            if (truckSize > nbrBox) {
+                ans += nbrBox * units;
+                truckSize -= nbrBox;
+            }
+            else {
+                return (ans + (truckSize * units));
+            }
             i++;
         }
-        while (truckSize > 0 && !heap.isEmpty()) {
-            int index = heap.remove();
-            if (boxTypes[index][0] < truckSize) {
-                ans += (boxTypes[index][1] * boxTypes[index][0]);
-                truckSize -= boxTypes[index][0];
-            } else {
-                ans += (boxTypes[index][1] * truckSize);
-                break ;
-            }
-        }
-        return (ans);        
+        return (ans);
     }
 }
 /**
-    - boxTypes int[][]
-        - boxTypes[i] = [numberOfBoxes_i, nbrOfUnitsPerBox_i]
-            - numberOfBoxes_i = nbr of boxe de type i
-            - nbrOfUnitsPerBox_i = nbr of units in each box of the type i
-    - trucSize int = max of boxes can put on the truck
-    - u can choose any boxes to put on the truck if nbr of box <= trucSize
-    - ret max total number of units that can be put on the truck
-    - ex: boxTypes = [[1,3],[2,2],[3,1]], truckSize = 4
+    - boxTypes, 
+        - boxTypes[i] = [numberOfBoxesi, numberOfUnitsPerBoxi]
+        - numberOfBoxesi: number of boxes of type i
+        - numberOfUnitsPerBoxi: number of. units in each box of type i
+    - truckSize int: max nbr of boxes  that can be put on truck
+    - u can choose any boxes to put on truck if numberOfBoxe >trucSize
+    - ret max unit can be put on truck
  */
