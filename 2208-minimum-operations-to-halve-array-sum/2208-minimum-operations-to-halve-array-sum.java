@@ -1,28 +1,29 @@
 class Solution {
     public int halveArray(int[] nums) {
-        double oldSum = 0;
-        double delSum = 0;
-        int step = 0;
-        PriorityQueue<Double> heap = new PriorityQueue<>
-            (Comparator.reverseOrder());
+        PriorityQueue<Double> heap = new PriorityQueue<>(Comparator.reverseOrder());
+        int i = 0;
+        int n = nums.length;
+        double sum = 0;
 
-        for (int num : nums) {
-            oldSum += num;
-            heap.add(num * 1.0);
+        while (i < n) {
+            heap.add((double)nums[i]);
+            sum += nums[i];
+            i++;
         }
-        while (!heap.isEmpty() && delSum < oldSum / 2) {
-            double remove = heap.remove() / 2.0;
-            delSum += remove;
-            heap.add(remove);
-            step++;
+        double halfSum = sum / 2.0;
+        i = 0;
+        while (!heap.isEmpty() && sum > halfSum) {
+            double curr = heap.remove();
+            curr /= 2.0;
+            sum -= curr;
+            heap.add(curr);
+            i++;
         }
-        return (step);
+        return (i);    
     }
 }
-/*
-    - nums int[] positif
-    - 1 ope choose nums[i] and make nums[i]/2
-    - ret mini number ope to reduce newsum(nums[i]) <= sum(nums[i]) /2 
-    newSum = oldSum - sumDelet <= oldSum / 2
-    sumDelet >= oldSum/ 2
-*/
+/**
+    - nums[]
+    - reduce nums[i] / 2
+    - ret mini number of ope to reduce the sum of nums by at least half
+ */
