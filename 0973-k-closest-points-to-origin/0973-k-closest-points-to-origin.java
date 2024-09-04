@@ -1,27 +1,24 @@
 class Solution {
     public int[][] kClosest(int[][] points, int k) {
-        PriorityQueue<int[]> heap = new PriorityQueue<>((p1, p2) -> {
-            return ((p2[0] * p2[0]) + (p2[1] * p2[1]) - ((p1[0] * p1[0]) + (p1[1] * p1[1])));});
+        PriorityQueue<int[]> heap = new PriorityQueue<>((a, b) -> (b[0] * b[0]) + (b[1] * b[1]) - (a[0] * a[0]) - (a[1] * a[1]));
+        int[][] ans = new int[k][2];
+        int i = 0;
 
-        for (int[] p : points) {
-            heap.add(p);
+        for (int[] point : points) {
+            heap.add(point);
             if (heap.size() > k) {
                 heap.remove();
             }
         }
-        int[][] ans = new int[k][2];
-        int i = 0;
         while (!heap.isEmpty()) {
-            ans[i++] = heap.remove();
+            ans[i] = heap.remove();
+            i++;
         }
         return (ans);
     }
 }
 /**
-    - points int[][]
-        - points[i] = [xi, yi] a point on the X-Y plane
-        - int k, 
-        - ret k closest points to (0, 0)
-        - dist btw 2 point (x1-x2)2 + (y1-y2)2
-        - ret ans in any order
+    - points[i] = [xi, yi], int k
+    - return k closest point to (0, 0)
+    - dist = x2 + y2
  */
