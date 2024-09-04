@@ -16,25 +16,28 @@
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
         if (root == null) return (new ArrayList<>());
-        List<Integer> ans = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
+        List<Integer> answer = new ArrayList<>();
 
         while (!queue.isEmpty()) {
             int i = 0;
-            int size = queue.size();
-            int last = 0;
-            while (i < size) {
-                TreeNode node = queue.remove();
-                last = node.val;
+            int n = queue.size();
+            TreeNode node = null;
+            while (i < n) {
+                node = queue.remove();
                 if (node.left != null)
                     queue.add(node.left);
                 if (node.right != null)
                     queue.add(node.right);
                 i++;
             }
-            ans.add(last);
+            answer.add(node.val);
         }
-        return (ans);
+        return (answer);
     }
 }
+/**
+    - root
+    - ret List<Int> last node all level
+ */
