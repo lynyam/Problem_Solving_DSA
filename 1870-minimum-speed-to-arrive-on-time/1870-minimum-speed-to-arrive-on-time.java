@@ -1,13 +1,18 @@
 class Solution {
     public int minSpeedOnTime(int[] dist, double hour) {
-        if (dist.length > (int)Math.ceil(hour))
-            return (-1);
         int left = 1;
         int right = (int)Math.pow(10, 7);
+        int i = 0;
+
+        if (dist.length > Math.ceil(hour)) {
+            return (-1);
+        }
+
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (check(mid, dist, hour))
+            if (check(mid, dist, hour)) {
                 right = mid - 1;
+            }
             else
                 left = mid + 1;
         }
@@ -15,22 +20,26 @@ class Solution {
     }
 
     public boolean check(int mid, int[] dist, double hour) {
-        double reelHour = 0.0;
-        
+        double h = 0;
+        int i = 0;
+
         for (int d : dist) {
-            reelHour = Math.ceil(reelHour);
-            reelHour += d / (double)mid;
+            if (i < dist.length - 1)
+                h += (d % mid == 0 ? d / mid : (d / mid + 1));
+            else
+                h += d / (double)mid;
+            i++;
         }
-        return (reelHour <= hour);
+        return (h <= hour);
     }
 }
 /**
-    - hour, float
-    - take n train
-    - dist[] of length n dist[i] distance of ith train
-    - each train take mini 1h
-    - ret mini positiv int speed or -1 if it impossible
-    -  ans max = 10exp7
-    - v =. d / t => t = d / v
-    - v augmente heure diminue et inversement
+    - hour float = your time
+    - n train, trains[i] = dist km for the train i
+    - each train can only depart at int hour => arrondi
+    - ret minimum positive int speed (km /h) | -1
+    - v augmente => h diminue
+    - V diminue => h augmente
+    - h > 6 left = mid + 1
+    - h <= 6 
  */
