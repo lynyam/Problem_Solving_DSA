@@ -6,9 +6,7 @@ class KthLargest {
         heap = new PriorityQueue<>();
         this.k = k;
         for (int num : nums) {
-            heap.add(num);
-            if (heap.size() > k)
-                heap.remove();
+            add(num);
         }
     }
     
@@ -25,3 +23,8 @@ class KthLargest {
  * KthLargest obj = new KthLargest(k, nums);
  * int param_1 = obj.add(val);
  */
+ /**
+    - kth highest test score
+    - int k ret kth highest test score after new score has been sub
+    - kth highest in sorted list
+  */
