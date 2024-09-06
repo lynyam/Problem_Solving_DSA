@@ -1,10 +1,10 @@
 class Solution {
-    int[][] directions = new int[][]{
+    int[][] directions = new int[][] {
         {1, 0}, {0, 1},
         {-1, 0}, {0, -1}
     };
-    int m;
     int n;
+    int m;
 
     public boolean isValid(int x, int y) {
         return (x >= 0 && x < n && y >= 0 && y < m);
@@ -15,10 +15,9 @@ class Solution {
         m = heights[0].length;
         int left = 0;
         int right = 0;
-
         for (int[] row : heights) {
-            for (int col : row) {
-                right = Math.max(right, col);
+            for (int height : row) {
+                right = Math.max(right, height);
             }
         }
         while (left <= right) {
@@ -33,15 +32,14 @@ class Solution {
     }
 
     public boolean check(int mid, int x, int y, int[][] heights, boolean[][] seen) {
-        boolean ans = false;
-        if (x == n - 1 && y == m - 1) {
+        if (x == n - 1 && y == m - 1)
             return (true);
-        }
         seen[x][y] = true;
+        boolean ans = false;
         for (int[] dir : directions) {
             int row = x + dir[0];
             int col = y + dir[1];
-            if (isValid(row, col) && !seen[row][col] && Math.abs(heights[row][col] - heights[x][y]) <= mid) {
+            if (isValid(row, col) && !seen[row][col] && Math.abs(heights[x][y] - heights[row][col]) <= mid) {
                 ans |= check(mid, row, col, heights, seen);
             }
         }
@@ -49,7 +47,8 @@ class Solution {
     }
 }
 /**
-    - find a root with miimum effort
-    - route's effort = max|cell_i - cell_i-1|
-    - ret: min effort required
+    - heights[r][c] = height of cell (r, c)
+    - top(0, 0) -> (r-1, c-1)
+    - find route required minimum effort
+    - effort = maxAbs(2cons cells)
  */
