@@ -1,68 +1,65 @@
 class Solution {
+    PriorityQueue<Integer> left;
     HashMap<Integer, Integer> delMap;
-    PriorityQueue<Integer> minHeap;
-    PriorityQueue<Integer> maxHeap;
-    int leftSize;
-    int rightSize;
+    PriorityQueue<Integer> right;
+    int lSize;
+    int rSize;
     public double[] medianSlidingWindow(int[] nums, int k) {
-        delMap = new HashMap<>();
-        minHeap = new PriorityQueue<>(Comparator.reverseOrder());
-        maxHeap = new PriorityQueue<>();
-        leftSize = 0;
-        rightSize = 0;
-        int left = 0;
-        int right = 0;
         int n = nums.length;
         double[] ans = new double[n - k + 1];
+        delMap = new HashMap<>();
+        left = new PriorityQueue<>(Comparator.reverseOrder());
+        right = new PriorityQueue<>();
         int i = 0;
-        
-        while (right < n) {
-            int numr = nums[right];
-            minHeap.add(numr);
-            maxHeap.add(minHeap.remove());
-            rightSize++;
-            if (rightSize > leftSize) {
-                minHeap.add(maxHeap.remove());
-                leftSize++;
-                rightSize--;
+        lSize = 0;
+        rSize = 0;
+        int j = 0;
+
+        while (i < n) {
+            int num = nums[i];
+            left.add(num);
+            right.add(left.remove());
+            rSize++;
+            if (rSize > lSize) {
+                left.add(right.remove());
+                rSize--;
+                lSize++;
             }
-            if (right >= k - 1) {
-                updateHeap();
-                ans[i++] = k % 2 == 0 ? ((double)minHeap.peek() + maxHeap.peek()) / 2.0 : minHeap.peek();
-                int numl = nums[left];
-                if (numl <= minHeap.peek())
-                    leftSize--;
+            if (i >= k - 1) {
+                updateHeaps();
+                ans[j] = k % 2 == 1 ? left.peek() : ((long)left.peek() + right.peek()) / 2.0;
+                int numl = nums[j];
+                if (numl <= left.peek())
+                    lSize--;
                 else
-                    rightSize--;
+                    rSize--;
+                //if ()
                 delMap.put(numl, delMap.getOrDefault(numl, 0) + 1);
-                
-                left++;
+                updateHeaps();
+                j++;
             }
-            right++;
+            i++;
         }
         return (ans);
     }
 
-    public void updateHeap() {
-        update(minHeap);
-        update(maxHeap);
+    public void updateHeaps() {
+        update(left);
+        update(right);   
     }
-
     public void update(PriorityQueue<Integer> heap) {
-        while (!heap.isEmpty() && delMap.containsKey(heap.peek())) {
-            int num = heap.peek();
-            delMap.put(num, delMap.get(num) - 1);
-            if (delMap.get(num) <= 0)
-                delMap.remove(num);
-            heap.remove();
+        while (!heap.isEmpty() && delMap.getOrDefault(heap.peek(), 0) > 0) {
+            int remove = heap.remove();
+            delMap.put(remove, delMap.getOrDefault(remove, 0) - 1);
+            if (delMap.get(remove) <= 0)
+                delMap.remove(remove);
         }
     }
 }
 /**
-    - median = middle value in an ordered int[]
-    - size % 2 == 0, median = (m1 + m2) / 2
-    - nums int[]
-    - int k
-    - slide windows size k, 
-    - ret median array for each window in original array
+    - median = middle val in an ordered integer list
+    - size pair median is midle1 + midle2 / 2
+    - nums[], k
+    - sslide widow size k, see k numbers, moov one position
+    - ret median array for each widows in original array
  */
