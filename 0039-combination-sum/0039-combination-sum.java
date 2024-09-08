@@ -7,36 +7,33 @@ class Solution {
     }
 
     public void backtrack(List<Integer> curr, int sum, int i, int[] candidates, int target) {
-        if (sum >= target) {
-            if (sum == target)
-                ans.add(new ArrayList<>(curr));
+        if (sum == target) {
+            ans.add(new ArrayList<Integer>(curr));
             return ;
         }
-        while (i < candidates.length) {
-            int num = candidates[i];
-            if (sum + num <= target) {
-                curr.add(num);
-                backtrack(curr, sum + num, i, candidates, target);
+        int j = i;
+        while (j < candidates.length) {
+            int cand = candidates[j];
+            if (sum + cand <= target) {
+                curr.add(cand);
+                backtrack(curr, sum + cand, j, candidates, target);
                 curr.remove(curr.size() - 1);
             }
-            i++;
+            j++;
         }
 
     }
 }
 /**
-    - candidates[] distinct int, target int
-    - ret a list of all unique comb of cand chosen num sun = target
-    - any order, same a number more time than 1
-    - comb uniq = freq of at least num difff
-    - res less than 150 comb
-            curr []
-    [2]         [3]     [6]     [7]
-  [2] [3] [6] [7]
+    - candidates[] distinct, target int
+    - list of all unique comb of candidates / sum = target
+    - ret comb in any order
+    - choose candidates an unlimited number of times. two com uniq if freq diff
 
-  if (sum >= 7)
-    if(!HS.contains(curr))
-        add
-    return ;
-    
+        [2 3 6 7]
+                                                        []
+        oldSum + cd = sum <= 7        [2]           [3]         [6]         [7]
+                                [2]         [3] [6] [7]x
+                        [2] [3]v[6]x[7]x    [3]
+                x[2][3]x[]
  */
