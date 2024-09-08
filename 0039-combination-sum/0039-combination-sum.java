@@ -4,11 +4,11 @@ class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         seen = new HashSet<>();
         ans = new ArrayList<>();
-        backtrack(new ArrayList<Integer>(), 0, candidates, target);
+        backtrack(new ArrayList<Integer>(), 0, 0, candidates, target);
         return (ans);
     }
 
-    public void backtrack(List<Integer> curr, int sum, int[] candidates, int target) {
+    public void backtrack(List<Integer> curr, int sum, int i, int[] candidates, int target) {
         if (sum >= target) {
             if (sum == target) {
                 List<Integer> list = new ArrayList<>(curr);
@@ -20,12 +20,14 @@ class Solution {
             }
             return ;
         }
-        for (int num : candidates) {
+        while (i < candidates.length) {
+            int num = candidates[i];
             if (sum + num <= target) {
                 curr.add(num);
-                backtrack(curr, sum + num, candidates, target);
+                backtrack(curr, sum + num, i, candidates, target);
                 curr.remove(curr.size() - 1);
             }
+            i++;
         }
 
     }
