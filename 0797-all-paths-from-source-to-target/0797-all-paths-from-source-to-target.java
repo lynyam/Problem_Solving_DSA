@@ -2,25 +2,31 @@ class Solution {
     List<List<Integer>> ans;
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         ans = new ArrayList<>();
-        List<Integer> curr = new ArrayList<Integer>();
+        List<Integer> curr = new ArrayList<>();
         curr.add(0);
-        backtrack(0, curr, graph);
+        backtrack(curr, 0, graph);
         return (ans);
     }
 
-    public void backtrack(int node, List<Integer> curr, int[][] graph) {
+    public void backtrack(List<Integer> curr, int node, int[][] graph) {
         if (node == graph.length - 1) {
             ans.add(new ArrayList<Integer>(curr));
             return ;
         }
-        for (int neighbor : graph[node]) {
-            curr.add(neighbor);
-            backtrack(neighbor, curr, graph);
+        for (int nei : graph[node]) {
+            curr.add(nei);
+            backtrack(curr, nei, graph);
             curr.remove(curr.size() - 1);
         }
     }
 }
 /**
-    - DAG n nodes 0 - n-1
-    - all possible path from node 0 to n-1 ret in any order
+    - n node 0 to n-1
+    - all possible path to 0 to n-1 return this
+    - graph[i] list<all neighbor from i>
+    - directed 
+                [0]
+            [1]  [2]
+           [3]     [3]
+
  */
