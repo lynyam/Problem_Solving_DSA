@@ -1,8 +1,6 @@
 class Solution {
-    HashSet<List<Integer>> seen;
     List<List<Integer>> ans;
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        seen = new HashSet<>();
         ans = new ArrayList<>();
         backtrack(new ArrayList<Integer>(), 0, 0, candidates, target);
         return (ans);
@@ -10,14 +8,8 @@ class Solution {
 
     public void backtrack(List<Integer> curr, int sum, int i, int[] candidates, int target) {
         if (sum >= target) {
-            if (sum == target) {
-                List<Integer> list = new ArrayList<>(curr);
-                Collections.sort(list);
-                if(!seen.contains(list)) {
-                    seen.add(list);
-                    ans.add(list);
-                }
-            }
+            if (sum == target)
+                ans.add(new ArrayList<>(curr));
             return ;
         }
         while (i < candidates.length) {
