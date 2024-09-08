@@ -20,7 +20,6 @@ class Solution {
         double h = 0.0;
         for (int d : dist) {
             h = Math.ceil(h);
-            //h = h / 1 == 1 ? (h / 1) + 1 : h;
             h += d / (double)speed;
         }
         return (h <= hour);
