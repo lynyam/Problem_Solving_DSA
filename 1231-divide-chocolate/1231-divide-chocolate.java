@@ -1,57 +1,49 @@
 class Solution {
     public int maximizeSweetness(int[] sweetness, int k) {
         int left = Integer.MAX_VALUE;
-        int right = 0;
-        int i = 0;
-        int n = sweetness.length;
+        int right = 1;
         long sum = 0;
-
-        while (i < n) {
-            int s = sweetness[i];
+        for (int s : sweetness) {
             left = Math.min(left, s);
             sum += s;
-            i++;
         }
         right = (int)(sum / (k + 1));
         while (left < right) {
             int mid = (left + right + 1) / 2;
-            if (check(mid, sweetness, k)) {
+            if (check(mid, sweetness, k))
                 right = mid - 1;
-            }
             else
                 left = mid;
         }
         return (right);
     }
 
-    public boolean check(int mid, int[] sweet, int k) {
-        int i = 0;
-        int n = sweet.length;
-        int sum = 0;
-        int j = 0;
-        int ans = 0;
-
-        while (i < n) {
-            sum = 0;
-            while (j < n) {
-                sum += sweet[j];
-                j++;
-                if (sum >= mid) {
-                    ans++;
-                    break ;
-                }
+    public boolean check(int mid, int[] sweets, int k) {
+        int count = 0;
+        long sum = 0;
+        for (int sw : sweets) {
+            sum += sw;
+            if (sum >= mid) {
+                sum = 0;
+                count++;
             }
-            i = j;
         }
-        return (ans < k + 1);
+        return (count < k + 1);
     }
 }
 /**
-    - chocolat bar = some chuncks
-        - each chunks has its own sweetness
-    - k friends k+1 part
-    - eat pieces with mini total sweetness
-    - cut max total sweetness for u  
-    - [min, sum(sweet)/ k + 1]
-    - 1
+    - swet[i] sweet of chunck of bar
+    - cutting in k+1 pieces k cuts (contigues sweet)
+    - u take mini sum contigues arrays 
+    - find max sum of ur part.
+
+    - if x exist that x is a solt
+        - x++ invalid solt
+        - x-- solt is always good
+    - we use BS
+        - min solution min part
+        - max = sum sweetness
+    - check fonction: check if k+1 piece >= sum
+        - left = mid
+        else 
  */
