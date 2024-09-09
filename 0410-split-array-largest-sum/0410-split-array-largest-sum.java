@@ -2,16 +2,16 @@ class Solution {
     public int splitArray(int[] nums, int k) {
         int left = 0;
         int right = 0;
-        int i = 0;
 
         for (int num : nums) {
             left = Math.max(left, num);
             right += num;
         }
-        while (left <= right) {
+        while (left < right) {
             int mid = left + (right - left) / 2;
-            if (check(mid, nums, k))
-                right = mid - 1;
+            if (check(mid, nums, k)) {
+                right = mid;
+            }
             else
                 left = mid + 1;
         }
@@ -20,23 +20,23 @@ class Solution {
 
     public boolean check(int mid, int[] nums, int k) {
         int sum = 0;
-        int ans = 0;
+        int count = 0;
 
         for (int num : nums) {
-            if (sum + num <= mid) {
-                sum += num;
-            }
-            else {
+            sum += num;
+            if (sum > mid) {
                 sum = num;
-                ans++;
+                count++;
             }
         }
-        return (ans + 1 <= k);
+        return (count + 1 <= k);
     }
 }
 /**
     - nums[], int k
-    - split nums into k nn-empty sub/
-        - largest sum d'1 sub soit minimiser
-    - ret minimized largest sum
+    - split in  k num-empty subarray
+    - largest sum of any sub is minimised
+    - ret minized largest sum
+
+    = => right = mid
  */
