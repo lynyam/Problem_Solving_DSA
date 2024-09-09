@@ -13,15 +13,14 @@ class Solution {
         m = board.length;
         n = board[0].length;
         int i = 0;
-        boolean[][] seen = new boolean[m][n];
         while (i < m) {
             int j = 0;
             while (j < n) {
                 if (board[i][j] == word.charAt(0)) {
+                    boolean[][] seen = new boolean[m][n];
                     seen[i][j] = true;
                     if (backtrack(i, j, 1, board, seen, word))
                         return (true);
-                    seen[i][j] = false;
                 }
                 j++;
             }
