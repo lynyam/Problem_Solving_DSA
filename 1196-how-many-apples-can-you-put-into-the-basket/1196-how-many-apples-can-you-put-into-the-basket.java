@@ -2,22 +2,18 @@ class Solution {
     public int maxNumberOfApples(int[] weight) {
         Arrays.sort(weight);
         int ans = 0;
-        int i = 0;
-        int n = weight.length;
-
-        while (i < n) {
-            ans += weight[i];
-            if(ans > 5000)
-                return (i);
-            i++;
+        long  sum = 0;
+        for (int w : weight) {
+            sum += w;
+            if (sum > 5000)
+                break ;
+            ans++;
         }
-        return (i);
+        return (ans);
     }
 }
 /**
-    - apples
-    - basket carry up 5000 unit of weight
-    - weight int[]
-        - weight[i] = weight ith apple
-    - ret max number of apples u can put in basket
+   - Somes apples, basket carry up  5000 units of weight
+   -weight/ weight[i] weight of ith apple
+   - ret max number of apples u can put in basket 
  */
