@@ -1,43 +1,29 @@
 class Solution {
-    List<String> ans;
-    int size;
+    ArrayList<String> ans;
     public List<String> generateParenthesis(int n) {
-        ans = new ArrayList();
-        size = n;
-        backtrack(new StringBuilder(), 0, 0);
+        ans = new ArrayList<>();
+        backtrack(new StringBuilder(), 0, 0, n);
         return (ans);
     }
 
-    public void backtrack(StringBuilder curr, int open, int close) {
-        if (curr.length() == size * 2) {
+    public void backtrack(StringBuilder curr, int open, int close, int n) {
+        if (curr.length() == 2 * n) {
             ans.add(new String(curr));
             return ;
         }
-        if (open < size) {
+        if (open < n) {
             curr.append("(");
-            backtrack(curr, open + 1, close);
+            backtrack(curr, open + 1, close, n);
             curr.deleteCharAt(curr.length() - 1);
         }
         if (open > close) {
             curr.append(")");
-            backtrack(curr, open, close + 1);
+            backtrack(curr, open, close + 1, n);
             curr.deleteCharAt(curr.length() - 1);
         }
     }
 }
 /**
-    - n pairs of parentheses
-    - write func to generate all comb of well-formed parenth
-    - base case
-        open == 0 && close == 0 && stack.isEMpty() || curr.length == n x 2
-
-    -   ()()()
-                        []
-   1             (               )
-   2         (      )
-   2    (   )        (
-   1  )
-   )
- )           
-
+    - n pairs ()
+    - write func to generate all comb of well=formed parenth
  */
