@@ -1,22 +1,28 @@
 class Solution {
     public int numRescueBoats(int[] people, int limit) {
         Arrays.sort(people);
-        int i = 0;
-        int n = people.length;
+        int left = 0;
+        int right = people.length - 1;
         int ans = 0;
 
-        while (i < n) {
-            int wi = people[i];
-            if (i + 1 < n && wi + people[i + 1] <= limit)
-                i++;
-            i++;
+        while (left <= right) {
+            int wei = people[left] + people[right];
+            if (wei <= limit) {
+                left++;
+                right --;
+            }
+            else
+                right--;
             ans++;
         }
         return (ans);
     }
 }
 /**
-    - people[i]
-    - boat carry max limit weight 2 people at same time
-    - ret max nbr of boats to carry every person
+    - people[i] weight of thr ith person
+    - infinite number of boats
+    - each road can carry a max weight of limit.
+    - each boat carries 2people maxas a same time
+    - provided sum if weight of those peopele at most limit
+    - ret minimuum number of boats to carry every given person 
  */
