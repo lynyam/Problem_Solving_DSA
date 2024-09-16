@@ -1,4 +1,25 @@
 class Solution {
+    //Bottom- up
+    public int rob(int[] nums) {
+        int n = nums.length;
+        int[] dp = new int[n];
+
+        int i = 0;
+        while (i < n) {
+            if (i == 0)
+                dp[0] = nums[0];
+            if (i == 1)
+                dp[1] = Math.max(nums[0], nums[1]);
+            if (i > 1) {
+                dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+            }
+            i++;
+        }
+        return (dp[n - 1]);
+    }
+}
+
+/**class Solution {
     HashMap<Integer, Integer> memo;
     public int rob(int[] nums) {
         memo = new HashMap<>();
@@ -15,7 +36,7 @@ class Solution {
         memo.put(i, Math.max(dp(i - 1, nums), dp(i - 2, nums) + nums[i]));
         return (memo.get(i));
     }
-}
+}*/
 /**
  - nums[i] = amount of money of house i
  - contrains = adj houses have secu systems/ if two adj house brokeninto on same night
