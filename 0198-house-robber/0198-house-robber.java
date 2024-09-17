@@ -1,4 +1,24 @@
 class Solution {
+    //Bottom- up optimiser
+    public int rob(int[] nums) {
+        int n = nums.length;
+        int backOne = nums[0];
+        int backTwo = nums[0];
+
+        int i = 0;
+        while (i < n) {
+            if (i == 1)
+                backOne = Math.max(nums[0], nums[1]);
+            if (i > 1) {
+                int temp = backOne;
+                backOne = Math.max(backOne, backTwo + nums[i]);
+                backTwo = temp;
+            }
+            i++;
+        }
+        return (backOne);
+    }
+    /*
     //Bottom- up
     public int rob(int[] nums) {
         int n = nums.length;
@@ -16,7 +36,7 @@ class Solution {
             i++;
         }
         return (dp[n - 1]);
-    }
+    }*/
 }
 
 /**class Solution {
