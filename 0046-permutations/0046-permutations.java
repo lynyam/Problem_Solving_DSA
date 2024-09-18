@@ -1,8 +1,9 @@
 class Solution {
-    List<List<Integer>> ans; 
+    List<List<Integer>> ans;
     public List<List<Integer>> permute(int[] nums) {
-        ans = new ArrayList<>();//0(n2exp(n-1)) space
-        backtrack(new ArrayList<Integer>(), nums);
+        ans = new ArrayList<>();
+        List<Integer> curr = new ArrayList<>();
+        backtrack(curr, nums);
         return (ans);
     }
 
@@ -21,8 +22,15 @@ class Solution {
     }
 }
 /**
-    - nums[] unique elt
-    - ret all possible subset (all of something => backtrack)
-    - make exhaustive  possibilite 0(3pow3) = 27 and walk throught to chose on k who not dublicate
-    or backtrack 0(2exp2)
+    - nums[] distinct int
+    - ret all possible perutation
+
+    Solution
+    - make exhaustive permutation and eliminate all of them wo one number has duplicate.Note a good idea nexpn+2
+    - make backtrack
+        - create curr List<Int>
+        - base case : if (curr.size == n) ans.add(copy of curr) just don't copy ref because null after all
+        - for loop on num: make ckeck if num : nums contains in curr 0(n) 
+            - if no add to curr and call backtrack => reduce to don't no
+            - delete last add in curr to back to parent and explore another child
  */
