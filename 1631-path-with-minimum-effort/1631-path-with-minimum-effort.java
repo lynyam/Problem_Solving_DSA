@@ -1,30 +1,31 @@
 class Solution {
-    int[][] directions = new int[][] {
-        {1, 0}, {0, 1},
-        {-1, 0}, {0, -1}
-    };
-    int n;
     int m;
+    int n;
+    int[][] directions = new int[][] {
+        {-1, 0}, {0, -1},
+        {1, 0}, {0, 1}
+    };
 
     public boolean isValid(int x, int y) {
         return (x >= 0 && x < n && y >= 0 && y < m);
     }
 
     public int minimumEffortPath(int[][] heights) {
-        n = heights.length;
-        m = heights[0].length;
         int left = 0;
         int right = 0;
+        n = heights.length;
+        m = heights[0].length;
+
         for (int[] row : heights) {
-            for (int height : row) {
-                right = Math.max(right, height);
+            for (int col : row) {
+                right = Math.max(right, col);
             }
         }
+
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (check(mid, 0, 0, heights, new boolean[n][m])) {
+            if (check(mid, 0, 0, heights, new boolean[n][m]))
                 right = mid - 1;
-            }
             else
                 left = mid + 1;
         }
@@ -47,8 +48,10 @@ class Solution {
     }
 }
 /**
-    - heights[r][c] = height of cell (r, c)
-    - top(0, 0) -> (r-1, c-1)
-    - find route required minimum effort
-    - effort = maxAbs(2cons cells)
+    - heights[][] row x col
+        - heights[row][col] = height of (row, col)
+        - (0, 0) -> (row - 1, col - 1) moov left right  down up
+        - root requires minimum effort
+        - root effort = max abs(h1e - h2)
+        - ret mini effort
  */
