@@ -1,36 +1,41 @@
 class Solution {
     public int smallestDivisor(int[] nums, int threshold) {
-        int  left = 1;
+        int left  = 1;
         int right = 1;
         for (int num : nums) {
             right = Math.max(right, num);
         }
-        while (left < right) {
+
+        while (left <= right) {
             int mid = left + (right - left) / 2;
             if (check(mid, nums, threshold))
-                right = mid;
+                right = mid - 1;
             else
                 left = mid + 1;
         }
         return (left);
     }
 
-    public boolean check(int div, int[] nums, int th) {
-        long sum = 0;
+    public boolean check(int mid, int[] nums, int thrf) {
+        double sum = 0.0;
         for (int num : nums) {
-            sum += (long)Math.ceil(num / (double)div);
+            sum += Math.ceil(num / (double)mid);
         }
-        return (sum <= th);
+        return (sum <= thrf);
     }
 }
 /**
-    - nums[] int[], th int, div >0
-    - sum += nums[i] / div
-    - find div / sum <= threshold
-    7 / 3 = 2,..=> 3
-    - div exist x sum = n1+n2+..+n/x
-        - if x > sum <
-        - sum > th down sum up x => left = mid - 1
-        - sum <= th right = mid
-    ret left
+    -nums int[] , int thresold
+    - choose divisor divise all nums[i] and sum
+    - find smallest divisor / result  < thresold
+    -7 / 3 = 3
+    - left  = 1
+    - right = max
+    - check(mid) {
+        sum = 0
+        for (nu:nums)
+            sum += Math.ceil(nu / (double)mid)
+
+        sum <= thresoltr
+    } 
  */
