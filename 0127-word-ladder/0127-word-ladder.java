@@ -1,64 +1,50 @@
 class Solution {
-    HashMap<String, List<String>> graph;
 
-    public void buildGraph(String bW, List<String> wL) {
-        for (String w : wL) {
-            if (isConnect(bW, w)) {
-                graph.putIfAbsent(bW, new ArrayList<String>());
-                graph.putIfAbsent(w, new ArrayList<String>());
-                graph.get(bW).add(w);
-                graph.get(w).add(bW);
-            }
-            for (String co : wL) {
-                if (isConnect(w, co)) {
-                    graph.putIfAbsent(w, new ArrayList<String>());
-                    graph.putIfAbsent(co, new ArrayList<String>());
-                    graph.get(w).add(co);
-                    graph.get(co).add(w);
-                }
-            }
-        }
-    }
-
-    public boolean isConnect(String w1, String w2) {
+    public List<String> getAllNeighbors(String s, HashSet<String> seen) {
+        List<String> ans = new ArrayList<>();
+        char[] arr = s.toCharArray();
         int i = 0;
-        int k = 1;
-        int n1 = w1.length();
-        if (n1 != w2.length())
-            return (false);
-        while (i < n1) {
-            k += w1.charAt(i) != w2.charAt(i) ? -1 : 0;
-            if(k < 0)
-                return (false);
+        int n = arr.length;
+
+        while (i < n) {
+            char temp = arr[i];
+            char c = 'a';
+            while (c <= 'z') {
+                if (c != temp) {
+                    arr[i] = c;
+                    String candidate = new String(arr);
+                    if (seen.contains(candidate))
+                        ans.add(candidate);
+                }
+                c++;
+            }
+            arr[i] = temp;
             i++;
         }
-        return (true);
+        return (ans);
     }
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        int level = 1;
         HashSet<String> seen = new HashSet<>();
-        graph = new HashMap<>();
-        Queue<String> queue = new LinkedList<>();
-        
-        buildGraph(beginWord, wordList);
-        if (!graph.containsKey(beginWord) || !graph.containsKey(endWord))
+        for (String s : wordList) {
+            seen.add(s);
+        }
+        if (!seen.contains(endWord))
             return (0);
+        Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
         seen.add(beginWord);
+        int level = 0;
         while (!queue.isEmpty()) {
-            int i = 0;
             int size = queue.size();
+            int i = 0;
             while (i < size) {
-                String node = queue.remove();
-                if (node.equals(endWord)) {
-                    return (level);
-                }
-                for (String neighbor : graph.getOrDefault(node, new ArrayList<>())) {
-                    if (!seen.contains(neighbor)) {
-                        seen.add(neighbor);
-                        queue.add(neighbor);
-                    }
+                String curr = queue.remove();
+                if (curr.equals(endWord))
+                    return (level +  1);
+                seen.remove(curr);
+                for (String neighbor : getAllNeighbors(curr, seen)) {
+                    queue.add(neighbor);
                 }
                 i++;
             }
@@ -67,3 +53,18 @@ class Solution {
         return (0);
     }
 }
+/**
+    - bW-> eW using wL
+        - bW->s1->s2->..->sk
+            - s1 != s2 => diff by sigl letter
+            - si 1<= i<= k is in wL.bW don't need in wL
+            - sk == eW
+    - ret nbr word in shortest transfo sew | 0
+
+    - HS seen (add all wL)
+    - if seen not contains eW return 0
+    Queue<> queue
+    - add bW to queue
+    - while queue is not empty
+        - String
+ */
