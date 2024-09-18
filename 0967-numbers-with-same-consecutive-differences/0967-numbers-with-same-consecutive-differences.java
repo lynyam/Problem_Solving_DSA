@@ -1,61 +1,47 @@
 class Solution {
     List<Integer> ans;
-    int n;
-
     public int[] numsSameConsecDiff(int n, int k) {
-        this.n = n;
         ans = new ArrayList<>();
-        backtrack(new ArrayList<Integer>(), 0, n, k);
-        int[] tab = new int[ans.size()];
+        backtrack(0, 0, n, k);
+        int[] res = new int[ans.size()];
         int i = 0;
         for (int num : ans) {
-            tab[i++] = num;
-        }
-        return (tab);
-    }
-
-    public  int toNumber(List<Integer> curr) {
-        int res = 0;
-        for (int num : curr) {
-            res = res * 10 + num;
+            res[i++] = num;
         }
         return (res);
     }
 
-    public void backtrack(List<Integer> curr, int i, int n, int k) {
-        if (curr.size() == n) {
-            ans.add(toNumber(curr));
+    public void backtrack(int curr, int size, int n, int k) {
+        if (size == n) {
+            ans.add(curr);
             return ;
         }
-        if (i == 0) {
-            int j = 1;
-            while (j <= 9) {
-                curr.add(j);
-                backtrack(curr, i + 1, n, k);
-                curr.remove(curr.size() - 1);
-                j++;
+        int i = 0;
+        while (i <= 9) {
+            if (size == 0 || (curr != 0 && Math.abs((curr % 10) - i) == k)) {
+                size++;
+                curr = curr * 10 + i;
+                backtrack(curr, size, n, k);
+                curr /= 10;
+                size--;
             }
-        }
-        else {
-            int j = 0;
-            while (j <= 9) {
-                if (Math.abs(j - curr.get(curr.size() - 1)) == k) {
-                    curr.add(j);
-                    backtrack(curr, i + 1, n, k);
-                    curr.remove(curr.size() - 1);
-                }
-                j++;
-            }
+            i++;
         }
     }
 }
 /**
-    - int n, k
-    - ret an array of all the int of legth n
-        - diff btw every 2 consecuti digit is k
-        base case  i == n
-                    ans.add(curr)
-                if (curr.length == 0)
-                    commencer par (1)
-                
+    - n, k integer
+    - array of all int of length n where diff(every cons digit) = k
+    - 02 and 043 not good int
+    Solution : 
+        tail n 
+        digit = 0123456789
+        contraint last_digit - new_digit = k
+
+        base case = curr.size() == n ans.add(listToInt(curr)) //0(n) t
+        loop on 0 to 9
+            if (curr is empty) //10 x 10/k (10/k)
+                curr.add()
+            else if (curr.size() == 1 && curr.last != 0 && curr.last - digit == k)
+                    curr.add(curr)
  */
