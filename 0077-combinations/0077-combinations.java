@@ -1,14 +1,12 @@
 class Solution {
     List<List<Integer>> ans;
-    int n;
     public List<List<Integer>> combine(int n, int k) {
-        this.n = n;
         ans = new ArrayList<>();
-        backtrack(new ArrayList<Integer>(), 1, k);
+        backtrack(new ArrayList<Integer>(), 1, n, k);
         return (ans);
     }
 
-    public void backtrack(List<Integer> curr, int i, int k) {
+    public void backtrack(List<Integer> curr, int i, int n, int k) {
         if (curr.size() == k) {
             ans.add(new ArrayList<Integer>(curr));
             return ;
@@ -16,7 +14,7 @@ class Solution {
         int j = i;
         while (j <= n) {
             curr.add(j);
-            backtrack(curr, j + 1, k);
+            backtrack(curr, j + 1, n, k);
             curr.remove(curr.size() - 1);
             j++;
         }
@@ -24,9 +22,10 @@ class Solution {
 }
 /**
     - n, k int
-    - ret comb(knumber) range[1, n] any order 
-    k = 2 n = 4 => 1, 2, 3, 4
+    - return all possible comb of k numbers [1, n] (k/n)
+    SOlution
                             []
-                [1]        [2]     [3]      [4]
-            [1 2]         [2 3]    [3 4]
+                    [1]     [2]     [3]     [4]
+                [2] [3] [4]
+
  */
