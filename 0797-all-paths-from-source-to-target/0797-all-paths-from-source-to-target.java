@@ -19,14 +19,15 @@ class Solution {
             curr.remove(curr.size() - 1);
         }
     }
+
+
 }
 /**
-    - n node 0 to n-1
-    - all possible path to 0 to n-1 return this
-    - graph[i] list<all neighbor from i>
-    - directed 
-                [0]
-            [1]  [2]
-           [3]     [3]
-
+    - DAG n node 0 - n-1
+    - all possib;e node 0 to n-1 return them
+    - graph[i] all i connection
+        -       [0]
+        [1]  [2]
+        [3]     [3]
+        base case n = n - 1
  */
