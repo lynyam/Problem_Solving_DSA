@@ -1,37 +1,12 @@
 class Solution {
-    public int lengthOfLIS(int[] nums) {
-        int[] dp = new int[nums.length];
-        int i = 1;
-        int res = 1;
-        int n = nums.length;
-
-        Arrays.fill(dp, 1);
-        while (i < n) {
-            int j = 0;
-            int ans = 1;
-            while (j < i) {
-                if (nums[j] < nums[i]) {
-                    ans = Math.max(ans, dp[j] + 1);
-                }
-                dp[i] = ans;
-                res = Math.max(res, dp[i]);
-                j++;
-            }
-            i++;
-        }
-        return (res);
-    }
-}
-
-/**
-Solution Top-down
-class Solution {
     HashMap<Integer, Integer> memo;
     public int lengthOfLIS(int[] nums) {
         memo = new HashMap<>();
-        int ans = 1;
         int i = 0;
-        while (i < nums.length) {
+        int n = nums.length;
+        int ans = 1;
+
+        while (i < n) {
             ans = Math.max(ans, dp(i, nums));
             i++;
         }
@@ -50,14 +25,14 @@ class Solution {
             j++;
         }
         memo.put(i, ans);
-        return (ans);
+        return (memo.get(i));
     }
-}*/
+}
 /**
-    - nums int[] 
-    - ret length of longest strictly increasing subssequence
-
-    Solution DP
-        - return longest sub Fn(state) => state = i in [0, n[
-        - recurtion formula: Fn(n) = Fn(n-1)
+    - nums int[]
+    - ret length of LIS
+    Solution
+    - return len of LIS Fn(State) index i
+    - recurence formula: Fn(i) = Max(F(j) + 1) / j in [0 i[ and nums[j] < nums[i]
+    - base case: i = 0 => 1
  */
