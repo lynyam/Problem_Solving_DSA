@@ -1,36 +1,32 @@
 class Solution {
-    HashMap<Integer, Integer> memo;
+    int[] memo;
     public int minCostClimbingStairs(int[] cost) {
-        memo = new HashMap<>();
-        return (dp(cost.length, cost));
+        int n = cost.length;
+        memo = new int[n + 1];
+        Arrays.fill(memo, -1);
+        return (dp(n, cost));
     }
 
-    public int dp(int n, int[] cost) {
-        if (n <= 1)
-            return (0);
-        if (memo.containsKey(n)) {
-            return (memo.get(n));
-        }
-        memo.put(n, Math.min(dp(n - 1, cost) + cost[n - 1], dp(n - 2, cost) + cost[n - 2]));
-        return (memo.get(n));
+    public int dp(int i, int[] cost) {
+        if (i == 0 || i == 1)
+            memo[i] = 0;
+        if (memo[i] >= 0)
+            return (memo[i]);
+        memo[i] = Math.min(dp(i - 1, cost) + cost[i - 1], dp(i - 2, cost) + cost[i - 2]);
+        return (memo[i]);
     }
 }
 /**
-    - cost[i]  ith step on staircase.
-    - climb one or two steps
-    - start with index 0 or 1
-    - ret minimum cost to reach the top floor
-        - 
-    - return and state
-        - return minimun cost = dp(state)=> state(i, cost);
-    - recusrion formula
-        - step1->step2 or step3 => pay cost[1]
-        - choise minimal
-        - Fn(stepi) => min(Fn(stepi-1) + cost(stepi-1) or Fn(stepi-2) + 
-            cost(stepi-2))
-    - base case:
-        - step1 = 0 / step0 = 0
-        - Fn(1) = 0 / Fn(0) = 0
+    - cost[] ith step on staircase
+    - pay cost[i]  climb one or two step
+    - start 0 1
+    - ret minimum cost to reach top of the floor
+    Solution
+        - return minimum cost Fn(state) i index th staircase
+        - rec Formula : Fn(i) = min(Fn(i - 1) + cost(i - 1), Fn(i - 2) + cost(i - 2))
+        - base case: Fn(0) = 0 Fn(1) = 0
 
-    
+
+
+
  */
