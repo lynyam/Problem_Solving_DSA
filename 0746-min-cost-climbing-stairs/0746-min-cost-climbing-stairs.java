@@ -1,5 +1,16 @@
 class Solution {
-    int[] memo;
+    public int minCostClimbingStairs(int[] cost) {
+        int n = cost.length;
+        int[] dp = new int[n + 1];
+        int i = 2;
+
+        while (i <= n) {
+            dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+            i++;
+        }
+        return (dp[n]);
+    }
+    /**int[] memo;
     public int minCostClimbingStairs(int[] cost) {
         int n = cost.length;
         memo = new int[n + 1];
@@ -14,7 +25,7 @@ class Solution {
             return (memo[i]);
         memo[i] = Math.min(dp(i - 1, cost) + cost[i - 1], dp(i - 2, cost) + cost[i - 2]);
         return (memo[i]);
-    }
+    }*/
 }
 /**
     - cost[] ith step on staircase
