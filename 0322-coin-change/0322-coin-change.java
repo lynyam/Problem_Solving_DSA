@@ -1,4 +1,23 @@
 class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, amount + 1);
+        int i = 1;
+        dp[0] = 0;
+        while (i <= amount) {
+            for (int coin : coins) {
+                int rest = i - coin;
+                if (rest >= 0) {
+                    dp[i] = Math.min(dp[i], dp[rest] + 1);
+                }
+            }
+            i++;
+        }
+        return (dp[amount] > amount ? -1 : dp[amount]);
+    }
+}
+
+/**class Solution {
     //HashMap<Integer, Integer> memo;
     int[] memo;
     public int coinChange(int[] coins, int amount) {
@@ -24,7 +43,7 @@ class Solution {
         return (memo[amount]);//-1
     }
 }
-/**
+
     - coins[]
     - integer amount total money
     - fewest number of coins u need to make up that amount.
