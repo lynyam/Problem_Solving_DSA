@@ -1,57 +1,35 @@
 class Solution {
     public int rob(int[] nums) {
+        int backOne = nums[0];
         int n = nums.length;
-        int backOne = 0;
-        int backTwo = 0;
-        int i = 0;
+        if (n > 1)
+            backOne = Math.max(nums[0], nums[1]);
+        int backTwo = nums[0];
 
+        int i = 2;
         while (i < n) {
-            if (i == 0)
-                backOne = nums[0];
-            if (i == 1) {
-                backTwo = nums[0];
-                backOne = Math.max(nums[0], nums[1]); 
-            }
-            else {
-                int temp = backOne;
-                backOne = Math.max(backOne, backTwo + nums[i]);
-                backTwo = temp;
-            }
+            int temp = backOne;
+            backOne = Math.max(backOne, backTwo + nums[i]);
+            backTwo = temp;
             i++;
         }
         return (backOne);
     }
 }
-
-
-/**class Solution {
-    HashMap<Integer, Integer> memo;
-    public int rob(int[] nums) {
-        memo = new HashMap<>();
-        return(dp(nums.length - 1, nums));
-    }
-
-    public int dp(int i, int[] nums) {
-        if (i == 0)
-            return (nums[0]);
-        if (i == 1)
-            return (Math.max(nums[0], nums[1]));
-        if (memo.containsKey(i))
-            return (memo.get(i));
-        memo.put(i, Math.max(dp(i - 1, nums), dp(i - 2, nums) + nums[i]));
-        return (memo.get(i));
-    }
-}*/
 /**
-    - rob 2 adj house call possible
-    - nums[] amount of money of each house.
-    - ret max amount of money u can rob tonight without alerting police
-    Solution
-    - return max amouth of money Fn (state) index i
-    - recursion formula: Fn(n) = max(F(n-1), F(n-2) + nums[n])
-    - base case :
-        1 home => Fn(0) = nums[0]
-        2 home => Fn(1) = max(nums[0], nums[1])
-    
+    - constaint: broken 2 adj house into same nigth
+    - nums = amount of each house
+    - ret max amount of money you can rob tonight
+
+    Soolution
+    - decision to rob each house make impact on hour next choice, you need max, I think we can use DP
+    - return value is max amount on fonction Fn(state) with state is i index of home u rob
+    - think about recuresion formula: Fn(i) = Max(F(i - 1), F(i - 2) + nums(i))
+    - base case: Fn(1) = nums[0] F(2) = max(nums[1], nums[2]) 
+    1
+    2
+    2//4 =>4
+    4
+
 
  */
