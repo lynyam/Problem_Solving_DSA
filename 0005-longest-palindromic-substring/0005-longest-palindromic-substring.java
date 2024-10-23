@@ -1,70 +1,37 @@
 class Solution {
-    //String[] memo;
     String ans;
     public String longestPalindrome(String s) {
-        if (s.isEmpty()) return (new String());
-        int n = s.length();
-        /*memo = new String[n];
-
-        Arrays.fill(memo, null);
-        return (dp(n - 1, s));
-    }*/
-
-   /* public String dp(int i, String s) {
-        if (i == 0) return ("" + s.charAt(0));
-        if (memo[i] != null) return (memo[i]);
-        String curr = s.substring(0, i);
-        String next = dp(i - 1, s);
-        memo[i] = isPalindrom(curr) && curr.length() > next.length() ? curr : next;
-        return (memo[i]); 
-    }*/
         ans = new String();
         int i = 0;
-        
+        int n = s.length();
+
         while (i < n) {
-            int j = 0;
-            //StringBuilder sb = new StringBuilder();
-            while (i + j < n) {
-                if (i - j < 0 || s.charAt(i - j) != s.charAt(i + j)) {
-                    break ;
-                }
-                j++;
-            }
-            String curr = s.substring(i - (j - 1), i + j);
-            if(ans.length() < curr.length())
-                ans = new String(curr);
-            j = 1;
-            while (i + j < n) {
-                if (i - j + 1 < 0 || s.charAt(i - j + 1) != s.charAt(i + j)) {
-                    break ;
-                }
-                j++;
-            }
-            curr = s.substring(i - j + 2, i + j);
-            if(ans.length() < curr.length())
-                ans = new String(curr);
+            evenPalindrome(i, n, s);
+            oddPalindrome(i, n, s);
             i++;
         }
         return (ans);
-        //return (dp(0, new StringBuilder(), s));
     }
 
-    /*public String dp(int i, String s) {
-        if (i == s.length())
-            return (new String(sub));
-        
-    }*/
-
-    public boolean isPalindrom(String s) {
-        int left = 0;
-        int right = s.length() - 1;
-
-        while (left <= right) {
-            if (s.charAt(left) != s.charAt(right))
-                return (false);
-            left++;
-            right--;
+    public void evenPalindrome(int i, int n, String s) {
+        int j = 1;
+        while (i - j >= 0 && i + j < n && s.charAt(i - j) == s.charAt(i + j)) {
+            j++;
         }
-        return (true);
+        if (ans.length() < j * 2 - 1)
+            ans = s.substring(i - j + 1, i + j);
+    }
+
+    public void oddPalindrome(int i, int n, String s) {
+        int j = 1;
+        while (i - j + 1 >= 0 && i + j < n && s.charAt(i - j + 1) == s.charAt(i + j)) {
+            j++;
+        }
+        if (ans.length() < (j - 1) * 2)
+            ans = s.substring(i - j + 2, i + j);
     }
 }
+//bcacb
+//01234. =2 -1 = 1
+//         2-2 = 0
+//         = 2-3 = x
