@@ -1,37 +1,19 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
-        int i = 0;
-        int n = coins.length;
-        Arrays.fill(dp, amount + 1);
         dp[0] = 0;
+        int i = 1;
 
         while (i <= amount) {
-            int j = 0;
-            while (j < n) {
-                int rest = i - coins[j];
-                if (rest >= 0) {
-                    dp[i] = Math.min(dp[i], dp[rest] + 1);
+            int ans = Integer.MAX_VALUE;
+            for (int coin : coins) {
+                if (i - coin >= 0) {
+                    ans = Math.min(ans, dp[i - coin]);
                 }
-                j++;
             }
+            dp[i] = ans == Integer.MAX_VALUE ? ans : ans + 1;
             i++;
         }
-        return (dp[amount] >= amount + 1 ? -1 : dp[amount]);
-
+        return (dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount]);
     }
 }
-/**
-    - coins[] #coins denominations
-    - amount --> total amount
-    - ret fewest numb of coins u can make or -1
-    - infinite number of kind of coins
-
-    Solution
-    - In this problem we need to return a fewest numb of coins and we not garantie that solution exist
-    - So every decision of coins choice u make have an impact on future choice.
-    - I use DP to resolve that point
-        - return value is fewest numb of coins for Fn(State) state is i : 0 to amount 
-        - recursive formula : Fn(i) = Min(for(Fn(i - ci)))) + 1
-        - base case: i <= 0 return 0
- */
