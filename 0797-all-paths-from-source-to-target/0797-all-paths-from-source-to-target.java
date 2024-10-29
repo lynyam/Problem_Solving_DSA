@@ -2,32 +2,19 @@ class Solution {
     List<List<Integer>> ans;
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         ans = new ArrayList<>();
-        List<Integer> curr = new ArrayList<>();
-        curr.add(0);
-        backtrack(curr, 0, graph);
+        backtrack(new ArrayList<Integer>(Arrays.asList(0)), 0, graph);
         return (ans);
     }
 
     public void backtrack(List<Integer> curr, int node, int[][] graph) {
         if (node == graph.length - 1) {
-            ans.add(new ArrayList<Integer>(curr));
+            ans.add(new ArrayList<>(curr));
             return ;
         }
-        for (int nei : graph[node]) {
-            curr.add(nei);
-            backtrack(curr, nei, graph);
+        for (int neig : graph[node]) {
+            curr.add(neig);
+            backtrack(curr, neig, graph);
             curr.remove(curr.size() - 1);
         }
     }
-
-
 }
-/**
-    - DAG n node 0 - n-1
-    - all possib;e node 0 to n-1 return them
-    - graph[i] all i connection
-        -       [0]
-        [1]  [2]
-        [3]     [3]
-        base case n = n - 1
- */
