@@ -1,42 +1,35 @@
 class Solution {
-    int size;
     int ans;
+    HashSet<Integer> vertical;
+    HashSet<Integer> diag;
+    HashSet<Integer> antidiag;
     public int totalNQueens(int n) {
         ans = 0;
-        size = n;
-        backtrack(0, new HashSet<Integer>(), new HashSet<Integer>(), new HashSet<Integer>());
+        vertical = new HashSet<>();
+        diag = new HashSet<>();
+        antidiag = new HashSet<>();
+        backtrack(0, n);
         return (ans);
     }
 
-    public void backtrack(int row, HashSet<Integer> seenCol, HashSet<Integer> seenDiag, HashSet<Integer> seenAntDiag) {
-        if (row == size) {
+    public void backtrack(int row, int n) {
+        if (row == n) {
             ans++;
             return ;
         }
         int col = 0;
-        while (col < size) {
-            if (seenCol.contains(col) || seenDiag.contains(row - col) || seenAntDiag.contains(row + col)) {
-                col++;
-                continue ;
+        while (col < n) {
+            if (!vertical.contains(col) && !diag.contains(col - row) && 
+                !antidiag.contains(col + row)) {
+                vertical.add(col);
+                diag.add(col - row);
+                antidiag.add(col + row);
+                backtrack(row + 1, n);
+                vertical.remove(col);
+                diag.remove(col - row);
+                antidiag.remove(col + row);
             }
-            seenCol.add(col);
-            seenDiag.add(row - col);
-            seenAntDiag.add(row + col);
-            backtrack(row + 1, seenCol, seenDiag, seenAntDiag);
-            seenCol.remove(col);
-            seenDiag.remove(row - col);
-            seenAntDiag.remove(row + col);
             col++;
         }
     }
 }
-/**
-    - - placing n queens on nxn chessboard
-        - no two queens attack each other
-    - n int, ret number of distinct solution to the n-puzzle
-
-        0,  1   -1 x    y x-y =z x+y=t
-        1,  0    1 x+1, y-1 x+y =t
-        1,  2    -1 x+1, y+1 x-y = z
-        2,  3    -1
- */
