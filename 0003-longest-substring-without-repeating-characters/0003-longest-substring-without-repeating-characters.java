@@ -8,15 +8,11 @@ class Solution {
 
         while (right < n) {
             char cr = s.charAt(right);
-            if (!seen.contains(cr)) {
-                seen.add(cr);
-            } else {
-                while (s.charAt(left) != cr) {
+            while (seen.contains(cr)) {
                     seen.remove(s.charAt(left));
                     left++;
-                }
-                left++;
             }
+            seen.add(cr);
             ans = Math.max(ans, right - left + 1);
             right++;
         }
