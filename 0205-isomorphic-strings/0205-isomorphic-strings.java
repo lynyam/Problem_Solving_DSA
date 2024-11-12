@@ -13,10 +13,10 @@ class Solution {
             if ((store.containsKey(c1) && !store.get(c1).equals(c2)) || 
                 (!store.containsKey(c1) && seen.contains(c2)))
                 return (false);
-            else if (!store.containsKey(c1)) {
+            //else if (!store.containsKey(c1)) {
                 store.put(c1, c2);
                 seen.add(c2);
-            }
+            //}
             i++;
         }
         return (true);
