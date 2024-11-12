@@ -16,10 +16,10 @@ class Solution {
                 return (false);
             if (!store.containsKey(c) && seen.contains(str))
                 return (false);
-            if (!store.containsKey(c)) {
+            //if (!store.containsKey(c)) {
                 store.put(c, str);
                 seen.add(str);
-            }
+            //}
             i++;
         }
         return (true);
