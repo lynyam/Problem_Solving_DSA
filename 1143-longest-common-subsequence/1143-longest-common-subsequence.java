@@ -1,32 +1,41 @@
 class Solution {
+    String text1;
+    String text2;
+    int len1;
+    int len2;
+    int ans;
+    int[][] dp;
     public int longestCommonSubsequence(String text1, String text2) {
-        int n1 = text1.length();
-        int n2 = text2.length();
-        int[][] dp = new int[n1 + 1][n2 + 1];
-        int i = n1 - 1;
-        int j = n2 - 1;
-
-        while (i >= 0) {
-            j = n2 - 1;
-            while (j >= 0) {
-                if (text1.charAt(i) == text2.charAt(j)) {
-                    dp[i][j] = dp[i + 1][j + 1] + 1;
-                } else {
-                    dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
-                }
-                j--;
-            }
-            i--;
+        ans = 0;
+        this.text1 = text1;
+        this.text2 = text2;
+        len1 = text1.length();
+        len2 = text2.length();
+        dp = new int[len1 + 1][len2 + 1];
+        int i = 0;
+        while (i < len1) {
+            Arrays.fill(dp[i], -1);
+            i++;
         }
-        return (dp[0][0]);
+
+        return(helper(0, 0));
+    }
+
+    public int helper(int i, int j) {
+        if (dp[i][j] != -1) {
+            return(dp[i][j]);
+        }
+        int case1 = helper(i + 1, j);
+        int k = j;
+        int case2 = 0;
+        while (k < len2) {
+            if (text1.charAt(i) == text2.charAt(k)) {
+                case2 = 1 + helper(i + 1, k + 1);
+                break ;
+            }
+            k++;
+        }
+        dp[i][j] = Math.max(case1, case2);
+        return (dp[i][j]);
     }
 }
-/**
-    - t1, t2, ret length of LCS or 0
-    
-    Solution
-    - return length LCS Fn(State) state i, j index of t1, t2
-    - recursive formula : Fn(i, j) = t1[i] == t2[j] ? {Fn(i + 1, j + 1) + 1} : max(Fn(i+1, j), Fn(i, j+1))
-    - Base case: i == t1.length || j == t2.length return 0
-    - int[][] dp = new int[n1][n2]
- */
