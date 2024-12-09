@@ -1,58 +1,54 @@
 class Solution {
-    int[][] dp;
+    int n1;
+    int n2;
     String text1;
     String text2;
+    int[][] dp;
     public int longestCommonSubsequence(String text1, String text2) {
-        int n1 = text1.length();
-        int n2 = text2.length();
+        n1 = text1.length();
+        n2 = text2.length();
         this.text1 = text1;
         this.text2 = text2;
         dp = new int[n1 + 1][n2 + 1];
         int i = 0;
-
         /*while (i < n1) {
-            int j = 0;
-            while (j < n2) {
-                dp[i][j] = -1;
-                j++;
-            }
+            Arrays.fill(dp[i], -1);
             i++;
-        }*/
-        //return (helper(0, 0));
-        return (tabulation(n1 - 1, n2 - 1));
+        }
+        return(helper(0, 0));*/
+        return (downUp(n1 - 1, n2 - 1));
     }
 
     public int helper(int i, int j) {
-        
-        if (dp[i][j] != -1) {
+        if (i == n1 || j == n2)
+            return (0);
+        if (dp[i][j] != -1)
             return (dp[i][j]);
-        }
-        int ans = 0;
+        int lcs = 0;
         if (text1.charAt(i) == text2.charAt(j)) {
-            ans = 1 + helper(i + 1, j + 1);
+            lcs = 1 + helper(i + 1, j + 1);
         } else {
-            ans = Math.max(helper(i + 1, j), helper(i, j + 1));
+            lcs = Math.max(helper(i + 1, j), helper(i, j + 1));
         }
-        dp[i][j] = ans;
-        return (dp[i][j]);
+        dp[i][j] = lcs;
+        return (lcs);
     }
 
-    public int tabulation(int i, int j) {
+    public int downUp(int i, int k) {
         while (i >= 0) {
-            int n2 = j;
-            while (n2 >= 0) {
-                if (text1.charAt(i) == text2.charAt(n2)) {
-                    dp[i][n2] = 1 + dp[i + 1][n2 + 1];
+            int j = k;
+            while (j >= 0) {
+                int lcs = 0;
+                if (text1.charAt(i) == text2.charAt(j)) {
+                    lcs = 1 + dp[i + 1][j + 1];
+                } else {
+                    lcs = Math.max(dp[i + 1][j], dp[i][j + 1]);
                 }
-                else {
-                    dp[i][n2] = Math.max(dp[i + 1][n2], dp[i][n2 + 1]);
-                }
-                n2--;
+                dp[i][j] = lcs;
+                j--;
             }
             i--;
         }
         return (dp[0][0]);
     }
-
-
 }
