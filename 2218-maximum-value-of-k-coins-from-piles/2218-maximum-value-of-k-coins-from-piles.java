@@ -1,65 +1,49 @@
-class State {
-    int i;
-    int j;
-    int k;
-    public State(int i, int j, int k) {
-        this.i = i;
-        this.j = j;
-        this.k = k;
-    }
-}
-
 class Solution {
-    // Max(mvc(i, j+1, k-1), (i+1, 0, k))
-    List<List<Integer>> piles;
     int n;
-    //HashMap<State, Integer> dp; 
+    List<List<Integer>> piles;
     int[][] dp;
     public int maxValueOfCoins(List<List<Integer>> piles, int k) {
+        this.n = piles.size();
         this.piles = piles;
-        n = piles.size();
-        //dp = new HashMap<>();
-        dp = new int[n][k + 1];
-        int i = 0;
-        while (i < n) {
-            Arrays.fill(dp[i], -1);
-            i++;
-        }
-        return(memo(0, k));
+        dp = new int[n + 1][k + 1];
+        //return (helper(0, k));
+        return (tabulation(n - 1, k));
     }
 
-    /*public int memo1(int i, int j, int k) {
+    public int helper(int i, int k) {
         if (i == n || k == 0)
             return (0);
-        State state = new State(i, j, k);
-        if (dp.containsKey(state)) {
-            return (dp.get(state));
-        }
-        int max = 0;
-        if (j < piles.get(i).size()) {
-            max =  piles.get(i).get(j) + memo(i, j + 1, k - 1);
-        }
-        max = Math.max(max, memo(i + 1, 0, k));
-        dp.put(state, max);
-        return (max);
-    }
-*/
-      public int memo(int i, int k) {
-        if (i == n || k == 0)
-            return (0);
-        if (dp[i][k] != -1) {
-            return (dp[i][k]);
-        }
-        int max = memo(i + 1, k);
+        int mvc = 0;
         int curr = 0;
         int j = 0;
-        while (j < Math.min(k, piles.get(i).size())){
-            curr +=  piles.get(i).get(j);
-            max = Math.max(max, curr + memo(i + 1, k - j - 1));
+        while (j < Math.min(piles.get(i).size(), k)) {
+            curr += piles.get(i).get(j);
+            mvc = Math.max(mvc, curr + helper(i + 1, k - 1 - j));
             j++;
         }
-        dp[i][k] = max;
-        return (max);
+        mvc = Math.max(mvc, helper(i + 1, k));
+        return (mvc);
+    }
+
+    public int tabulation(int i, int coins) {
+        while (i >= 0) {
+            int k = 1;
+            while (k <= coins) {
+                int mvc = 0;
+                int curr = 0;
+                int j = 0;
+                while (j < Math.min(piles.get(i).size(), k)) {
+                    curr += piles.get(i).get(j);
+                    mvc = Math.max(mvc, curr + dp[i + 1][k - 1 - j]);
+                    j++;
+                }
+                mvc = Math.max(mvc, dp[i + 1][k]);
+                dp[i][k] = mvc;
+                k++;
+            }
+            i--;
+        }
+        return (dp[0][coins]);
     }
 
 }
