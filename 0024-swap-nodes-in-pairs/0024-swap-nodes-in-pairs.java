@@ -10,39 +10,25 @@
  */
 class Solution {
     public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null)
+        if (head == null || head.next == null) 
             return (head);
-        ListNode curr = head;
+        ListNode newHead = head.next;
         ListNode prev = null;
-        ListNode ret = head.next;
-
-        while (curr != null && curr.next != null) {//1 2/ 3-4
-            ListNode nextNode = curr.next;//2/4
-            ListNode nnextNode = nextNode.next;//3/null
-            curr.next = nnextNode;//1->3/3->null
-            nextNode.next = curr; //2->1//4->3
-            if (prev != null)//1
-                prev.next = nextNode;//1->4
-            prev = curr;//1/3
-            curr = nnextNode;//3/null
+        int i = 1;
+        ListNode curr = head;
+        ListNode nextNode = null;
+        //2->5->3->4->6->2->2
+        while (curr != null && curr.next != null) {//curr = 2, 3
+            nextNode = curr.next;//5, 4
+            curr.next = curr.next.next;//2->3|->4->6->2->2.  2->3->6|->2->2
+            nextNode.next = curr;//5->2|->3->4->6->2->2.     4->3|->6->2->2
+            if (prev != null) {
+                prev.next = nextNode;//                      5->2->4|->3->6->2->2
+            }
+            prev = curr;//2, 3
+            curr = curr.next;//3, 6
+            
         }
-        return (ret);
+        return (newHead);
     }
 }
-/*
-    - head LC
-    - swap every two adj node and ret head
-    - not modified value
-
-    result
-    - prev = null update everytime prev = curr
-    - use int i update +1
-        - i%2 == 1 make reverse =>2, 4
-            - nextNode = curr.next =>3, null
-            - curr.next = prev 2->1 4->3
-            - prev.next = nextNode 1->3 2->1->3. 3->null
-            - curr = nextNode null
-
-        - i % 2 == 0 prev.next = curr.next (1->4), prev = curr curr = curr.next(4), 
-        ex: 1=> prev = 1 curr = curr.n
-*/
