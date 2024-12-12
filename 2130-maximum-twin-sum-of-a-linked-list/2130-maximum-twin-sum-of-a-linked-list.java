@@ -10,29 +10,32 @@
  */
 class Solution {
     public int pairSum(ListNode head) {
-        if (head == null)
-            return (0);
-        int sum = Integer.MIN_VALUE;
-        ListNode slow = head;
+        ListNode rightMiddle = head;
         ListNode fast = head;
-        ListNode prev = null;
+        ListNode curr = head;
+        int ans = 0;
         while (fast != null && fast.next != null) {
-            slow = slow.next;
+            rightMiddle = rightMiddle.next;
             fast = fast.next.next;
         }
-        while (slow != null) {
-            ListNode nextNode = slow.next;
-            slow.next = prev;
-            prev = slow;
-            slow = nextNode;
-        }
-        ListNode node = head;
-        ListNode curr = prev;
-        while (curr != null) {
-            sum = Math.max(sum, curr.val + node.val);
+        rightMiddle = reverseHalfList(rightMiddle);
+        while (rightMiddle != null) {
+            ans = Math.max(ans, curr.val + rightMiddle.val);
             curr = curr.next;
-            node = node.next;
+            rightMiddle = rightMiddle.next;
         }
-        return (sum);
+        return (ans);
+    }
+
+    ListNode reverseHalfList(ListNode middle) {
+        ListNode prev = null;
+        ListNode nextNode = null;
+        while (middle != null) {
+            nextNode = middle.next;
+            middle.next = prev;
+            prev = middle;
+            middle = nextNode;
+        }
+        return prev;
     }
 }
