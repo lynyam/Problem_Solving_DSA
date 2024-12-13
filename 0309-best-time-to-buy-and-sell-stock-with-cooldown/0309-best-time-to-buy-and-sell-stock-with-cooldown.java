@@ -6,42 +6,20 @@ class Solution {
         this.prices = prices;
         this.n = prices.length;
         dp = new int[n + 2][2];
-        /*int i = 0;
-
-        while(i < n) {
-            Arrays.fill(dp[i++], -1);
-        }*/
-        return(helper(n - 1));
-    }
-
-    public int helper2(int i, int status) {
-        if (i >= n)
-            return (0);
-        if (dp[i][status] != -1) {
-            return (dp[i][status]);
-        }
-        int max = helper2(i + 1, status);
-        if (status == 0) {
-            max = Math.max(max, -prices[i] + helper2(i + 1, 1));
-        } else {
-            max = Math.max(max, prices[i] + helper2(i + 2, 0));
-        }
-        dp[i][status] = max;
-        return (max);
+        return (helper(n - 1));
     }
 
     public int helper(int i) {
         while (i >= 0) {
-            int status = 0;
-            while (status < 2) {
-                int max = dp[i + 1][status];
-                if (status == 0) {
+            int j = 0;
+            while (j < 2) {
+                int max = dp[i + 1][j];
+                if (j == 0)
                     max = Math.max(max, -prices[i] + dp[i + 1][1]);
-                } else {
+                else
                     max = Math.max(max, prices[i] + dp[i + 2][0]);
-                }
-                dp[i][status] = max;
-                status++;
+                dp[i][j] = max;
+                j++;
             }
             i--;
         }
