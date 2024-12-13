@@ -1,18 +1,16 @@
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        return (typedString(s).equals(typedString(t)));
+        return (backspace(s).equals(backspace(t)));
     }
 
-    public String typedString(String s) {
+    public String backspace(String s) {
         StringBuilder sb = new StringBuilder();
-
         for (char c : s.toCharArray()) {
-            if (sb.length() > 0 && c == '#') {
+            if (!sb.isEmpty() && c == '#') {
                 sb.deleteCharAt(sb.length() - 1);
-                continue ;
+            } else if (c != '#') {
+                sb.append(c);
             }
-            if (c != '#')
-            sb.append(c);
         }
         return (sb.toString());
     }
