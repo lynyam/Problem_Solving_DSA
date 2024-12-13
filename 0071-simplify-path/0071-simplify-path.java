@@ -1,23 +1,22 @@
 class Solution {
     public String simplifyPath(String path) {
-        String[] dirs = path.split("/");
-        int n = dirs.length;
-        List<String> stack = new ArrayList<>();
+        List<String> wordsList = new ArrayList<>();
+        String[] words = path.split("/");
 
-        for (String dir : dirs) {
-            if (stack.size() > 0 && dir.equals("..")) {
-                stack.remove(stack.size() - 1);
-                continue ;
-            }
-            if (!dir.isEmpty() && !dir.equals(".") && !dir.equals("..")) {
-                stack.add(dir);
+        for (String s : words) {
+            if (wordsList.size() > 0 && s.equals("..")) {
+                wordsList.remove(wordsList.size() - 1);
+            } else if (!s.isEmpty() && !s.equals(".") && !s.equals("..")) {
+                wordsList.add(s);
             }
         }
+        //System.out.println(wordsList);
         StringBuilder sb = new StringBuilder();
-        for (String s : stack) {
+        int i = 0;
+        for (String s : wordsList) {
             sb.append("/");
             sb.append(s);
         }
-        return (sb.isEmpty() ? "/" : sb.toString());
+        return (sb.length() > 0 ? sb.toString() : "/");
     }
 }
