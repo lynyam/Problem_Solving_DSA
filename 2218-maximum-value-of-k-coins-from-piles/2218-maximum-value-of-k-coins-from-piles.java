@@ -1,49 +1,34 @@
 class Solution {
-    int n;
     List<List<Integer>> piles;
+    int n;
     int[][] dp;
     public int maxValueOfCoins(List<List<Integer>> piles, int k) {
-        this.n = piles.size();
         this.piles = piles;
-        dp = new int[n + 1][k + 1];
-        //return (helper(0, k));
-        return (tabulation(n - 1, k));
+        this.n = piles.size();
+        dp = new int[n][k + 1];
+        int j = 0;
+
+        while (j < n) {
+            Arrays.fill(dp[j++], -1);
+        }
+        return (helper(0, k));
     }
 
     public int helper(int i, int k) {
         if (i == n || k == 0)
             return (0);
-        int mvc = 0;
-        int curr = 0;
+        if (dp[i][k] != -1)
+            return (dp[i][k]);
+        int max = 0;
+        max = helper(i + 1, k);
         int j = 0;
-        while (j < Math.min(piles.get(i).size(), k)) {
+        int curr = 0;
+        while (j < Math.min(k, piles.get(i).size())) {
             curr += piles.get(i).get(j);
-            mvc = Math.max(mvc, curr + helper(i + 1, k - 1 - j));
+            max = Math.max(max, curr + helper(i + 1, k - j - 1));
             j++;
         }
-        mvc = Math.max(mvc, helper(i + 1, k));
-        return (mvc);
+        dp[i][k] = max;
+        return (max);
     }
-
-    public int tabulation(int i, int coins) {
-        while (i >= 0) {
-            int k = 1;
-            while (k <= coins) {
-                int mvc = 0;
-                int curr = 0;
-                int j = 0;
-                while (j < Math.min(piles.get(i).size(), k)) {
-                    curr += piles.get(i).get(j);
-                    mvc = Math.max(mvc, curr + dp[i + 1][k - 1 - j]);
-                    j++;
-                }
-                mvc = Math.max(mvc, dp[i + 1][k]);
-                dp[i][k] = mvc;
-                k++;
-            }
-            i--;
-        }
-        return (dp[0][coins]);
-    }
-
 }
