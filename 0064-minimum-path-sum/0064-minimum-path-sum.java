@@ -1,30 +1,34 @@
 class Solution {
     int[][] grid;
-    int m;
     int n;
+    int m;
     int[][] dp;
     public int minPathSum(int[][] grid) {
-        this.grid = grid;
         this.m = grid.length;
         this.n = grid[0].length;
-        dp = new int[m][n];
+        dp = new int[m + 1][n + 1];
         int i = 0;
 
-        while (i < m) {
-            Arrays.fill(dp[i], -1);
+        while (i <= m) {
+            Arrays.fill(dp[i], Integer.MAX_VALUE);
             i++;
         }
-        return (helper(0, 0));
+        this.grid = grid;
+
+        return (helper(m - 1, n - 1));
     }
 
-    public int helper(int i, int j) {
-        if (i >= m || j >= n)
-            return (Integer.MAX_VALUE);
-        if (dp[i][j] != -1)
-            return (dp[i][j]);
-        int ans = Math.min(helper(i + 1, j), helper(i, j + 1));
-        ans = ans == Integer.MAX_VALUE ? 0 : ans;
-        dp[i][j] = grid[i][j] + ans;
-        return (dp[i][j]);
+    public int helper(int i, int k) {
+        while (i >= 0) {
+            int j = k;
+            while (j >= 0) {
+                int curr = Math.min(dp[i + 1][j], dp[i][j + 1]);
+                curr = curr == Integer.MAX_VALUE ? 0 : curr;
+                dp[i][j] = grid[i][j] + curr;
+                j--;
+            }
+            i--;
+        }
+        return (dp[0][0]);
     }
 }
