@@ -1,13 +1,11 @@
 class Solution {
-    int n;
-    int m;
     int[][] dp;
+    int n, m;
     public int uniquePaths(int m, int n) {
+        dp = new int[m][n];
         this.n = n;
         this.m = m;
-        dp = new int[m][n];
         int i = 0;
-
         while (i < m) {
             Arrays.fill(dp[i++], -1);
         }
@@ -21,7 +19,9 @@ class Solution {
             return (1);
         if (dp[i][j] != -1)
             return (dp[i][j]);
-        dp[i][j] = helper(i, j + 1) + helper(i + 1, j);
-        return (dp[i][j]);
+        int right = helper(i + 1, j);
+        int botom = helper(i, j + 1);
+        dp[i][j] = right + botom;
+        return (right + botom);
     }
 }
