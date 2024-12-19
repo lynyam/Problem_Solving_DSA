@@ -1,29 +1,25 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        HashMap<Integer, Integer> store = new HashMap<>();
-        List<Integer> stack = new ArrayList<>();
-        int[] ans = new int[nums1.length];
+        int n = nums1.length;
+        int m = nums2.length;
+        int[] answer = new int[n];
+        HashMap<Integer, Integer> greaterMap = new HashMap<>();
+        List<Integer> decreasing = new ArrayList<>();
         int i = 0;
 
-        for (int num : nums2) {
-            while (stack.size() > 0 && stack.get(stack.size() - 1) < num) {
-                store.put(stack.remove(stack.size() - 1), num);
+        while (i < m) {
+            int num = nums2[i];
+            while (decreasing.size() > 0 && decreasing.get(decreasing.size() - 1) < num) {
+                greaterMap.put(decreasing.remove(decreasing.size() - 1), num);
             }
-            stack.add(num);
+            decreasing.add(num);
+            i++;
         }
-        for (int n : nums1) {
-            ans[i++] = store.getOrDefault(n, -1);
+        i = 0;
+        while (i < n) {
+            answer[i] = greaterMap.getOrDefault(nums1[i], -1);
+            i++;
         }
-        return (ans);
+        return (answer);
     }
 }
-/**
-    - next greater elt of x in arr[]
-        - First greater elt that is to right of x in same array
-    - n1 n2 n1 = subset(n2)
-    - find j/ n1[i]== n2[j]
-    - det  the nxt greater elt of n2[j] in n2
-    - if not ans[i] = -1
-    - ret ans[n1] ans[i] = nxt greater elt as describe
-
-*/
