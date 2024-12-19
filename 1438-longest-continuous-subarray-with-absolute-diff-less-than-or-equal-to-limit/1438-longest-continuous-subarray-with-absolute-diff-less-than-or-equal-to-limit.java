@@ -1,49 +1,49 @@
 class Solution {
     public int longestSubarray(int[] nums, int limit) {
+        int n = nums.length;
         int left = 0;
         int right = 0;
-        int n = nums.length;
-        int ans = Integer.MIN_VALUE;
-        Deque<Integer> dequeMax = new LinkedList<>();
         Deque<Integer> dequeMin = new LinkedList<>();
-
-
+        Deque<Integer> dequeMax = new LinkedList<>();
+        int ans = 0;
         while (right < n) {
-            int numr = nums[right];
-            while (!dequeMax.isEmpty() && dequeMax.peekLast() < numr) {
-                dequeMax.removeLast();
-            }
-            while (!dequeMin.isEmpty() && dequeMin.peekLast() > numr) {
+            while(!dequeMin.isEmpty() && dequeMin.peekLast() > nums[right]) {
                 dequeMin.removeLast();
             }
-            dequeMax.add(numr);
-            dequeMin.add(numr);
-            while (Math.abs(numr - dequeMax.peekFirst()) > limit || Math.abs(numr - dequeMin.peekFirst()) > limit) {
-                    int numl = nums[left];
-                    if (numl == dequeMax.peekFirst())
-                        dequeMax.removeFirst();
-                    if (numl == dequeMin.peekFirst())
-                        dequeMin.removeFirst();
-                    left++;
+            dequeMin.addLast(nums[right]);
+            while(!dequeMax.isEmpty() && dequeMax.peekLast() < nums[right]) {
+                dequeMax.removeLast();
+            }
+            dequeMax.addLast(nums[right]);
+            while (Math.abs(dequeMin.getFirst() - dequeMax.getFirst()) > limit) {
+                if (nums[left] == dequeMin.getFirst()) {
+                    dequeMin.removeFirst();
+                }
+                if (nums[left] == dequeMax.getFirst()) {
+                    dequeMax.removeFirst();
+                }
+                left++;
             }
             ans = Math.max(ans, right - left + 1);
             right++;
         }
         return (ans);
     }
+    /*
+        nums = [10,1,2,4,7,2], limit = 5
+        l = 5
+        10 i = 0 j = 0 min = 10 max = 10 ans = 1 mono deque ascendant [10(0)]
+        while (num(deque.getFist) > num(i)) {
+                deque.removeLast()
+            }
+        1 i = 0 j = 1 abs(10 - 1) > 5 
+            while (abs(num(j) - num(deque.getFist))) {
+                deque.removeFirst()
+            }
+
+            min = min(10, 1)-> 1
+            max = max(10, 1)-> 10
+
+    */
+
 }
-/*
-    1 4 8 2 5 1.   3
-
-    1 1-1 <=3 ans = 1 max = 1 min =1
-    1 4 1-4 <= 3 ans = 2 max = 4 min =1
-    1 4 8 8-1 > 3 
-        DEL(1) si 1== max || min change max and min with the nex max/ min of the array
-        => need to store max and min (use 2 deque monotonique inc decr) 
-        max = 8 min = 4
-        8-4>3
-        DEL(4) min is empty as is empty 
-        max = 8 min = 8
-
-
-*/
