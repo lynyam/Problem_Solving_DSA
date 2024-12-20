@@ -1,38 +1,39 @@
 class Solution {
-    int[][] dp;
+    int[][] matrix;
     int n;
     int m;
-    int[][] matrix;
+    int[][] dp;
+
     public int minFallingPathSum(int[][] matrix) {
-        n = matrix.length;
-        m = matrix[0].length;
+        this.n = matrix.length;
+        this.m = matrix[0].length;
         this.matrix = matrix;
         dp = new int[n][m];
         int i = 0;
         while (i < n) {
-            Arrays.fill(dp[i], Integer.MAX_VALUE);
-            i++;
+            Arrays.fill(dp[i++], Integer.MAX_VALUE);
         }
         i = 0;
-        int ans = Integer.MAX_VALUE;
+        int min = Integer.MAX_VALUE;
         while (i < m) {
-            ans = Math.min(ans, helper(0, i));
+            min = Math.min(min, helper(0, i));
             i++;
         }
-        return (ans);
+        return (min);
     }
 
     public int helper(int i, int j) {
         if (i < 0 || i >= n || j < 0 || j >= m)
             return (Integer.MAX_VALUE);
+        if (i == n - 1)
+            return (matrix[i][j]);
         if (dp[i][j] != Integer.MAX_VALUE)
             return (dp[i][j]);
-        int below = helper(i + 1, j - 1);
-        int leftDiag = helper(i + 1, j);
-        int rightDiag = helper(i + 1, j + 1);
-        int ans = Math.min(below, Math.min(leftDiag, rightDiag));
-        ans = ans == Integer.MAX_VALUE ? 0 : ans;
-        dp[i][j] = matrix[i][j] + ans;
-        return (dp[i][j]);
+        int min = Math.min(helper(i + 1, j - 1), Math.min(helper(i + 1, j),
+                helper(i + 1, j + 1)));
+            min = min == Integer.MAX_VALUE ? 0 : min;
+            min += matrix[i][j];
+        dp[i][j] = min;
+        return (min);
     }
 }
