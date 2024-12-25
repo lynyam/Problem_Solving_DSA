@@ -1,28 +1,27 @@
 class Solution {
-    HashSet<Integer> units;
-    int max;
+    int lastStone;
+    int n;
+    HashSet<Integer> stonesPosition;
     HashMap<String, Boolean> dp;
     public boolean canCross(int[] stones) {
-        units = new HashSet<>();
-        max = stones[stones.length - 1];
+        n = stones.length;
         dp = new HashMap<>();
-        for (int stone : stones) {
-            units.add(stone);
-        }
+        lastStone = stones[n - 1];
+        stonesPosition = new HashSet<>();
+        for (int stone : stones)
+            stonesPosition.add(stone);
         return (helper(1, 1));
     }
 
-    public boolean helper(int i, int step) {
-        if (i < 0 ||i > max || !units.contains(i) || step <= 0)
+    public boolean helper(int i, int k) {
+        if (i < 0 || i > lastStone || !stonesPosition.contains(i) || k <= 0)
             return (false);
-        if (i == max)
+        if (i == lastStone)
             return (true);
-        String curr = i + "#" + step;
+        String curr = i + "#" + k;
         if (dp.containsKey(curr))
-            return (dp.get(curr));;
-        boolean answer = helper(i + (step - 1), step - 1) ||
-                            helper(i + (step), step) ||
-                            helper(i + (step + 1), step + 1);
+            return (dp.get(curr));
+        boolean answer = helper(i + k - 1, k - 1) || helper(i + k, k) || helper(i + k + 1, k + 1);
         dp.put(curr, answer);
         return (answer);
     }
