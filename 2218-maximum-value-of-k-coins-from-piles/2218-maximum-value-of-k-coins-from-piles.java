@@ -4,31 +4,30 @@ class Solution {
     int[][] dp;
     public int maxValueOfCoins(List<List<Integer>> piles, int k) {
         this.piles = piles;
-        this.n = piles.size();
+        n = piles.size();
         dp = new int[n][k + 1];
-        int j = 0;
+        int i = 0;
 
-        while (j < n) {
-            Arrays.fill(dp[j++], -1);
+        while (i < n) {
+            Arrays.fill(dp[i++], -1);
         }
         return (helper(0, k));
     }
 
     public int helper(int i, int k) {
-        if (i == n || k == 0)
+        if (k <= 0 || i >= n)
             return (0);
         if (dp[i][k] != -1)
             return (dp[i][k]);
-        int max = 0;
-        max = helper(i + 1, k);
+        int answer = helper(i + 1, k);
         int j = 0;
         int curr = 0;
-        while (j < Math.min(k, piles.get(i).size())) {
+        while (j < Math.min(piles.get(i).size(), k)) {
             curr += piles.get(i).get(j);
-            max = Math.max(max, curr + helper(i + 1, k - j - 1));
+            answer = Math.max(answer, curr + helper(i + 1, k - j - 1));
             j++;
         }
-        dp[i][k] = max;
-        return (max);
+        dp[i][k] = answer;
+        return (answer);
     }
 }
