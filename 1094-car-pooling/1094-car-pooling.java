@@ -1,19 +1,20 @@
 class Solution {
     public boolean carPooling(int[][] trips, int capacity) {
-        int end = 0;
-        for (int[] trip : trips)
-            end = Math.max(end, trip[2]);
-        int[] diff = new int[end + 1];
-
+        int toMax = 0;
         for (int[] trip : trips) {
-            diff[trip[1]] += trip[0];
-            diff[trip[2]] -= trip[0];
+            toMax = Math.max(toMax, trip[2]);
         }
-        int curr = 0;
-        for (int location : diff) {
-            curr += location;
-            if (curr > capacity)
+        int[] arr = new int[toMax + 1];
+        for (int[] trip : trips) {
+            arr[trip[1]] += trip[0];
+            arr[trip[2]] -= trip[0];
+        }
+        int i = 1;
+        while (i < arr.length) {
+            if (arr[i - 1] > capacity)
                 return (false);
+            arr[i] += arr[i - 1];
+            i++;
         }
         return (true);
     }
