@@ -1,20 +1,20 @@
 class Solution {
     public int minMeetingRooms(int[][] intervals) {
-        int maxpos = 0;
+        int max = 0;
         for (int[] interval : intervals) {
-            maxpos = Math.max(maxpos, interval[1]);
+            max = Math.max(max, interval[1]);
         }
-        int[] arr = new int[maxpos + 1];
+        int[] timelines = new int[max + 1];
         for (int[] interval : intervals) {
-            arr[interval[0]] += 1;
-            arr[interval[1]] -= 1;
+            timelines[interval[0]] += 1;
+            timelines[interval[1]] -= 1;
         }
-        int ans = 0;
+        int answer = 0;
         int curr = 0;
-        for (int time : arr) {
-            curr += time;
-            ans = Math.max(ans, curr);
+        for (int meeting : timelines) {
+            curr += meeting;
+            answer = Math.max(answer, curr);
         }
-        return (ans);
+        return (answer);
     }
 }
