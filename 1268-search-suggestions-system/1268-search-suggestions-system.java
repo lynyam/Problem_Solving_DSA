@@ -1,43 +1,47 @@
-class TreeNode {
-    HashMap<Character, TreeNode> children;
-    List<String> suggestions;
-    TreeNode() {
+class TrieNode {
+    Map<Character, TrieNode> children;
+    Set<String> common;
+    TrieNode(){
         children = new HashMap<>();
-        suggestions = new ArrayList<>();
+        common = new HashSet<>();
     }
 }
 
 class Solution {
+    TrieNode trieNode;
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
-        TreeNode root = buildTree(products);
-        TreeNode node = root;
-        List<List<String>> answer = new ArrayList<>();
+        trieNode = buildTrieNode(products);
+        List<List<String>> ans = new ArrayList<>();
         for (char c : searchWord.toCharArray()) {
-            if (node.children.containsKey(c)) {
-                node = node.children.get(c);
-                answer.add(node.suggestions);
+            List<String> list = new ArrayList<>();
+            if (trieNode.children.containsKey(c)) {
+                list = new ArrayList<>(trieNode.children.get(c).common);
+                Collections.sort(list);
+                if (list.size() > 3) {
+                    List<String> tempList = Arrays.asList(list.get(0), list.get(1), list.get(2));
+                    list = tempList;
+                }
+                ans.add(new ArrayList<>(list));
+                trieNode = trieNode.children.get(c);
             } else {
-                node.children = new HashMap<>();
-                answer.add(new ArrayList<String>());
+                trieNode.children = new HashMap<>();
+                ans.add(new ArrayList<String>());
             }
+            
         }
-        return (answer);
+        return (ans);
     }
 
-    public TreeNode buildTree(String[] products) {
-        TreeNode root = new TreeNode();
+    public TrieNode buildTrieNode(String[] products) {
+        TrieNode root = new TrieNode();
         for (String product : products) {
-            TreeNode curr = root;
+            TrieNode current = root;
             for (char c : product.toCharArray()) {
-                if (!curr.children.containsKey(c)) {
-                    curr.children.put(c, new TreeNode());
+                if (!current.children.containsKey(c)) {
+                    current.children.put(c, new TrieNode());
                 }
-                curr = curr.children.get(c);
-                curr.suggestions.add(product);
-                Collections.sort(curr.suggestions);
-                if (curr.suggestions.size() > 3)
-                    curr.suggestions.remove(curr.suggestions.size() - 1);
-
+                current = current.children.get(c);
+                current.common.add(product);
             }
         }
         return (root);
