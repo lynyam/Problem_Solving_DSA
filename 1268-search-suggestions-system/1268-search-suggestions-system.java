@@ -1,47 +1,41 @@
 class TrieNode {
-    Map<Character, TrieNode> children;
-    Set<String> common;
-    TrieNode(){
-        children = new HashMap<>();
-        common = new HashSet<>();
+    HashMap<Character, TrieNode> children;
+    List<String> names;
+    public TrieNode() {
+        children = new HashMap();
+        names = new ArrayList<>();
     }
 }
 
 class Solution {
-    TrieNode trieNode;
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
-        trieNode = buildTrieNode(products);
-        List<List<String>> ans = new ArrayList<>();
+        TrieNode trieNode = buildTrie(products);
+        List<List<String>> answer = new ArrayList<>();
         for (char c : searchWord.toCharArray()) {
-            List<String> list = new ArrayList<>();
             if (trieNode.children.containsKey(c)) {
-                list = new ArrayList<>(trieNode.children.get(c).common);
-                Collections.sort(list);
-                if (list.size() > 3) {
-                    List<String> tempList = Arrays.asList(list.get(0), list.get(1), list.get(2));
-                    list = tempList;
-                }
-                ans.add(new ArrayList<>(list));
                 trieNode = trieNode.children.get(c);
+                answer.add(trieNode.names);
             } else {
                 trieNode.children = new HashMap<>();
-                ans.add(new ArrayList<String>());
+                answer.add(new ArrayList<>());
             }
-            
         }
-        return (ans);
+        return (answer);
     }
 
-    public TrieNode buildTrieNode(String[] products) {
+    public TrieNode buildTrie(String[] products) {
         TrieNode root = new TrieNode();
-        for (String product : products) {
+        for (String name : products) {
             TrieNode current = root;
-            for (char c : product.toCharArray()) {
+            for (char c : name.toCharArray()) {
                 if (!current.children.containsKey(c)) {
                     current.children.put(c, new TrieNode());
                 }
                 current = current.children.get(c);
-                current.common.add(product);
+                current.names.add(name);
+                Collections.sort(current.names);
+                if (current.names.size() > 3)
+                    current.names.remove(current.names.size() - 1);
             }
         }
         return (root);
