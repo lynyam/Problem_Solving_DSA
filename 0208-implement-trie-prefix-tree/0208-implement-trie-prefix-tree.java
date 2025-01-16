@@ -1,9 +1,9 @@
 class Trie {
-    HashSet<String> words;
-    Map<Character, Trie> children;
+    HashMap<Character, Trie> children;
+    boolean endOfWord;
     public Trie() {
         children = new HashMap<>();
-        words = new HashSet<>();
+        endOfWord = false;
     }
     
     public void insert(String word) {
@@ -14,7 +14,7 @@ class Trie {
             }
             current = current.children.get(c);
         }
-        current.words.add(word);
+        current.endOfWord = true;
     }
     
     public boolean search(String word) {
@@ -25,7 +25,7 @@ class Trie {
             }
             current = current.children.get(c);
         }
-        return (current.words.contains(word) ? true : false);
+        return (current.endOfWord);
     }
     
     public boolean startsWith(String prefix) {
