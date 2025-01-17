@@ -39,29 +39,29 @@ class Node {
 */
 
 class Solution {
+    int[][] grid;
     public Node construct(int[][] grid) {
-        return (solve(grid, 0, 0, grid.length));
+        this.grid = grid;
+        return (solveTree(0, 0, grid.length));
     }
 
-    public Node solve(int[][] grid, int x1, int y1, int length) {
-        if (sameValue(grid, x1, y1, length)) {
-            return (new Node(grid[x1][y1] == 1, true));
-        } else {
-            Node root = new Node(false, false);
-            root.topLeft = solve(grid, x1, y1, length / 2);
-            root.topRight = solve(grid, x1, y1 + length / 2, length / 2);
-            root.bottomLeft = solve(grid, x1 + length / 2, y1, length / 2);
-            root.bottomRight = solve(grid, x1 + length / 2, y1 + length / 2, length / 2);
-            return root ;
+    public Node solveTree(int x, int y, int length) {
+        if (isSame(x, y, length)) {
+            return (new Node(grid[x][y] == 1, true));
         }
+        Node topLeft = solveTree(x, y, length / 2);
+        Node topRight = solveTree(x, y + length / 2, length / 2);
+        Node bottomLeft = solveTree(x + length / 2, y, length / 2);
+        Node bottomRight = solveTree(x + length / 2, y + length / 2, length / 2);
+        return (new Node(true, false, topLeft, topRight, bottomLeft, bottomRight));
     }
 
-    public boolean sameValue(int[][] grid, int x1, int y1, int length) {
-        for (int i = x1; i < x1 + length; i++) {
-            for (int j = y1; j < y1 + length; j++) {
-                if (grid[i][j] != grid[x1][y1]) {
+    public boolean isSame(int x, int y, int length) {
+        int val = grid[x][y];
+        for (int i = x; i < x + length; i++) {
+            for (int j = y; j < y + length; j++) {
+                if (grid[i][j] != val)
                     return (false);
-                }
             }
         }
         return (true);
