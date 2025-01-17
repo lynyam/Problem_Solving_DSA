@@ -1,9 +1,9 @@
 class TrieNode {
     int common;
-    HashMap<Character, TrieNode> children;
+    TrieNode[] children;
+    char c;
     public TrieNode() {
-        children = new HashMap<>();
-        common = 0;
+        children = new TrieNode[26];
     }
 }
 
@@ -11,27 +11,30 @@ class Solution {
     public String longestCommonPrefix(String[] strs) {
         TrieNode root = new TrieNode();
         for (String str : strs) {
-            if (str.isEmpty())
-                return ("");
             TrieNode current = root;
             for (char c : str.toCharArray()) {
-                if (!current.children.containsKey(c)) {
-                    current.children.put(c, new TrieNode());
+                if (current.children[c - 'a'] == null) {
+                    current.children[c - 'a'] = new TrieNode();
                 }
-                current = current.children.get(c);
+                current = current.children[c - 'a'];
                 current.common += 1;
+                current.c = c;
             }
         }
+
         StringBuilder sb = new StringBuilder();
-        int i = 0;
-        while (root.children.size() == 1) {
-            for (char key : root.children.keySet()) {
-                root = root.children.get(key);
-                if (root.common == strs.length)
-                    sb.append(key);
-                else
-                    break ;
+        while (root != null) {
+            char c = 0;
+            for (TrieNode node : root.children) {
+                if (node != null && node.common == strs.length) {
+                    c = node.c;
+                    root = node;
+                }
             }
+            if (c != 0)
+                sb.append(c);
+            else 
+                return (sb.toString());
         }
         return (sb.toString());
     }
