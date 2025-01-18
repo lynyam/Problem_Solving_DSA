@@ -1,24 +1,30 @@
 class TrieNode {
-    HashMap<Character, TrieNode> children;
     List<String> names;
+    TrieNode[] children;
     public TrieNode() {
-        children = new HashMap();
         names = new ArrayList<>();
+        children = new TrieNode[26];
     }
 }
-
 class Solution {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
-        TrieNode trieNode = buildTrie(products);
+        TrieNode root = buildTrie(products);
         List<List<String>> answer = new ArrayList<>();
+
         for (char c : searchWord.toCharArray()) {
-            if (trieNode.children.containsKey(c)) {
-                trieNode = trieNode.children.get(c);
-                answer.add(trieNode.names);
+            int index = c - 'a';
+            List<String> curr = new ArrayList<>();
+            if (root.children[index] != null) {
+                root = root.children[index];
+                Collections.sort(root.names);
+                curr = new ArrayList<>(root.names);
+                if (root.names.size() >= 3) {
+                    curr = Arrays.asList(root.names.get(0), root.names.get(1), root.names.get(2));
+                }
             } else {
-                trieNode.children = new HashMap<>();
-                answer.add(new ArrayList<>());
+                root = new TrieNode();
             }
+            answer.add(curr);
         }
         return (answer);
     }
@@ -28,14 +34,12 @@ class Solution {
         for (String name : products) {
             TrieNode current = root;
             for (char c : name.toCharArray()) {
-                if (!current.children.containsKey(c)) {
-                    current.children.put(c, new TrieNode());
+                int index = c - 'a';
+                if (current.children[index] == null) {
+                    current.children[index] = new TrieNode();
                 }
-                current = current.children.get(c);
+                current = current.children[index];
                 current.names.add(name);
-                Collections.sort(current.names);
-                if (current.names.size() > 3)
-                    current.names.remove(current.names.size() - 1);
             }
         }
         return (root);
