@@ -2,22 +2,24 @@ class Solution {
     List<List<Integer>> answer;
     int[] nums;
     public List<List<Integer>> permute(int[] nums) {
+        answer = new ArrayList<>();
         this.nums = nums;
-        answer = new ArrayList<>(); 
-        backtrack(new ArrayList<Integer>());
+        backtrack(new ArrayList<Integer>(), new HashSet<Integer>());
         return (answer);
     }
 
-    public void backtrack(List<Integer> curr) {
+    public void backtrack(List<Integer> curr, HashSet<Integer> check) {
         if (curr.size() == nums.length) {
             answer.add(new ArrayList<Integer>(curr));
             return ;
         }
         for (int num : nums) {
-            if (!curr.contains(num)) {
+            if (!check.contains(num)) {
                 curr.add(num);
-                backtrack(curr);
+                check.add(num);
+                backtrack(curr, check);
                 curr.remove(curr.size() - 1);
+                check.remove(num);
             }
         }
     }
