@@ -39,30 +39,31 @@ class Node {
 */
 
 class Solution {
-    int[][] grid;
     public Node construct(int[][] grid) {
-        this.grid = grid;
-        return (solveTree(0, 0, grid.length));
+        return (helper(grid, 0, 0, grid.length));
     }
 
-    public Node solveTree(int x, int y, int length) {
-        if (isSame(x, y, length)) {
+    public Node helper(int[][] grid, int x, int y, int length) {
+        if (isSame(grid, x, y, length))
             return (new Node(grid[x][y] == 1, true));
-        }
-        Node topLeft = solveTree(x, y, length / 2);
-        Node topRight = solveTree(x, y + length / 2, length / 2);
-        Node bottomLeft = solveTree(x + length / 2, y, length / 2);
-        Node bottomRight = solveTree(x + length / 2, y + length / 2, length / 2);
-        return (new Node(true, false, topLeft, topRight, bottomLeft, bottomRight));
+        Node topLeft = helper(grid, x, y, length / 2);
+        Node topRight = helper(grid, x, y + length/ 2, length / 2);
+        Node bottomLeft = helper(grid, x + length/ 2, y, length / 2);
+        Node bottomRight = helper(grid, x + length / 2, y + length / 2, length / 2);
+        return (new Node(false, false, topLeft, topRight, bottomLeft, bottomRight));
     }
 
-    public boolean isSame(int x, int y, int length) {
+    public boolean isSame(int[][] grid, int x, int y, int length) {
+        int i = x;
         int val = grid[x][y];
-        for (int i = x; i < x + length; i++) {
-            for (int j = y; j < y + length; j++) {
+        while (i < x + length) {
+            int j = y;
+            while (j < y + length) {
                 if (grid[i][j] != val)
                     return (false);
+                j++;
             }
+            i++;
         }
         return (true);
     }
