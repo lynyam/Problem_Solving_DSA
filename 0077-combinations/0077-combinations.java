@@ -1,6 +1,7 @@
 class Solution {
     List<List<Integer>> answer;
-    int n, k;
+    int n;
+    int k;
     public List<List<Integer>> combine(int n, int k) {
         this.n = n;
         this.k = k;
@@ -11,7 +12,7 @@ class Solution {
 
     public void backtrack(List<Integer> curr, int i) {
         if (curr.size() == k) {
-            answer.add(new ArrayList<>(curr));
+            answer.add(new ArrayList<Integer>(curr));
             return ;
         }
         while (i <= n) {
@@ -20,5 +21,5 @@ class Solution {
             curr.remove(curr.size() - 1);
             i++;
         }
-    }
+    } 
 }
