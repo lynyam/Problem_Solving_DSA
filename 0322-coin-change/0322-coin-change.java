@@ -1,19 +1,26 @@
 class Solution {
+    int[] coins;
+    int[] dp;
     public int coinChange(int[] coins, int amount) {
-        int[] dp = new int[amount + 1];
-        dp[0] = 0;
-        int i = 1;
+        dp = new int[amount + 1];
+        this.coins = coins;
+        Arrays.fill(dp, -1);
+        int answer = helper(amount);
+        return (answer == Integer.MAX_VALUE ? -1 : answer);
+    }
 
-        while (i <= amount) {
-            int ans = Integer.MAX_VALUE;
-            for (int coin : coins) {
-                if (i - coin >= 0) {
-                    ans = Math.min(ans, dp[i - coin]);
-                }
-            }
-            dp[i] = ans == Integer.MAX_VALUE ? ans : ans + 1;
-            i++;
+    public int helper(int amount) {
+        if (amount == 0)
+            return (0);
+        if (amount < 0)
+            return (Integer.MAX_VALUE);
+        if (dp[amount] != -1)
+            return (dp[amount]);
+        int number = Integer.MAX_VALUE;
+        for (int coin : coins) {
+            number = Math.min(number, helper(amount - coin));
         }
-        return (dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount]);
+        dp[amount] = number == Integer.MAX_VALUE ? Integer.MAX_VALUE : number + 1;
+        return (dp[amount]);
     }
 }
