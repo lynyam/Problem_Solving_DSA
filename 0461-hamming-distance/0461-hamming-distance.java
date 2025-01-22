@@ -1,14 +1,12 @@
 class Solution {
     public int hammingDistance(int x, int y) {
-        int diff = x ^ y;
-        int i = 0;
-        int a = 0;
-        while (i < 32) {
-            if (((diff >> i) & 1) == 1) {
-                a++;
-            }
-            i++;
+        int xNory = x ^ y;
+        int shift = 0;
+        int distance = 0;
+        while (shift < 32) {
+            distance += ((xNory >> shift) & 1);
+            shift++;
         }
-        return (a);
+        return (distance);
     }
 }
