@@ -3,31 +3,30 @@ class Solution {
     int[] nums;
     int ans;
     public int lengthOfLIS(int[] nums) {
-        int length = nums.length;
-        ans = 1;
-        dp = new int[length];
+        int n = nums.length;
         this.nums = nums;
+        dp = new int[n];
+        ans = 1;
         Arrays.fill(dp, -1);
         dp[0] = 1;
-        helper(length - 1);
+        helper(n - 1);
         return (ans);
     }
 
-    public int helper(int index) {
-        if (index >= nums.length)
+    public int helper(int i) {
+        if (i >= nums.length)
             return (0);
-        if (dp[index] != -1)
-            return (dp[index]);
-        int longuest = 1;
-        int i = 0;
-        while (i < index) {
-            int curr = helper(i);
-            if (nums[i] < nums[index])
-                longuest = Math.max(longuest, curr + 1);
-            ans = Math.max(ans, longuest);
-            i++;
+        if (dp[i] != -1)
+            return (dp[i]);
+        int curr = 1;
+        int j  = 0;
+        while (j < i) {
+            int prev = helper(j);
+            curr = Math.max(curr, nums[j] < nums[i] ? prev + 1 : 1);
+            j++;
         }
-        dp[index] = longuest;
-        return longuest;
+        dp[i] = curr;
+        ans = Math.max(ans, curr);
+        return (curr);
     }
 }
