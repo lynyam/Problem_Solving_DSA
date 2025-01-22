@@ -1,63 +1,33 @@
 class Solution {
+    int[] dp;
+    int[] nums;
+    int ans;
     public int lengthOfLIS(int[] nums) {
-        int[] dp = new int[nums.length];
-        int i = 1;
-        int res = 1;
-        int n = nums.length;
+        int length = nums.length;
+        ans = 1;
+        dp = new int[length];
+        this.nums = nums;
+        Arrays.fill(dp, -1);
+        dp[0] = 1;
+        helper(length - 1);
+        return (ans);
+    }
 
-        Arrays.fill(dp, 1);
-        while (i < n) {
-            int j = 0;
-            int ans = 1;
-            while (j < i) {
-                if (nums[j] < nums[i]) {
-                    ans = Math.max(ans, dp[j] + 1);
-                }
-                dp[i] = ans;
-                res = Math.max(res, dp[i]);
-                j++;
-            }
+    public int helper(int index) {
+        if (index >= nums.length)
+            return (0);
+        if (dp[index] != -1)
+            return (dp[index]);
+        int longuest = 1;
+        int i = 0;
+        while (i < index) {
+            int curr = helper(i);
+            if (nums[i] < nums[index])
+                longuest = Math.max(longuest, curr + 1);
+            ans = Math.max(ans, longuest);
             i++;
         }
-        return (res);
+        dp[index] = longuest;
+        return longuest;
     }
 }
-
-/**
-Solution Top-down
-class Solution {
-    HashMap<Integer, Integer> memo;
-    public int lengthOfLIS(int[] nums) {
-        memo = new HashMap<>();
-        int ans = 1;
-        int i = 0;
-        while (i < nums.length) {
-            ans = Math.max(ans, dp(i, nums));
-            i++;
-        }
-        return (ans);
-    }
-
-    public int dp(int i, int[] nums) {
-        if (memo.containsKey(i))
-            return (memo.get(i));
-        int ans = 1;
-        int j = 0;
-        while (j < i) {
-            if (nums[j] < nums[i]) {
-                ans = Math.max(ans, dp(j, nums) + 1);
-            }
-            j++;
-        }
-        memo.put(i, ans);
-        return (ans);
-    }
-}*/
-/**
-    - nums int[] 
-    - ret length of longest strictly increasing subssequence
-
-    Solution DP
-        - return longest sub Fn(state) => state = i in [0, n[
-        - recurtion formula: Fn(n) = Fn(n-1)
- */
