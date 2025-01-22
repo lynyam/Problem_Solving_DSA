@@ -45,7 +45,6 @@ class Solution {
             curr.endOfPath = true;
             curr.isParent = isParent;
             curr.path = path;
-            System.out.println(path);
         }
         return (root);
     }
