@@ -1,35 +1,24 @@
 class Solution {
+    int n;
     int ans;
-    HashSet<Integer> vertical;
-    HashSet<Integer> diag;
-    HashSet<Integer> antidiag;
     public int totalNQueens(int n) {
+        this.n = n;
         ans = 0;
-        vertical = new HashSet<>();
-        diag = new HashSet<>();
-        antidiag = new HashSet<>();
-        backtrack(0, n);
+        backtrack(0, 0, 0, 0);
         return (ans);
     }
 
-    public void backtrack(int row, int n) {
-        if (row == n) {
+    public void backtrack(int x, int cols, int diag, int antiDiag) {
+        if (x == n) {
             ans++;
             return ;
         }
-        int col = 0;
-        while (col < n) {
-            if (!vertical.contains(col) && !diag.contains(col - row) && 
-                !antidiag.contains(col + row)) {
-                vertical.add(col);
-                diag.add(col - row);
-                antidiag.add(col + row);
-                backtrack(row + 1, n);
-                vertical.remove(col);
-                diag.remove(col - row);
-                antidiag.remove(col + row);
+        int j = 0;
+        while (j < n) {
+            if ((cols & (1 << j)) == 0 && (diag & (1 << (x - j + n))) == 0 && (antiDiag & (1 << (x + j))) == 0) {
+                backtrack(x + 1, cols | (1 << j), diag | (1 << (x - j + n)), antiDiag | (1 << (x + j)));
             }
-            col++;
+            j++;
         }
     }
 }
