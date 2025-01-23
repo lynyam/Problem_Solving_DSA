@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/count-numbers-with-unique-digits/">357. Count Numbers with Unique Digits</a></h2><h3>Medium</h3><hr><p>Given an integer <code>n</code>, return the count of all numbers with unique digits, <code>x</code>, where <code>0 &lt;= x &lt; 10<sup>n</sup></code>.</p>
+<h2><a href="https://leetcode.com/problems/count-numbers-with-unique-digits">357. Count Numbers with Unique Digits</a></h2><h3>Medium</h3><hr><p>Given an integer <code>n</code>, return the count of all numbers with unique digits, <code>x</code>, where <code>0 &lt;= x &lt; 10<sup>n</sup></code>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
