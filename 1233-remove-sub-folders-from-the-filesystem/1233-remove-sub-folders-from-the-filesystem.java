@@ -1,51 +1,49 @@
-class TreeNode {
-    HashMap<String, TreeNode> children;
-    boolean isParent;
+class TrieNode {
+    HashMap<String, TrieNode> children;
     boolean endOfPath;
+    boolean isParent;
     String path;
-    public TreeNode() {
-        children = new HashMap<>();
-        path = null;
-        isParent = true;
+    public TrieNode() {
+        children = new HashMap();
     }
 }
 
 class Solution {
-    List<String> answer = new ArrayList<>();
+    List<String> answer;
     public List<String> removeSubfolders(String[] folder) {
-        TreeNode root = buildTrie(folder);
+        TrieNode root = buildTrie(folder);
+        answer = new ArrayList<>();
         helper(root);
         return (answer);
     }
 
-    public void helper(TreeNode root) {
-        if ((root.endOfPath && root.isParent) || root.endOfPath && root.children.size() != 0) {
-            answer.add(new String(root.path));
+    public void helper(TrieNode root) {
+        if (root.endOfPath || root.isParent) {
+            answer.add(root.path);
             return ;
         }
         for (String key : root.children.keySet()) {
-            TreeNode node = root.children.get(key);
+            TrieNode node = root.children.get(key);
             helper(node);
         }
     }
 
-    public TreeNode buildTrie(String[] folder) {
-        TreeNode root = new TreeNode();
+    public TrieNode buildTrie(String[] folder) {
+        TrieNode root = new TrieNode();
         for (String path : folder) {
-            TreeNode curr = root;
-            String[] names = path.split("/");
-            boolean isParent = false;
-            for (String name : names) {
+            TrieNode curr = root;
+            String[] dirNames = path.split("/");
+            for (String name : dirNames) {
                 if (!curr.children.containsKey(name)) {
-                    curr.children.put(name, new TreeNode());
-                    isParent = true;  
+                    curr.children.put(name, new TrieNode());
+                } else if (curr.children.get(name).endOfPath){
+                    curr.children.get(name).isParent = true;
                 }
                 curr = curr.children.get(name);
             }
-            curr.endOfPath = true;
-            curr.isParent = isParent;
             curr.path = path;
-        }
+            curr.endOfPath = true;
+        } 
         return (root);
     }
 }
