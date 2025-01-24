@@ -1,7 +1,6 @@
 class TrieNode {
     HashMap<String, TrieNode> children;
     boolean endOfPath;
-    boolean isParent;
     String path;
     public TrieNode() {
         children = new HashMap();
@@ -18,7 +17,7 @@ class Solution {
     }
 
     public void helper(TrieNode root) {
-        if (root.endOfPath || root.isParent) {
+        if (root.endOfPath) {
             answer.add(root.path);
             return ;
         }
@@ -37,7 +36,7 @@ class Solution {
                 if (!curr.children.containsKey(name)) {
                     curr.children.put(name, new TrieNode());
                 } else if (curr.children.get(name).endOfPath){
-                    curr.children.get(name).isParent = true;
+                    //curr.children.get(name).isParent = true;
                 }
                 curr = curr.children.get(name);
             }
