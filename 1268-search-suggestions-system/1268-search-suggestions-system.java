@@ -1,45 +1,46 @@
 class TrieNode {
-    List<String> names;
-    TrieNode[] children;
+    List<String> words;
+    Map<Character, TrieNode> children;
+
     public TrieNode() {
-        names = new ArrayList<>();
-        children = new TrieNode[26];
+        words = new ArrayList<>();
+        children = new HashMap<>();
     }
 }
+
 class Solution {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         TrieNode root = buildTrie(products);
         List<List<String>> answer = new ArrayList<>();
-
         for (char c : searchWord.toCharArray()) {
-            int index = c - 'a';
-            List<String> curr = new ArrayList<>();
-            if (root.children[index] != null) {
-                root = root.children[index];
-                Collections.sort(root.names);
-                curr = new ArrayList<>(root.names);
-                if (root.names.size() >= 3) {
-                    curr = Arrays.asList(root.names.get(0), root.names.get(1), root.names.get(2));
+            if (root.children.containsKey(c)) {
+                root = root.children.get(c);
+                Collections.sort(root.words);
+                List<String> words = root.words;
+                if (words.size() > 3) {
+                    words = Arrays.asList(root.words.get(0), root.words.get(1), root.words.get(2));
                 }
-            } else {
-                root = new TrieNode();
+                answer.add(words);
             }
-            answer.add(curr);
+            else {
+                root = new TrieNode();
+                answer.add(new ArrayList<>());
+            }
         }
         return (answer);
     }
 
     public TrieNode buildTrie(String[] products) {
         TrieNode root = new TrieNode();
-        for (String name : products) {
-            TrieNode current = root;
-            for (char c : name.toCharArray()) {
-                int index = c - 'a';
-                if (current.children[index] == null) {
-                    current.children[index] = new TrieNode();
+
+        for (String product : products) {
+            TrieNode curr = root;
+            for (char c : product.toCharArray()) {
+                if (!curr.children.containsKey(c)) {
+                    curr.children.put(c, new TrieNode());
                 }
-                current = current.children[index];
-                current.names.add(name);
+                curr = curr.children.get(c);
+                curr.words.add(product);
             }
         }
         return (root);
