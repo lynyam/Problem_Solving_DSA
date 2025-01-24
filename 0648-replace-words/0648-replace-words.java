@@ -1,39 +1,38 @@
 class TrieNode {
+    String root;
     boolean endOfWord;
-    String word;
-    Map<Character, TrieNode> children;
-
+    HashMap<Character, TrieNode> children;
     public TrieNode() {
         children = new HashMap<>();
-        word = null;
     }
 }
-
 class Solution {
     public String replaceWords(List<String> dictionary, String sentence) {
-        String[] words = sentence.split(" ");
         TrieNode root = buildTrie(dictionary);
-        StringBuilder answer = new StringBuilder();
+        String[] words = sentence.split(" ");
+        StringBuilder sb = new StringBuilder();
+
         for (String word : words) {
-            String root_word = word;
             TrieNode curr = root;
+            String prefix = word;
             for (char c : word.toCharArray()) {
                 if (curr.children.containsKey(c)) {
                     curr = curr.children.get(c);
-                    if (curr.endOfWord && root_word.length() > curr.word.length()) {
-                        root_word = curr.word;
+                    if (curr.endOfWord) {
+                        prefix = curr.root;
+                        break ;
                     }
-                }
-                else
+                } else {
                     break ;
+                }
             }
-            answer.append(root_word + " ");
+            sb.append(prefix + " ");
         }
-        answer.deleteCharAt(answer.length() - 1);
-        return (answer.toString());
+        sb.deleteCharAt(sb.length() -1);
+        return (sb.toString());
     }
 
-    public TrieNode buildTrie(List<String> dictionary) {
+    public  TrieNode buildTrie(List<String> dictionary) {
         TrieNode root = new TrieNode();
         for (String word : dictionary) {
             TrieNode curr = root;
@@ -44,7 +43,7 @@ class Solution {
                 curr = curr.children.get(c);
             }
             curr.endOfWord = true;
-            curr.word = word;
+            curr.root = word;
         }
         return (root);
     }
