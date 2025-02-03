@@ -1,54 +1,47 @@
+public class Bucket {
+	int max;
+	int min;
+	public Bucket() {
+		min = Integer.MAX_VALUE;
+		max = Integer.MIN_VALUE;
+    }
+} 
 class Solution {
-    //public int maximumGap(int[] nums) {
-    public int	maximumGap(int[] nums) {
+    public int maximumGap(int[] nums) {
 		int len = nums.length;
+        if (len <= 1)
+            return (0);
 		int max = Integer.MIN_VALUE;
-
-		if (len <= 1)				//1 8 3 19
-			return (0);
+		int min = Integer.MAX_VALUE;
+		
 		for (int num : nums) {
-			max = Math.max(max, num); //19
+			min = Math.min(min, num);
+			max = Math.max(max, num);
 		}
-		int expo = 1;
-		int[] counting;
-		int[] cumulate;
-		int[] tempSort;
-		int base = 10;
-		while (max / expo > 0) {//[1, 3, 8, 19]//0(d * (2n + 10)) => 0 (n)// 0(n) space
-            counting = new int[10];
-            tempSort = new int[len];
-			for (int num : nums) {
-				int digit = (num / expo) % base;
-				counting[digit]++; //[3,1,_ , _, _, _, _, _, _, _]
-			}
-			int i = 1;
-			while (i < base) {
-				counting[i] += counting[i - 1]; //[3, 4 , 4 , 4, 4, 4, 4, 4, 4, 4]
-                //System.out.println(counting[i]);
-				i++;
-			}
-			i = len - 1;
-			while (i >= 0) {//[2, 4 , 4 , 4, 4, 4, 4, 4, 4, 3] //1 3 8 19
-				int digit = (nums[i] / expo) % base;
-				tempSort[counting[digit] - 1] = nums[i]; //[1, 3, 8, 19]
-                //System.out.println(tempSort[counting[digit] - 1]);
-				counting[digit]--;
-                i--;
-			}
-			i = 0;
-			while (i < len) {
-				nums[i] = tempSort[i];//[1, 3, 8, 19]
-                i++;
-			}
-			expo *= 10;
+		int bucketSize = Math.max(1, (max - min) / (len - 1));
+		int nbrBucket = (max - min) / bucketSize + 1;
+		Bucket[] buckets = new Bucket[nbrBucket];
+		for (int num : nums) {
+			int indexBucket = (num - min) / bucketSize;
+            if (buckets[indexBucket] == null)
+                buckets[indexBucket] = new Bucket();
+			buckets[indexBucket].min = Math.min(num, buckets[indexBucket].min);
+            buckets[indexBucket].max = Math.max(num, buckets[indexBucket].max);
 		}
 		int i = 0;
-		int maxGap = Integer.MIN_VALUE;
-		while (i < len - 1) {
-			maxGap = Math.max(maxGap, nums[i + 1] - nums[i]);
-			i++;
+		int maxGap = 0;
+		while (i < nbrBucket) {
+			int j = i + 1;
+			while (j < nbrBucket) {
+				if (buckets[j] != null) {
+					maxGap = Math.max(maxGap, buckets[j].min - buckets[i].max);
+                    break ;
+				}
+				j++;
+			}
+			i = j;
 		}
-		return (maxGap);//11
-	}
+		return (maxGap);
+}
 
 }
