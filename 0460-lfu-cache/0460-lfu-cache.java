@@ -10,33 +10,35 @@ class LFUCache {
             frequency = new ArrayList<>();
         }
     
-    public int get(int key) {//[1]
+    public int get(int key) {
         int value  = -1;
         if (store.containsKey(key)) {
-            value = store.get(key)[0];//1
-            int freq = store.get(key)[1];//1
-            frequency.get(freq - 1).remove(key);//{{2}}
-            if (frequency.size() == freq)
-                frequency.add(new LinkedHashSet<Integer>());//{{2}->{}}
-            frequency.get(freq).add(key);//{{2}->{1}}
-            //manage minimumFreq
-            if (minimumFreq == freq && frequency.get(freq - 1).size() == 0)
-                minimumFreq = freq + 1;
-            store.put(key, new int[] {value, freq + 1});//{1:[1, 2], 2:[2, 1]}
+            int[] data = store.get(key);
+            value = data[0];
+            LinkedHashSet<Integer> set = frequency.get(data[1] - 1);
+            set.remove(key);
+            if (frequency.size() == data[1])
+                frequency.add(new LinkedHashSet<Integer>());
+            frequency.get(data[1]).add(key);
+            if (minimumFreq == data[1] && set.isEmpty())
+                minimumFreq = data[1] + 1;
+            data[1] += 1;
+            store.put(key, data);
         }
         return (value);
     }
     
-    public void put(int key, int value) {//[1,1],[2,2],[1],[3,3]
-        if (capacity <= 0)//2
+    public void put(int key, int value) {
+        if (capacity <= 0)
             return ;
         if (!store.containsKey(key)) {
             if (size == capacity) {
-                int nkey = frequency.get(minimumFreq - 1).iterator().next();
-                frequency.get(minimumFreq - 1).remove(nkey);
+                LinkedHashSet<Integer> set = frequency.get(minimumFreq - 1);
+                int nkey = set.iterator().next();
+                set.remove(nkey);
                 store.remove(nkey);
                 size--;
-                if (frequency.get(minimumFreq - 1).size() == 0)
+                if (set.isEmpty())
                     minimumFreq = Integer.MAX_VALUE;
             }
 			store.put(key, new int[]{value, 1});//{1:[1, 2], 2:[2, 1]}
