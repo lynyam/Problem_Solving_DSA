@@ -47,7 +47,7 @@ class LFUCache {
             size++;
 		} else {
                 get(key);
-                store.put(key, new int[] {value, store.get(key)[1]++});
+                store.put(key, new int[] {value, store.get(key)[1]});
         }
 	} 		
 }
