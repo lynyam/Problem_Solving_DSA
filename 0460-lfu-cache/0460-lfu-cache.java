@@ -11,21 +11,19 @@ class LFUCache {
         }
     
     public int get(int key) {
-        int value  = -1;
-        if (store.containsKey(key)) {
-            int[] data = store.get(key);
-            value = data[0];
-            LinkedHashSet<Integer> set = frequency.get(data[1] - 1);
-            set.remove(key);
-            if (frequency.size() == data[1])
-                frequency.add(new LinkedHashSet<Integer>());
-            frequency.get(data[1]).add(key);
-            if (minimumFreq == data[1] && set.isEmpty())
-                minimumFreq = data[1] + 1;
-            data[1] += 1;
-            store.put(key, data);
-        }
-        return (value);
+        int[] data = store.get(key);
+        if (data == null)
+            return (-1);
+        LinkedHashSet<Integer> set = frequency.get(data[1] - 1);
+        set.remove(key);
+        if (frequency.size() == data[1])
+            frequency.add(new LinkedHashSet<Integer>());
+        frequency.get(data[1]).add(key);
+        if (minimumFreq == data[1] && set.isEmpty())
+            minimumFreq = data[1] + 1;
+        data[1] += 1;
+        store.put(key, data);
+        return (data[0]);
     }
     
     public void put(int key, int value) {
