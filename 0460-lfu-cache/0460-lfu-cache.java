@@ -41,15 +41,16 @@ class LFUCache {
                 if (set.isEmpty())
                     minimumFreq = Integer.MAX_VALUE;
             }
-			store.put(key, new int[]{value, 1});//{1:[1, 2], 2:[2, 1]}
-			if (frequency.size() == 0) //0
-				frequency.add(new LinkedHashSet<Integer>());//{}
-			frequency.get(0).add(key);//{{2}->{1}}
-			minimumFreq = 1;//1
+			store.put(key, new int[]{value, 1});
+			if (frequency.size() == 0)
+				frequency.add(new LinkedHashSet<Integer>());
+			frequency.get(0).add(key);
+			minimumFreq = 1;
             size++;
 		} else {
                 get(key);
-                store.put(key, new int[] {value, store.get(key)[1]});
+                int[] data = store.get(key);
+                data[0] = value;
         }
 	} 		
 }
