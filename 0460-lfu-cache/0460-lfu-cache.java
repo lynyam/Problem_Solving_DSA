@@ -30,15 +30,15 @@ class LFUCache {
     public void put(int key, int value) {//[1,1],[2,2],[1],[3,3]
         if (capacity <= 0)//2
             return ;
-        if (size == capacity && !store.containsKey(key)) {//2==2
+        if (!store.containsKey(key)) {
+            if (size == capacity) {
                 int nkey = frequency.get(minimumFreq - 1).iterator().next();
                 frequency.get(minimumFreq - 1).remove(nkey);
                 store.remove(nkey);
                 size--;
                 if (frequency.get(minimumFreq - 1).size() == 0)
                     minimumFreq = Integer.MAX_VALUE;
-        }//2
-		if (!store.containsKey(key)) {
+            }
 			store.put(key, new int[]{value, 1});//{1:[1, 2], 2:[2, 1]}
 			if (frequency.size() == 0) //0
 				frequency.add(new LinkedHashSet<Integer>());//{}
@@ -47,14 +47,6 @@ class LFUCache {
             size++;
 		} else {
                 get(key);
-                /*int freq = store.get(key)[1];
-                frequency.get(freq - 1).remove(key);//{}{}{}
-                if (frequency.size() == freq)
-                    frequency.add(new LinkedHashSet<Integer>());
-                frequency.get(freq).add(key);
-                //manage minimumFreq
-                if (minimumFreq == Integer.MAX_VALUE || (minimumFreq == freq && frequency.get(freq - 1).size() == 0))
-                    minimumFreq = freq + 1;*/
                 store.put(key, new int[] {value, store.get(key)[1]++});
         }
 	} 		
