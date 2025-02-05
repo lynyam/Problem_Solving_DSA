@@ -1,6 +1,6 @@
 class LFUCache {
-        Map<Integer, int[]> store;
-        List<LinkedHashSet<Integer>> frequency;
+        Map<Integer, int[]> store;//store(k, v) k = key, v = {value, freq}
+        List<LinkedHashSet<Integer>> frequency;//frequency(i) i = freq - 1
         int capacity;
         int minimumFreq = Integer.MAX_VALUE;
         int size;
