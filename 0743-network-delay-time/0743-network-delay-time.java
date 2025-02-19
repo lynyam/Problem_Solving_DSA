@@ -35,6 +35,7 @@ class Solution {
                 int timeStamp = time + nei.time;
                 if (timeStamp < timeStamps[nei.node]) {
                     timeStamps[nei.node] = timeStamp;
+                    nei.time = timeStamp;
                     minHeap.add(nei);
                 }
             }
@@ -42,7 +43,7 @@ class Solution {
 		int max = Integer.MIN_VALUE;
         int i  = 1;
 		while (i < timeStamps.length) {
-            //System.out.println(timeStamps[i]);
+            System.out.println(timeStamps[i]);
 			max = Math.max(max, timeStamps[i]);
             i++;
 		}
