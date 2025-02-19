@@ -1,20 +1,22 @@
 class Solution {
-    public int waysToSplitArray(int[] nums) {
-        long prefix = 0;
-        int i = 0;
-        int n = nums.length;
-        long curr = 0;
-        int ans = 0;
+	int waysToSplitArray(int[] nums) {
+		int n = nums.length;
+        double prefix = nums[0];
+        double curr = 0;
+		int i = 1;
+		int answer = 0;
 
-        while (i < n) {
-            prefix += nums[i++];
-        }
-        i = 0;
-        while (i < n - 1) {
+		while (i < n) {
+			prefix += (double)nums[i];//  3 5 8 10
+			i++;
+		}
+		i = 0;
+		while (i < n - 1) {
             curr += nums[i];
-            ans += curr >= prefix - curr ? 1 : 0;
-            i++;
-        }
-        return (ans); 
+			if (curr >= prefix - curr)//5 ==5
+				answer++;
+			i++;
+		}
+		return (answer);
     }
 }
