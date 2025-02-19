@@ -33,16 +33,16 @@ class Solution {
         distance[src][0] = 0;
         PriorityQueue<Node> minHeap = new PriorityQueue<>(Comparator.comparingInt((Node p) -> p.price).thenComparingInt(p -> p.stop));
         int i = 0;
-        minHeap.add(new Node(src, 0, 0));
+        minHeap.add(new Node(src, 0, -1));
         while (!minHeap.isEmpty()) {
             Node curr = minHeap.poll();
             for (Node nei : graph.get(curr.vertex)) {
                 int vertex = nei.vertex;
                 int price = nei.price + curr.price;
-                int stop = curr.stop; 
+                int stop = curr.stop + 1; 
                 if (stop <= k && price  < distance[vertex][stop]) {
                     distance[vertex][stop] = price;
-                    minHeap.add(new Node(vertex, price, stop + 1));
+                    minHeap.add(new Node(vertex, price, stop));
                 }
             }
 	    }
