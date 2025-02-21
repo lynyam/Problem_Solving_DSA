@@ -1,21 +1,13 @@
-class Solution {
-    public boolean asteroidsDestroyed(int mass, int[] asteroids) {
-        Arrays.sort(asteroids);
-        int i = 0;
-        int n = asteroids.length;
-        long masses = mass;
 
-        while (i < n) {
-            if (masses < asteroids[i])
-                return (false);
-            masses += asteroids[i];
-            i++;
-        }
-        return (true);
-    }
+class Solution {//5    1 8 2 1
+	public boolean asteroidsDestroyed(int mass, int[] asteroids) {//nlog(n)
+				//sort asteroids
+				Arrays.sort(asteroids);//1 1 2 8 nlogn
+				for (int ast : asteroids) {//0(n)
+			  		if (ast > mass)
+						return (false);
+					mass += ast;//6 7 9
+				}
+				return (true);//true
+			}
 }
-/**
-    - mass planet
-    - asteroid[n] mass of asteroid
-    - if mass >= mass asteroid mass += mass asteroid
- */
