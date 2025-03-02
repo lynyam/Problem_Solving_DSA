@@ -12,7 +12,8 @@ class Solution {
         }
         int MOD = 1000000007;
         while (!heap.isEmpty()) {// 0(nlogn)
-            result = (result * heap.remove()) % MOD;
+            result *= (heap.remove() % MOD);
+            result %= MOD;
         }
         return (int)(result);
     }
