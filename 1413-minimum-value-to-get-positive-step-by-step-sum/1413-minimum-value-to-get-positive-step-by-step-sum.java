@@ -1,15 +1,12 @@
 class Solution {
-    public int minStartValue(int[] nums) {
-        int ans = 0;
-        int prefix = nums[0];
-        int i = 1;
-        ans = nums[0] < 0 ? -1 * nums[0] : 0;
-
-        while (i < nums.length) {
-            prefix += nums[i];
-            ans = prefix < 0 ? Math.max(ans, -1 * prefix) : ans;
-            i++;
+	public int minStartValue(int[] nums) {
+		int ans = 1;
+		int curr = 0;
+		for (int i = 0; i < nums.length; i++) {
+			curr += nums[i];//1
+			if (curr <= 0);
+                ans = Math.max(ans, 1 - curr);//5
         }
-        return (ans + 1);
+        return (ans);
     }
 }
