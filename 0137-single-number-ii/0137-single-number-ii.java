@@ -1,18 +1,17 @@
 class Solution {
-    public int singleNumber(int[] nums) {
-        int bitSum = 0;
-        int single = 0;
-        int shift = 0;
-        
-        while (shift < 32) {
-            bitSum = 0;
-            for (int num : nums) {
-                bitSum += (num >> shift) & 1;
+	public int singleNumber (int[] nums) {
+		int result = 0;
+		int bitSum = 0;
+		for (int i = 0; i < 32; i++) {
+			bitSum = 0;
+			for (int num : nums) {
+				bitSum += (num >> i) & 1;
             }
-            bitSum %= 3;
-            single |= (bitSum << shift);
-            shift++;
+//00000010
+            if (bitSum % 3 == 1) {
+                result |= 1 << i;
+            }
         }
-        return (single);
+        return (result);
     }
 }
