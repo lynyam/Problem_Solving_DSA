@@ -1,5 +1,5 @@
 class Solution {
-    public boolean canAttendMeetings(int[][] intervals) {
+    /*public boolean canAttendMeetings(int[][] intervals) {
         int n = intervals.length;
         for (int i = 0; i < n; i++) {
             int startI = intervals[i][0];
@@ -13,6 +13,16 @@ class Solution {
         }
         return (true);
         
+    }*/
+
+    public boolean canAttendMeetings(int[][] intervals) {
+        int n = intervals.length;
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        for (int i = 1; i < n; i++) {
+            if (intervals[i][0] < intervals[i - 1][1])
+                return (false);
+        }
+        return (true);
     }
 }
 
