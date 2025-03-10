@@ -6,15 +6,10 @@ class Solution {
 		if (n == 1) return (1);
 		result = 0;
 		this.n = n;
-		for (int i = 0; i < n; i++) {
-			Set<Integer> vertical = new HashSet<>();
-			Set<Integer> diag = new HashSet<>();
-			Set<Integer> antiDiag = new HashSet<>();
-			vertical.add(i);
-			diag.add(i);
-			antiDiag.add(i);
-			backtrack(1, vertical, diag, antiDiag);
-        }
+		Set<Integer> vertical = new HashSet<>();
+		Set<Integer> diag = new HashSet<>();
+		Set<Integer> antiDiag = new HashSet<>();
+		backtrack(0, vertical, diag, antiDiag);
         return (result);
     }
 
