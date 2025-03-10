@@ -1,24 +1,42 @@
 class Solution {
-    int n;
-    int ans;
-    public int totalNQueens(int n) {
-        this.n = n;
-        ans = 0;
-        backtrack(0, 0, 0, 0);
-        return (ans);
+	int n;
+	int result;
+	public int totalNQueens(int n) {
+		if (n <= 0) return (0);
+		if (n == 1) return (1);
+		result = 0;
+		this.n = n;
+		for (int i = 0; i < n; i++) {
+			Set<Integer> vertical = new HashSet<>();
+			Set<Integer> diag = new HashSet<>();
+			Set<Integer> antiDiag = new HashSet<>();
+			vertical.add(i);
+			diag.add(i);
+			antiDiag.add(i);
+			backtrack(1, vertical, diag, antiDiag);
+        }
+        return (result);
     }
 
-    public void backtrack(int x, int cols, int diag, int antiDiag) {
-        if (x == n) {
-            ans++;
-            return ;
+
+    public void backtrack(int level, Set<Integer> vertical, Set<Integer> diag, Set<Integer> antiDiag) {
+        if (level == n) {
+            result++;
+            return;
         }
-        int j = 0;
-        while (j < n) {
-            if ((cols & (1 << j)) == 0 && (diag & (1 << (x - j + n))) == 0 && (antiDiag & (1 << (x + j))) == 0) {
-                backtrack(x + 1, cols | (1 << j), diag | (1 << (x - j + n)), antiDiag | (1 << (x + j)));
+        for (int i = 0; i < n; i++) {
+            int diff = i - level;
+            int sum = i + level;
+            if (!vertical.contains(i) && !diag.contains(diff) && 
+            !antiDiag.contains(sum)){
+                vertical.add(i);
+                diag.add(diff);
+                antiDiag.add(sum);
+                backtrack(level + 1, vertical, diag, antiDiag);
+                vertical.remove(i);
+                diag.remove(diff);
+                antiDiag.remove(sum);
             }
-            j++;
         }
     }
 }
