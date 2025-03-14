@@ -1,25 +1,21 @@
 class Solution {
-    List<List<Integer>> answer;
-    int n;
-    int k;
     public List<List<Integer>> combine(int n, int k) {
-        this.n = n;
-        this.k = k;
-        answer = new ArrayList<>();
-        backtrack(new ArrayList<Integer>(), 1);
-        return (answer);
+		List<List<Integer>> result  = new ArrayList<>();
+		if (k == 0) return (result);
+        backtrack(new ArrayList<Integer>(), 1, result, n, k);
+        return (result); 
     }
 
-    public void backtrack(List<Integer> curr, int i) {
+
+    public void backtrack(List<Integer> curr, int index, List<List<Integer>> result, int n, int k) {
         if (curr.size() == k) {
-            answer.add(new ArrayList<Integer>(curr));
+            result.add(new ArrayList<Integer>(curr));
             return ;
         }
-        while (i <= n) {
+        for (int i = index; i <= n; i++) {
             curr.add(i);
-            backtrack(curr, i + 1);
+            backtrack(curr, i + 1, result, n, k);
             curr.remove(curr.size() - 1);
-            i++;
         }
-    } 
+    }
 }
