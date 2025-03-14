@@ -8,34 +8,33 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
 class Solution {
     public int pairSum(ListNode head) {
-        ListNode rightMiddle = head;
-        ListNode fast = head;
-        ListNode curr = head;
-        int ans = 0;
-        while (fast != null && fast.next != null) {
-            rightMiddle = rightMiddle.next;
-            fast = fast.next.next;
-        }
-        rightMiddle = reverseHalfList(rightMiddle);
-        while (rightMiddle != null) {
-            ans = Math.max(ans, curr.val + rightMiddle.val);
-            curr = curr.next;
-            rightMiddle = rightMiddle.next;
-        }
-        return (ans);
-    }
+        if (head == null) return (0);
+        ListNode slow = head;//0
+        ListNode fast = head;//0
 
-    ListNode reverseHalfList(ListNode middle) {
-        ListNode prev = null;
-        ListNode nextNode = null;
-        while (middle != null) {
-            nextNode = middle.next;
-            middle.next = prev;
-            prev = middle;
-            middle = nextNode;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;//null
+            slow = slow.next;//2
         }
-        return prev;
+        ListNode prev = null;
+        ListNode curr = slow;
+        while (curr != null) {//3
+            ListNode next = curr.next;//null
+            curr.next = prev;//3->2->null
+            prev = curr;//3
+            curr = next;//null
+        }
+        curr = head;//0
+        int result = Integer.MIN_VALUE;
+        while (prev != null) {//3
+            result = Math.max(result, curr.val + prev.val);//3
+            prev = prev.next;//null
+            curr = curr.next;//
+        }
+        return (result);
     }
 }
