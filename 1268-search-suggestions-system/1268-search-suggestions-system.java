@@ -1,48 +1,48 @@
-class TrieNode {
-    List<String> words;
-    Map<Character, TrieNode> children;
-
-    public TrieNode() {
-        words = new ArrayList<>();
-        children = new HashMap<>();
+class TreeNode {
+	List<Integer> products;
+	Map<Character, TreeNode> children;
+	public TreeNode() {
+		products = new ArrayList<>();
+		children = new HashMap<>();
     }
 }
 
 class Solution {
-    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
-        TrieNode root = buildTrie(products);
-        List<List<String>> answer = new ArrayList<>();
-        for (char c : searchWord.toCharArray()) {
-            if (root.children.containsKey(c)) {
-                root = root.children.get(c);
-                Collections.sort(root.words);
-                List<String> words = root.words;
-                if (words.size() > 3) {
-                    words = Arrays.asList(root.words.get(0), root.words.get(1), root.words.get(2));
-                }
-                answer.add(words);
+    public List<List<String>> suggestedProducts(String[] product, String searchWord) {
+		TreeNode root = buildTree(product);
+		TreeNode curr = root;
+		List<List<String>> result = new ArrayList<>();//0(SxK) SPACE
+		for (char c : searchWord.toCharArray()) {//0(SxP) + 0(PK)=>0(P(S + K))
+            if (!curr.children.containsKey(c)) {
+                result.add(new ArrayList<>());
+                curr = new TreeNode();
+                continue ;
             }
-            else {
-                root = new TrieNode();
-                answer.add(new ArrayList<>());
+            curr = curr.children.get(c);
+            List<Integer> currPrefixWord = curr.products;
+            Collections.sort(currPrefixWord, (a, b) -> product[a].compareTo(product[b]));
+            List<String> temp = new ArrayList<>();
+            for (int i = 0; i < 3 && i < currPrefixWord.size(); i++) {
+                temp.add(product[currPrefixWord.get(i)]);
             }
+            result.add(temp);
         }
-        return (answer);
-    }
+        return  (result);
+    } 
 
-    public TrieNode buildTrie(String[] products) {
-        TrieNode root = new TrieNode();
-
-        for (String product : products) {
-            TrieNode curr = root;
-            for (char c : product.toCharArray()) {
-                if (!curr.children.containsKey(c)) {
-                    curr.children.put(c, new TrieNode());
-                }
-                curr = curr.children.get(c);
-                curr.words.add(product);
+    public TreeNode buildTree(String[] product) {
+        TreeNode root = new TreeNode();
+        int index = 0;
+        for (String word : product) {
+            TreeNode curr = root;
+            for (char c : word.toCharArray()) {
+                Map<Character, TreeNode> children = curr.children;
+                children.putIfAbsent(c, new TreeNode());
+                curr = children.get(c);
+                curr.products.add(index);
             }
+            index++;
         }
-        return (root);
+        return root;
     }
 }
