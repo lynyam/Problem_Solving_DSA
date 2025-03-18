@@ -13,6 +13,7 @@ class Solution {
 		TreeNode curr = root;
 		List<List<String>> result = new ArrayList<>();//0(SxK) SPACE
 		for (char c : searchWord.toCharArray()) {//0(SxP) + 0(PK)=>0(P(S + K))
+            PriorityQueue<Integer> commonPrefixWord = new PriorityQueue<>((a, b) -> (-1 * product[a].compareTo(product[b])));
             if (!curr.children.containsKey(c)) {
                 result.add(new ArrayList<>());
                 curr = new TreeNode();
@@ -20,11 +21,17 @@ class Solution {
             }
             curr = curr.children.get(c);
             List<Integer> currPrefixWord = curr.products;
-            Collections.sort(currPrefixWord, (a, b) -> product[a].compareTo(product[b]));
-            List<String> temp = new ArrayList<>();
-            for (int i = 0; i < 3 && i < currPrefixWord.size(); i++) {
-                temp.add(product[currPrefixWord.get(i)]);
+            for (int index : currPrefixWord) {//0(P)
+                commonPrefixWord.add(index);
+                if (commonPrefixWord.size() > 3) {
+                    commonPrefixWord.remove();
+                }
             }
+            List<String> temp = new ArrayList<>();
+            while (!commonPrefixWord.isEmpty()) {
+                temp.add(product[commonPrefixWord.poll()]);
+            }
+            Collections.sort(temp);
             result.add(temp);
         }
         return  (result);
