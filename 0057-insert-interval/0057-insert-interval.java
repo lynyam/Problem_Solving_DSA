@@ -61,10 +61,7 @@ class Solution {
         }
         
         while (i < n && intervals[i][0] <= result.get(result.size() - 1)[1]) {
-             System.out.println(result.get(result.size() - 1)[1]);
-             System.out.println(intervals[i][1]);
             result.get(result.size() - 1)[1] = Math.max(result.get(result.size() - 1)[1], intervals[i][1]);
-           
             i++;
         }
         while (i < n) {
