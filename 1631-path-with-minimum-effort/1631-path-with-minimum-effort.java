@@ -37,7 +37,7 @@ class Solution {
                 result |= hasPassedDfs(neiRow, neiCol, mid, m, n, heights, visited); 
             }
         }
-        //visited[row][col] = false;
+        visited[row][col] = false;
         return (result);
     }
 
