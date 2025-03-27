@@ -31,7 +31,7 @@ class Solution {
         while (!minHeap.isEmpty()) {
             int[] cell = minHeap.poll();
             if (cell[0] == m - 1 && cell[1] == n - 1) return (cell[2]);
-            //if (efforts[cell[0]][cell[1]] < cell[2]) continue;
+            if (efforts[cell[0]][cell[1]] < cell[2]) continue;
             for (int[] child : childrens) {
                 int row = cell[0] + child[0];
                 int col = cell[1] + child[1];
