@@ -1,57 +1,37 @@
 class Solution {
     public int minSpeedOnTime(int[] dist, double hour) {
-        int left = 0;
-        int right = (int)Math.pow(10, 7);
-
-        if (dist.length > Math.ceil(hour)) return (-1);
-
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (check(mid, dist, hour)) {
-                right = mid - 1;
+            if ((double)dist.length > Math.ceil(hour)) return -1;
+            int speed = -1;
+            int left = 1;
+            int right = 1;
+            for (int d: dist) {
+                right = Math.max(right, d);
             }
-            else 
-                left = mid + 1;
-        }
-        return (left);
+            if (right <= 1) return (1);
+            if ((double)dist.length == Math.ceil(hour)) {
+                right = (int)Math.ceil((right /  (hour - hour / 1)));
+            }
+            System.out.println(right);
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                if (isPossible(dist, mid, hour)) {
+                    speed = mid;
+                    right = mid - 1;
+                }
+                else {
+                    left = mid + 1;
+                }
+            }
+            return (speed);
     }
 
-    public boolean check(int mid, int[] dist, double hour) {
-        double hh = 0.0;
+
+    public boolean isPossible(int[] dist, int mid, double hour) {
+        double result = 0;
         for (int d : dist) {
-            hh = Math.ceil(hh);
-            hh += d / (double)mid;
+            result = Math.ceil(result);
+            result += (double)d / mid;
         }
-        return (hh <= hour);
+        return (result <= hour);
     }
-
-
 }
-/**
-    - hour  double
-    - n train
-    - dist[] dist[i] km of ith train
-    - minimum for 1 train 1h
-    - ret minimum positive int speed  to reach office | -1
-    - ans max 10^7
-    - v = d /t => t = d / v
-    - l = 1
-    - right = 10^7
-    - if (dist.length > Ceil(hour))
-        return (-1)
-    - while (left <= right) {
-        if (check(mid))
-            right = mid - 1;
-        else 
-            left = mid + 1;
-    return (left)
-    }
-
-    check(mid, dist) {
-         hh = 0
-         for (d:dist)
-            hh = (int)hh % 1 > 0 ? (hh / 1) + 1 : hh 
-            hh += d / (double)mid
-        return (hh <= h)
-    }
- */
