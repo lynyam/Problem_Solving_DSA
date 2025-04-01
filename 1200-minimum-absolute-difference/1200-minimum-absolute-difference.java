@@ -1,52 +1,53 @@
 class Solution {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
-        if (arr == null || arr.length <= 1) return (new ArrayList<>());
-        /*int i = 0;
-        int n = arr.length;
-        int min = Integer.MAX_VALUE;
-        Map<Integer, List<List<Integer>>> pairs = new HashMap<>();
-            while (i < n) {
-                int j = i + 1;
-                while (j < n) {
-                    int diff = Math.abs(arr[i] - arr[j]);
-                    min = Math.min(min, diff);
-                    pairs.putIfAbsent(diff, new ArrayList<>());
-                    List<Integer> temp = new ArrayList<>();
-                    int left = arr[i] < arr[j] ? arr[i] : arr[j];
-                    int right = arr[i] > arr[j] ? arr[i] : arr[j];
-                    temp.add(left);
-                    temp.add(right);
-                    pairs.get(diff).add(temp);
-                    j++;
-                }
-                i++;
-            }
-        Collections.sort(pairs.get(min), (a, b) -> a.get(0) - b.get(0));
-        return (pairs.get(min));*/
 
-        Arrays.sort(arr);
-        List<List<Integer>> stack = new ArrayList<>();
+        // case arr empty or arr lenght is 1 retrn empty list
+        //sort array with countingSort 
+        //start with index 1, idea is to calculate difference with i and i -1 and compare with min.
+            // if diff > min continue to i++
+            //if diff < min clear result min update
+            // add list (arr[i -1], arr[i]) it cover equal case
+
+        if (arr == null || arr.length < 2) return (new ArrayList<>());
+        int minDiff = Integer.MAX_VALUE;
         int n = arr.length;
-        for (int i = 1; i < n; i++) {
-            int currDifference = Math.abs(arr[i] - arr[i - 1]);
-            boolean legible = true;
-            while (!stack.isEmpty()) {
-                List<Integer> last = stack.get(stack.size() - 1);
-                int lastDifference = Math.abs(last.get(0) - last.get(1));
-                if (currDifference < lastDifference)
-                    stack.remove(stack.size() - 1);
-                else if (currDifference >= lastDifference) {
-                    if (currDifference > lastDifference) legible = false;
-                    break;
-                }
+        
+        int[] sortArr = countingSort(arr);
+        
+        
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 1; i < sortArr.length; i++) {
+            int diff = Math.abs(sortArr[i - 1] - sortArr[i]);
+            if (diff > minDiff) {
+                continue;
             }
-            if (legible) {
-                List<Integer> temp = new ArrayList<Integer>();
-                temp.add(arr[i - 1]);
-                temp.add(arr[i]);
-                stack.add(temp);
+            if (diff < minDiff) {
+                result = new ArrayList<>();
+                minDiff = diff;
             }
+            result.add(Arrays.asList(sortArr[i - 1], sortArr[i]));
         }
-        return (stack);
+        return (result);
+    }
+
+    public int[] countingSort(int[] arr) {
+        int max = arr[0];
+        int min = arr[0];
+        for (int num : arr) {
+            max = Math.max(max, num);
+            min = Math.min(min, num);
+        }
+        boolean[] counting = new boolean[max - min + 1];
+        int shift = -min; // enfaite c'est 0 - shift pour avoir le decalage qu'il faut
+        for (int num : arr) {
+            counting[num + shift] = true;
+        }
+        int[] result = new int[arr.length];
+        int k = 0;
+        for (int i = 0; i < (max - min + 1); i++) {
+            if (counting[i])
+                result[k++] = i - shift; 
+        }
+        return result;
     }
 }
