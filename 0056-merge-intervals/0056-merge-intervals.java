@@ -1,40 +1,17 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
         int n = intervals.length;
+        Arrays.sort(intervals, (a,b) -> a[0] - b[0]);
         List<int[]> result = new ArrayList<>();
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
-        int min = intervals[0][0];
-        int max = intervals[0][1];
-        for (int i = 1; i < n; i++) {
-            int start = intervals[i][0];
-            int end = intervals[i][1];
-            if (start <= max) {
-                max = Math.max(max, end);
+
+        for (int[] interval : intervals) {
+            if (result.isEmpty() || interval[0] > result.getLast()[1]) {
+                result.add(interval);
             } else {
-                result.add(new int[]{min, max});
-                min = start;
-                max = end;
+                int end = Math.max(interval[1], result.getLast()[1]);
+                result.getLast()[1] = end;
             }
         }
-        result.add(new int[]{min, max});
-        int[][] arr = new int[result.size()][];
-        int k = 0;
-        for (int[] interval : result) {
-            arr[k] = interval;
-            k++;
-        }
-        return (arr);
+        return (result.toArray(new int[result.size()][]));
     }
 }
-/**
-    [1 3] [2 6]
-    [1 3] 
-   [0 2]
-
-   
-   [0 2] [3 6] 
-   [1 6] [0 2]
-   [4 5] [2 3]
-        Input: intervals = [[1,3],[2,6],[8,10],[15,18]] => 
-        Output: [[1,6],[8,10],[15,18]]
- */
