@@ -1,20 +1,19 @@
 class Solution {
-    int[] dp;
-    int[] nums;
     public int rob(int[] nums) {
-        int length = nums.length;
-        dp = new int[length];
-        this.nums = nums;
-        Arrays.fill(dp, -1);
-        return (helper(0));
+//create an array to store result for each step
+        int n = nums.length;
+        int[] memo = new int[n];
+        Arrays.fill(memo, -1);
+        return (helper(n - 1, nums, memo));
     }
 
-    public  int helper(int house) {
-        if (house >= nums.length)
-            return (0);
-        if (dp[house] != -1)
-            return (dp[house]);
-        dp[house] = Math.max(nums[house] + helper(house + 2), helper(house + 1));
-        return (dp[house]);
+    public int helper(int index, int[] nums, int[] memo) {
+        if (index < 0) return (0);
+        if (index == 0) return (nums[0]);
+        if (memo[index] != -1) return (memo[index]);
+        
+        memo[index] = Math.max(nums[index] + helper(index - 2, nums, memo), helper(index - 1, nums, memo));
+        return (memo[index]);
     }
+
 }
