@@ -1,59 +1,43 @@
 class Solution {
-    int[][] directions = new int[][]{
-        {-1, 0}, {1, 0},
-        {0, -1}, {0, 1}
-    };
-    int m;
-    int n;
-    public boolean isValid(int x, int y) {
-        return (x >= 0 && x < m && y >= 0 && y < n);
-    }
-
+    int[][] directions = new int[][] {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     public boolean exist(char[][] board, String word) {
-        m = board.length;
-        n = board[0].length;
-        int i = 0;
+        int m = board.length;
+        int n = board[0].length;
+        int L = word.length();
         boolean[][] seen = new boolean[m][n];
-        while (i < m) {
-            int j = 0;
-            while (j < n) {
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (board[i][j] == word.charAt(0)) {
                     seen[i][j] = true;
-                    if (backtrack(i, j, 1, board, seen, word))
-                        return (true);
+                    if (backtracking(i, j, 1, seen, word, board)) return (true);
                     seen[i][j] = false;
                 }
-                j++;
             }
-            i++;
         }
         return (false);
     }
 
-    public boolean backtrack(int x, int y, int start, char[][] board, boolean[][] seen, String word) {
-        if (start == word.length())
-            return (true);
-        boolean ans = false;
-        for (int[] dir : directions) {
-            int row = x + dir[0];
-            int col = y + dir[1];
-            if (isValid(row, col) && !seen[row][col] && board[row][col] == word.charAt(start)) {
-                seen[row][col] = true;
-                ans |= backtrack(row, col, start + 1, board, seen, word);
-                seen[row][col] = false;
+    public boolean backtracking(int i, int j, int index, boolean[][] seen, String word, char[][] board) {
+        //base case
+        if (index == word.length()) return (true);
+
+        // call each neighbor
+        for (int[] neighbor : directions) {
+            int x = neighbor[0] + i;
+            int y = neighbor[1] + j;
+            if (isValid(x, y, board.length, board[0].length) && !seen[x][y]) {
+                if (board[x][y] == word.charAt(index)) {
+                    seen[x][y] = true;
+                    if (backtracking(x, y, index + 1, seen, word, board)) return (true);
+                    seen[x][y] = false;
+                }
             }
         }
-        return (ans);
+        return (false);
+    }
+
+    public boolean isValid(int x, int y, int m, int n) {
+        return (x >= 0 && x < m && y >= 0 && y < n);
     }
 }
-/**
-    - mxn of char board[][] ans string word
-    - ret true id word exists in the  grid
-    - construct word with seq adj cells
-    - use letter once
-    basecase i = word.length
-                return (true)
-    for (dir : directions) 
-        if (!isValid(x, y) || set.contains(x#y))
-            continue ;
- */
