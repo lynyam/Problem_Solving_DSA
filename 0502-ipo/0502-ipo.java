@@ -1,36 +1,27 @@
 class Solution {
     public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
-        int i = 0;
-        int n = capital.length;
-        long finalCap = w;
-        PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
-        int[][] projects = new int[n][2];
+        //create new dsa to link profit-capital
+        //sort based on capital
+        // use maxHeap to have the maximum
 
-        while (i < n) {
-            projects[i] = new int[]{profits[i], capital[i]};
-            i++;
+        int n = profits.length;
+        int[][] projects = new int[n][2];
+        for (int i = 0; i < n; i++) {
+            projects[i] = new int[] {capital[i], profits[i]};
         }
-        Arrays.sort(projects, (a, b) -> (a[1] - b[1]));
-        i = 0;
+        Arrays.sort(projects, (a, b) -> Integer.compare(a[0], b[0]));
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
+        int i = 0;
         while (k > 0) {
-            while (i < n) {
-                if (finalCap < projects[i][1]) {
-                    break ;
-                }
-                heap.add(projects[i][0]);
+            while (i < n && projects[i][0] <= w) {
+                maxHeap.add(projects[i][1]);
                 i++;
             }
-            if (heap.isEmpty())
-                return ((int)finalCap);
-            finalCap += heap.remove();
+            if (maxHeap.isEmpty()) return (w);
+            w += maxHeap.poll();
             k--;
         }
-        return ((int)finalCap);
+        return (w);
+
     }
 }
-/**
-    - finish <= k projet
-    - maximise total capital after k project
-    - capital[i]->projects[i]
-    - w capital
- */
