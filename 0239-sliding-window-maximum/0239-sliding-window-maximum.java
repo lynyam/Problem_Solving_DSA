@@ -1,30 +1,32 @@
 class Solution {
-    public int[] maxSlidingWindow(int[] nums, int k) {
-        int i = 0;
-        int j = 0;
+    int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
-        int[] answer = new int[n - k + 1];
-        Deque<Integer> queue = new LinkedList<>();
+        Deque<Integer> deque = new LinkedList<>();
+        if (k <= 0) return new int[0];
+        int i = 0;
 
-        while (i < n) {
-            while (!queue.isEmpty() && nums[queue.peekLast()] < nums[i]) {
-                queue.removeLast();
+
+        for (i = 0; i < k; i++) {
+            while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i]) {//3?-1
+                deque.removeLast();
             }
-            queue.addLast(i);
-            if (i >= k - 1) {
-                answer[i - k + 1] = nums[queue.peekFirst()];
-                if (queue.peekFirst() == j)
-                    queue.removeFirst();
-                j++;
+            deque.addLast(i);//1(3), 2(-1)
+        }
+        int[] result = new int[nums.length - k + 1];
+        result[0] = nums[deque.peekFirst()];//3
+        int l = 1;
+        while (i < n) {//7(7)
+            int num = nums[i];//6
+            if (!deque.isEmpty() && deque.peekFirst() == i - k) {
+                deque.removeFirst();
             }
+            while (!deque.isEmpty() && nums[deque.peekLast()] <= num) {
+                        deque.removeLast();
+            }
+            deque.addLast(i);// 7(7)
+            result[l++] = nums[deque.peekFirst()]; //3 3 5 5 6 7
             i++;
         }
-        return (answer);
-    }
-    /*
-        3 2 -1 1 0
-        [0 1 2] i = 2 j = 0 -> max = n(0) = 3
-        pop j = 0  [1 2] -> [1 3] -> max = n(1) = 2
-        pop j = 1 [3] -> [3, 4]-> max = n(3) = 1
-    */
+        return (result);
+    }   
 }
