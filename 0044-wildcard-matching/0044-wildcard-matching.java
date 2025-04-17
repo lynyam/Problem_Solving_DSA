@@ -1,33 +1,40 @@
 class Solution {
     public boolean isMatch(String s, String p) {
-        int [][] memo = new int[s.length() + 1][p.length() + 1];
-        return (helper(0, 0, s, p, memo));
-    }
-
-
-    public boolean helper(int i, int j, String s, String p, int[][] memo) {
-        int n = s.length();
-        int m = p.length();
-        if (i >= n && j >= m) return (true);
-        if (j >= m)
-            return (false);
-        if (memo[i][j] != 0) return (memo[i][j] == 1);
-
-        boolean match = false;
-
-        if (p.charAt(j) == '*') {
-            match = ((i < n && (helper(i+1, j, s, p, memo) || helper(i + 1,  j+1, s, p, memo)))
-                 || helper(i, j+1, s, p, memo));
+        // optimisation du motif : retirer les '**'
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < p.length(); i++) {
+            if (p.charAt(i) == '*' && i > 0 && p.charAt(i - 1) == '*') continue;
+            sb.append(p.charAt(i));
         }
-        else {
-            if (i < n && (p.charAt(j) == '?' || p.charAt(j) == s.charAt(i))) {
-                match = helper(i+1, j+1, s, p, memo);
+        p = sb.toString();
+
+        int m = s.length();
+        int n = p.length();
+
+        // dp[i][j] = est-ce que s[0..i-1] match p[0..j-1]
+        boolean[][] dp = new boolean[m + 1][n + 1];
+        dp[0][0] = true;
+
+        // Initialiser les cas où p commence par *
+        for (int j = 1; j <= n; j++) {
+            if (p.charAt(j - 1) == '*')
+                dp[0][j] = dp[0][j - 1];
+        }
+
+        // Remplir le tableau
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                char pc = p.charAt(j - 1);
+                char sc = s.charAt(i - 1);
+
+                if (pc == '*') {
+                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
+                } else if (pc == '?' || pc == sc) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                }
             }
-            else match = false;
         }
-        
-        memo[i][j] = match == true ? 1 : 2;
-        return (match);
-    }
 
+        return dp[m][n];
+    }
 }
