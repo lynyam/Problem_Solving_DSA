@@ -1,79 +1,39 @@
 class Solution {
     public boolean isMatch(String s, String p) {
-        //clean input p ** => *
-        if ((p == null || p.isEmpty()) && (s == null || s.isEmpty())) return (true);
-        StringBuilder sb = new StringBuilder();
-        int n = p.length();
-        for (int i = 0; i < n; i++) {
-            if (p.charAt(i) == '*' && i >= 1 && p.charAt(i - 1) == '*') continue;
-            sb.append(p.charAt(i));
+    int i = 0, j = 0;
+    int starIdx = -1;
+    int match = 0;
+
+    while (i < s.length()) {
+        // Si les caractères correspondent ou que c’est '?'
+        if (j < p.length() && (p.charAt(j) == '?' || s.charAt(i) == p.charAt(j))) {
+            i++;
+            j++;
         }
-        p = sb.toString();
-        //System.out.println(p);
-
-        List<Map<Character, Set<Integer>>> transitionTable = buildTransitionTable(p);
-        return (simulate(s, transitionTable, p.length()));
-    }
-
-    public boolean simulate(String s, List<Map<Character, Set<Integer>>> transitionTable, int finalState) {
-        Set<Integer> currStates = new HashSet<>();
-        currStates.add(0);
-        addEpsilonState(currStates, transitionTable);
-        for (char c : s.toCharArray()) {
-            Set<Integer> nextStates = new HashSet<>();
-            for (Integer state : currStates) {
-                if (transitionTable.get(state).containsKey(c)) {
-                    nextStates.addAll(transitionTable.get(state).get(c));
-                }
-            }
-            currStates = nextStates;
-            addEpsilonState(currStates, transitionTable);
+        // Si on trouve un '*', on enregistre sa position
+        else if (j < p.length() && p.charAt(j) == '*') {
+            starIdx = j;
+            match = i;
+            j++; // essayer de matcher à partir du prochain caractère dans p
         }
-        return (currStates.contains(finalState));
-    }
-
-    public void  addEpsilonState(Set<Integer> currStates, List<Map<Character, Set<Integer>>> transitionTable) {
-        Queue<Integer> queue = new LinkedList<>(currStates);
-        while (!queue.isEmpty()) {
-            int state = queue.poll();
-            if (transitionTable.get(state).containsKey('\0')) {
-                for (int emptyState : transitionTable.get(state).get('\0')) {
-                    if (!currStates.contains(emptyState)) {
-                        queue.add(emptyState);
-                        currStates.add(emptyState);
-                    }
-                }
-            }
+        // Si le précédent caractère était '*', on backtrack
+        else if (starIdx != -1) {
+            j = starIdx + 1;
+            match++;
+            i = match;
+        }
+        // Aucun match
+        else {
+            return false;
         }
     }
 
-    List<Map<Character, Set<Integer>>> buildTransitionTable(String pattern) {
-        int n = pattern.length();
-        List<Map<Character, Set<Integer>>> delta = new ArrayList<>();
-        for (int i = 0; i <= n; i++) {
-            delta.add(new HashMap<>());
-        }
-        for (int i = 0; i < n; i++) {
-            char c = pattern.charAt(i);
-            if (c == '?') {
-                for (char ch = 'a'; ch <= 'z'; ch++) {
-                    delta.get(i).putIfAbsent(ch, new HashSet<Integer>());
-                    delta.get(i).get(ch).add(i + 1);
-                }
-            }
-            else if (c == '*') {
-                for (char ch = 'a'; ch <= 'z'; ch++) {
-                    delta.get(i).putIfAbsent(ch, new HashSet<Integer>());
-                    delta.get(i).get(ch).add(i + 1);
-                    delta.get(i).get(ch).add(i);
-                }
-                delta.get(i).putIfAbsent('\0', new HashSet<Integer>());
-                delta.get(i).get('\0').add(i + 1);
-            } else {
-                delta.get(i).putIfAbsent(c, new HashSet<Integer>());
-                delta.get(i).get(c).add(i + 1);
-            }
-        }
-        return (delta);
+    // Vérifie que le reste de `p` ne contient que des '*'
+    while (j < p.length() && p.charAt(j) == '*') {
+        j++;
     }
+
+    return j == p.length();
+}
+
 }
