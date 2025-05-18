@@ -26,7 +26,7 @@ class Solution {
         for (int[] nei : neighbor) {
             int x = nei[0] + sr;
             int y = nei[1] + sc;
-            if (isValid(x, y, image) && image[x][y] > 0 && image[x][y] == currColor) {
+            if (isValid(x, y, image) && image[x][y] >= 0 && image[x][y] == currColor) {
                 helper(image, x, y, color);
             }
         }
