@@ -27,7 +27,7 @@ class Solution {
         if (root == null) return;
         if (initVal < root.val && root.val < result) {
             result = root.val;
-        } else if (initVal == root.val) {
+        } else {
             helper(root.left);
             helper(root.right);
         }
