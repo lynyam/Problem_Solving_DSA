@@ -20,7 +20,18 @@ class Node {
 class Solution {
     public List<Integer> preorder(Node root) {
         List<Integer> result = new ArrayList<>();
-        dfs(root, result);
+        List<Node> stack = new ArrayList<>();
+        stack.add(root);
+        while (!stack.isEmpty()) {
+            Node curr = stack.removeLast();
+            if (curr != null) result.add(curr.val);
+            List<Node> children = curr.children;
+            if (children == null) continue;
+            for (int i = children.size() - 1; i >= 0; i--) {
+                stack.add(children.get(i));
+            }
+        }
+        //dfs(root, result);
         return (result);
     }
 
