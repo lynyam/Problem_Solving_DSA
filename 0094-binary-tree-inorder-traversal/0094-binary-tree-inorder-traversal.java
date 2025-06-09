@@ -16,14 +16,28 @@
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
-        helper(root, result);
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode curr = root;
+
+        //start simulation of InOrder
+        while (curr != null || !stack.isEmpty()) {
+            
+            while (curr != null) {
+                stack.add(curr);
+                curr = curr.left;
+            }
+            curr = stack.pollLast();
+            result.add(curr.val);
+            curr = curr.right;
+        } 
+        //inOrder(root, result);
         return (result);
     }
 
-    public void helper(TreeNode root, List<Integer> result) {
+    public void inOrder(TreeNode root, List<Integer> result) {
         if (root == null) return;
-        helper(root.left, result);
+        inOrder(root.left, result);
         result.add(root.val);
-        helper(root.right, result);
+        inOrder(root.right, result);
     }
 }
