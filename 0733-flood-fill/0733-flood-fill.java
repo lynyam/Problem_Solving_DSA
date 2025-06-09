@@ -1,25 +1,34 @@
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
-        helper(image, sr, sc, color, image[sr][sc]);
+        int n = image.length;
+        int m = image[0].length;
+        for (int i = 0; i < n; i++) {
+            if (i != sr) continue;
+            for (int j = 0; j < m; j++) {
+                if (j == sc) {
+                    helper(image, i, j, color, image[i][j]);
+                    break ;
+                }
+            }
+        }
         return (image);
     }
 
-    public boolean isValid(int x, int y, int[][] image) {
-        return (x >= 0 && x < image.length && y >= 0 && y < image[0].length);
-    }
-    int[][] neighbor = new int[][] {
-        {-1, 0}, {1, 0}, {0, -1}, {0, 1}
+    int[][] neighbors = new int[][]{
+        {0, 1}, {1, 0},
+        {-1, 0}, {0, -1}
     };
 
-    public void helper(int[][] image, int sr, int sc, int color, int startColor) {
-        if (image[sr][sc] == color) return;
-        image[sr][sc] = color;
-        
-        for (int[] nei : neighbor) {
-            int x = nei[0] + sr;
-            int y = nei[1] + sc;
-            if (isValid(x, y, image) && image[x][y] >= 0 && image[x][y] == startColor) {
-                helper(image, x, y, color, startColor);
+    public void helper(int[][] image, int i, int j, int color, int ref) {
+        if (color == ref) return;
+        image[i][j] = color;
+
+        for (int[] neighbor : neighbors) {
+            int x = neighbor[0] + i;
+            int y = neighbor[1] + j;
+            if (x >= 0 && x < image.length && y >= 0 && y < image[0].length 
+                && image[x][y] == ref) {
+                    helper(image, x, y, color, ref);
             }
         }
     }
