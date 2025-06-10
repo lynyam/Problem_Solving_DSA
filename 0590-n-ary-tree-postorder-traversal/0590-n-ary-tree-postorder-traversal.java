@@ -20,14 +20,14 @@ class Node {
 class Solution {
     public List<Integer> postorder(Node root) {
         List<Integer> result = new ArrayList<>();
-        dfsPostorder(root, result);
+        postOrderHelper(root, result);
         return (result);
     }
 
-    public void dfsPostorder(Node root, List<Integer> result) {
-        if (root == null) return ;
-        for (Node node : root.children) {
-            dfsPostorder(node, result);
+    public void postOrderHelper(Node root, List<Integer> result) {
+        if (root == null) return;
+        for (Node child : root.children) {
+            postOrderHelper(child, result);
         }
         result.add(root.val);
     }
