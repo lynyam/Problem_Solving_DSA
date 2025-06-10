@@ -17,12 +17,17 @@ class Solution {
     int result;
     public int minDepth(TreeNode root) {
         result = Integer.MAX_VALUE;
-        inOrderTraversal(root, 0);
-        return (result == Integer.MAX_VALUE ? 0 : result);
+        if (root == null) return (0);
+        if (root.left != null && root.right != null) 
+            return (1 + Math.min(minDepth(root.left), minDepth(root.right)));
+        if (root.left != null) return (1 + minDepth(root.left));
+        return (1 + minDepth(root.right));
+        //inOrderTraversal(root, 0);
+        //return (result == Integer.MAX_VALUE ? 0 : result);
     }
 
     public void inOrderTraversal(TreeNode root, int depth) {
-        if (root == null) return;
+        if (root == null) return ;
         depth++;
         if (root.left == null && root.right == null) {
             result = Math.min(result, depth);
