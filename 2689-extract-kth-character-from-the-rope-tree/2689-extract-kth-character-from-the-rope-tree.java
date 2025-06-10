@@ -23,25 +23,20 @@
  * }
  */
 class Solution {
-    char result;
-    int k;
     public char getKthCharacter(RopeTreeNode root, int k) {
-        this.k = k;
-        if (root == null) return result;
-        dfsPostOrder(root);
-        return (result);
-    }
-
-    public void dfsPostOrder(RopeTreeNode root) {
-        if (k == -1 || root == null) return;
-        dfsPostOrder(root.left);
-         dfsPostOrder(root.right);
-        if (root.left == null && root.right == null) {
-            if (root.val.length() >= k) {
-                result = root.val.charAt(k - 1);
-                k = -1;
-            } else k -= root.val.length();
-            return ;
+        //base case
+        if (root == null) return 0;
+        if (root.len > 0) {
+            int left = root.left == null ? 0 : root.left.len > 0 
+                ? root.left.len : root.left.val.length();
+            if (left >= k) return (getKthCharacter(root.left, k));
+            return (getKthCharacter(root.right, k - left));
         }
+        return root.val.charAt(k - 1);
+        //if root.val.isEmpty() search rsult on left or child
+            //left = root.left.len or root.val.len > k
+                //getKthChqrqcter(root.left, k)
+            // else getKthChqrqcter(root.right, k - left)
+        //return root.val.toCharArray().charAt(k);
     }
 }
