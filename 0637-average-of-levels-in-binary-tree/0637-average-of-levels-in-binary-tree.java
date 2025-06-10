@@ -15,23 +15,25 @@
  */
 class Solution {
     public List<Double> averageOfLevels(TreeNode root) {
-        List<double[]> traversal = new ArrayList<>();
-        dfs(root, traversal, 0);
-        List<Double> result = new ArrayList();
-        for (double[] pair : traversal) {
-            result.add(pair[0] / pair[1]);
+        List<long[]> treeValues = new ArrayList<>();
+        List<Double> result = new ArrayList<>();
+        //perform to add in List with value and count
+        sumAnCountLevelValue(root, 0, treeValues);
+        //perform to calculate final result
+        for (long[] level : treeValues) {
+            result.add(level[0] / (1.0 * level[1]));
         }
-        return (result);
+        return (result); 
     }
 
-    public void dfs(TreeNode root, List<double[]> traversal, int level) {
+    public void sumAnCountLevelValue(TreeNode root, int depth, List<long[]> treeValues) {
         if (root == null) return;
-        if (level >= traversal.size()) traversal.add(new double[]{root.val, 1});
-        else {
-            traversal.get(level)[0] += root.val;
-            traversal.get(level)[1] += 1;
+        if (treeValues.size() <= depth) {
+            treeValues.add(new long[2]);
         }
-        dfs(root.left, traversal, level + 1);
-        dfs(root.right, traversal, level + 1);
+        treeValues.get(depth)[0] += root.val;
+        treeValues.get(depth)[1]++;
+        sumAnCountLevelValue(root.left, depth + 1, treeValues);
+        sumAnCountLevelValue(root.right, depth + 1, treeValues);
     }
 }
