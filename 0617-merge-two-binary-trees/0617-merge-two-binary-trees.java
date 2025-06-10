@@ -15,31 +15,12 @@
  */
 class Solution {
     public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
-        return (dfs(root1, root2));
-    }
-
-    public TreeNode dfs(TreeNode root1, TreeNode root2) {
-        if (root1 == null && root2 == null) return null;
-        TreeNode curr = new TreeNode();
-        if (root1 != null)
-            curr.val = root1.val;
-        if (root2 != null)
-            curr.val += root2.val;
-        if (root1 != null && root2 == null) {
-            curr.left = dfs(root1.left, null);
-            curr.right = dfs(root1.right, null);
-            return curr;
-        }
-        if (root1 == null && root2 != null) {
-            curr.left = dfs(null, root2.left);
-            curr.right = dfs(null, root2.right);
-            return curr;
-        }
-        if (root1 != null && root2 != null) {
-            curr.left = dfs(root1.left, root2.left);
-            curr.right = dfs(root1.right, root2.right);
-            return curr;
-        }
-        return (curr); 
+        if (root1 == null && root2 == null) return (null);
+        if (root1 == null) return (root2);
+        if (root2 == null) return (root1);
+        root1.val += root2.val;
+        root1.left = mergeTrees(root1.left, root2.left);
+        root1.right = mergeTrees(root1.right, root2.right);
+        return (root1);
     }
 }
