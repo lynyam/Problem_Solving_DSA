@@ -14,19 +14,18 @@
  * }
  */
 class Solution {
-    int result;
+    //int result;
     public int minDepth(TreeNode root) {
-        result = Integer.MAX_VALUE;
+        //result = Integer.MAX_VALUE;
         if (root == null) return (0);
-        if (root.left != null && root.right != null) 
-            return (1 + Math.min(minDepth(root.left), minDepth(root.right)));
-        if (root.left != null) return (1 + minDepth(root.left));
-        return (1 + minDepth(root.right));
+        if (root.left == null) return (1 + minDepth(root.right));
+        else if (root.right == null) return (1 + minDepth(root.left));
+        return (1 + Math.min(minDepth(root.left), minDepth(root.right)));
         //inOrderTraversal(root, 0);
         //return (result == Integer.MAX_VALUE ? 0 : result);
     }
 
-    public void inOrderTraversal(TreeNode root, int depth) {
+    /*public void inOrderTraversal(TreeNode root, int depth) {
         if (root == null) return ;
         depth++;
         if (root.left == null && root.right == null) {
@@ -35,5 +34,5 @@ class Solution {
         }
         inOrderTraversal(root.left, depth);
         inOrderTraversal(root.right, depth);
-    }
+    }*/
 }
