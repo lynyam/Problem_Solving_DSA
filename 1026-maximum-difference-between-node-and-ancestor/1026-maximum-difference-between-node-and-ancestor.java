@@ -14,33 +14,21 @@
  * }
  */
 class Solution {
-    int result;
+    int ans = 0;
     public int maxAncestorDiff(TreeNode root) {
+        if (root == null)
+            return (0);
         dfs(root, root.val, root.val);
-        return (result);
+        return (ans);
     }
 
     public void dfs(TreeNode root, int max, int min) {
         if (root == null)
             return ;
-        result = Math.max(result, Math.max(Math.abs(max - root.val), 
-            Math.abs(min - root.val)));
-        dfs(root.left, Math.max(max, root.val), Math.min(min, root.val));
-        dfs(root.right, Math.max(max, root.val), Math.min(min, root.val));
+        ans = Math.max(ans, Math.max(Math.abs(max - root.val), Math.abs(min - root.val)));
+        max = Math.max(max, root.val);
+        min = Math.min(min, root.val);
+        dfs(root.left, max, min);
+        dfs(root.right, max, min);
     }
 }
-/**
-    - root  binary tree
-    - find max  val v
-        - v = |a.val - b.val|
-    - a is ancestor of b
-    - a accesestor of b if :
-        - any child of a = b
-        - any child of a is ancestor of b
-    - max, min
-    - each node :
-        - update result with max(max-node.val, max, min-node.val)
-        - update max  and min
-        ..
-    return result
- */
