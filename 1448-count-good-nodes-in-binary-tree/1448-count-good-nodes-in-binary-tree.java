@@ -14,20 +14,17 @@
  * }
  */
 class Solution {
-    int ans = 0;
     public int goodNodes(TreeNode root) {
-        if (root == null)
-            return (0);
-        dfs(root, root.val);
-        return (ans);
+        return (preOrderTraversal(root, Integer.MIN_VALUE));
     }
 
-    public void dfs(TreeNode root, int max) {
-        if (root == null)
-            return ;
-        ans += root.val >= max ? 1 : 0;
-        max = Math.max(max, root.val);
-        dfs(root.left, max);
-        dfs(root.right, max);
+    public int preOrderTraversal(TreeNode root, int max) {
+        if (root == null) return (0);
+        int result = 0;
+        if (max <= root.val) {
+            max = root.val;
+            result = 1;
+        }
+        return (result + preOrderTraversal(root.left, max) + preOrderTraversal(root.right, max));
     }
 }
