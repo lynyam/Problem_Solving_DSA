@@ -31,7 +31,7 @@ class Solution {
     }
 
     public TreeNode createTree(List<Integer> postOrder, HashMap<Integer, Integer> inOrderMap, int leftInOrder, int rightInOrder) {
-        if (leftInOrder < 0 || rightInOrder < 0 || leftInOrder > rightInOrder) return null;
+        if (leftInOrder > rightInOrder) return null;
         int val = postOrder.remove(postOrder.size() - 1);
         System.out.println(val);
         TreeNode root = new TreeNode(val);
