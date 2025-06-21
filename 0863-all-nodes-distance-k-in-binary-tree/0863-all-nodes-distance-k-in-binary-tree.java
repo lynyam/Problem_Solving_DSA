@@ -8,55 +8,31 @@
  * }
  */
 class Solution {
-    HashMap<TreeNode, TreeNode> graph;
-
-    public void buildGraph(TreeNode root, TreeNode parent) {
-        if (root == null)
-            return;
-        graph.putIfAbsent(root, parent);
-        parent = root;
-        buildGraph(root.left, parent);
-        buildGraph(root.right, parent);
-    }
-
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
-        if (root == null) return (new ArrayList<>());
-        graph = new HashMap<>();
-        HashSet<TreeNode> seen = new HashSet<>();
-        Queue<TreeNode> queue = new LinkedList<>();
-        List<Integer> ans = new ArrayList<>();
-        int level = 0;
-    
-        buildGraph(root, null);
-        queue.add(target);
-        seen.add(target);
-        ans.add(target.val);
-        while (!queue.isEmpty() && level < k) {
-            int i = 0;
-            int size = queue.size();
-            ans = new ArrayList<>();
-            while (i < size) {
-                TreeNode node = queue.remove();
-                TreeNode[] connection = new TreeNode[]{
-                    graph.get(node), node.left, node.right
-                };
-                for (TreeNode neighbor : connection) {
-                    if (neighbor != null && !seen.contains(neighbor)) {
-                        ans.add(neighbor.val);
-                        seen.add(neighbor);
-                        queue.add(neighbor);
-                    }
-                }
-                i++;
-            }
-            level++;
-        }
-        return (ans);
+        Map<TreeNode, TreeNode> parentsMap = new HashMap<>();
+        addParent(null, root, parentsMap);
+        List<Integer> result = new ArrayList<>();
+        searchKnode(target, k, parentsMap, new HashSet<TreeNode>(), result);
+        return (result);
     }
+
+    public void addParent(TreeNode parent, TreeNode node, Map<TreeNode, TreeNode> parentsMap) {
+        if (node == null) return ;
+        parentsMap.put(node, parent);
+        addParent(node, node.left, parentsMap);
+        addParent(node, node.right, parentsMap);
+    }
+
+    public void searchKnode(TreeNode target, int k, Map<TreeNode, TreeNode> parentsMap, Set<TreeNode> visited, List<Integer> result) {
+        if (target == null || visited.contains(target)) return;
+        visited.add(target);
+        if (k == 0) {
+            result.add(target.val);
+            return ;
+        }
+        searchKnode(target.left, k - 1, parentsMap, visited, result);
+        searchKnode(target.right, k - 1, parentsMap, visited, result);
+        searchKnode(parentsMap.get(target), k - 1, parentsMap, visited, result);
+    }
+
 }
-/*
-    - root binary tree
-    - val of node target
-    - k = int
-    - ret an array : val of all nodes that have a dist k from target
-*/
