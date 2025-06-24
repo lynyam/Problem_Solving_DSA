@@ -15,7 +15,7 @@
  */
 class Solution {
     public TreeNode lcaDeepestLeaves(TreeNode root) {
-        return (dfsPostOrder(root, 0).getKey());
+        return (root == null ? null : dfsPostOrder(root, 0).getKey());
     }
 
     public Pair<TreeNode, Integer> dfsPostOrder(TreeNode root, int depth) {
