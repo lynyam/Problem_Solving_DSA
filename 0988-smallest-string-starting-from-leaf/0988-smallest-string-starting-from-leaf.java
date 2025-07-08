@@ -14,36 +14,23 @@
  * }
  */
 class Solution {
-    String result = "";
-
-    public int strCompare(String s1, String s2) {
-        int i = 0;
-        int j = 0;
-        while (i < s1.length() && j < s2.length()) {
-            if (s1.charAt(i) == s2.charAt(j)) {
-                i++;
-                j++;
-                continue;
-            }
-            return (s1.charAt(i) - s2.charAt(j));
-        }
-        if (i == s1.length() && j == s2.length()) return 0;
-        if (i == s1.length()) return ('0' - s2.charAt(j));
-        return (s1.charAt(i) - '0');
+    String result;
+    public String smallestFromLeaf(TreeNode root) {
+        result = "";
+        dfs(root, new StringBuilder());
+        return result;
     }
 
-     public String smallestFromLeaf(TreeNode root) {
-	    helper(root, "");
-        return (result);
-    }
-
-    public void helper(TreeNode root, String path) {
-	    if (root == null) return;
-        path = (char) (root.val + 'a') + path; // help to have a leaf to root order
+    public void dfs(TreeNode root, StringBuilder path) {
+        if (root == null) return;
+        path.append((char)('a' + root.val));
         if (root.left == null && root.right == null) {
-            result = result.isEmpty() || strCompare(result, path) > 0 ? path : result;
+            String curr = new StringBuilder(path).reverse().toString();
+            result = result == "" ? curr : result.compareTo(curr) > 0 ? curr : result;
+        } else {
+            dfs(root.left, path);
+            dfs(root.right, path);
         }
-        helper(root.left, path);
-        helper(root.right, path); 
+        path.deleteCharAt(path.length() - 1);
     }
 }
