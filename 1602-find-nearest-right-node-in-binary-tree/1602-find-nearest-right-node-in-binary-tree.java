@@ -16,7 +16,19 @@
 class Solution {
     public TreeNode findNearestRightNode(TreeNode root, TreeNode u) {
         List<TreeNode> levels = new ArrayList<>();
-        return (dfs(root, u, 0, levels));
+        //return (dfs(root, u, 0, levels));
+        return (dfsConstantSpace(root, u, new int[]{-1}, 0));
+    }
+
+    public TreeNode dfsConstantSpace(TreeNode node, TreeNode u, int[] targetDepth, int depth) {
+        if (node == null)
+            return (null);
+        if (targetDepth[0] == depth) return (node);
+        if (node.equals(u)) targetDepth[0] = depth;
+        TreeNode left = dfsConstantSpace(node.left, u, targetDepth, depth + 1);
+        if (left != null)
+            return (left);
+        return (dfsConstantSpace(node.right, u, targetDepth, depth + 1));
     }
 
     public TreeNode dfs(TreeNode node, TreeNode u, int depth, List<TreeNode> levels) {
