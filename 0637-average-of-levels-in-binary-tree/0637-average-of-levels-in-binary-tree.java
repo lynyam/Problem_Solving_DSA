@@ -15,25 +15,36 @@
  */
 class Solution {
     public List<Double> averageOfLevels(TreeNode root) {
-        List<long[]> treeValues = new ArrayList<>();
         List<Double> result = new ArrayList<>();
-        //perform to add in List with value and count
-        sumAnCountLevelValue(root, 0, treeValues);
-        //perform to calculate final result
-        for (long[] level : treeValues) {
-            result.add(level[0] / (1.0 * level[1]));
-        }
-        return (result); 
-    }
+        if (root == null)
+            return (result);
+        //1 Initialisation
+        //1.1 initialisation of the queue
+        Queue<TreeNode> queue = new LinkedList<>();
+        //Add root to queue
+        queue.add(root);
 
-    public void sumAnCountLevelValue(TreeNode root, int depth, List<long[]> treeValues) {
-        if (root == null) return;
-        if (treeValues.size() <= depth) {
-            treeValues.add(new long[2]);
+        //2 Parcours:
+        //2.1 Loop while to check if level exit
+        while (!queue.isEmpty()) {
+            //2.1.1 Calculate the number of node the level
+            int size = queue.size();
+            //2.1.2 logic on level: In this case it is initialise scalaire average of node
+            double average = 0.0;
+            //2.2 Loop For on level for each node
+            for (int i = 0; i < size; i++) {
+                //2.2.1 get a node with remove on queue
+                TreeNode node = queue.remove();
+                //2.2.2 logic on the node (here is just add to a average)
+                average += node.val;
+                //2.2.3 call the children and add to a queue if its exist
+                if (node.left != null)
+                    queue.add(node.left);
+                if (node.right != null)
+                    queue.add(node.right);
+            }
+            result.add(average / (1.0 * size));
         }
-        treeValues.get(depth)[0] += root.val;
-        treeValues.get(depth)[1]++;
-        sumAnCountLevelValue(root.left, depth + 1, treeValues);
-        sumAnCountLevelValue(root.right, depth + 1, treeValues);
+        return (result);
     }
 }
