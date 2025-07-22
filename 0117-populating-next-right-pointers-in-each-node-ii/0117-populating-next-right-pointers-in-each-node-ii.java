@@ -23,24 +23,37 @@ class Node {
 
 class Solution {
     public Node connect(Node root) {
-        List<List<Node>> levels = new ArrayList<>();
-        buildLevels(root, 0, levels);
-        for (List<Node> level : levels) {
-            for (int i = 1; i < level.size(); i++) {
-                level.get(i - 1).next = level.get(i);
+        if (root == null)
+            return (null);
+        //1-Initialisation
+        //1.1 create queue 
+        Queue<Node> queue = new LinkedList<>();
+        //1.2 Add root on queue 
+        queue.add(root);
+
+        //2-Parcours (2 step)
+        //2.1 while loop to check if level exit (2 step)
+        while (!queue.isEmpty()) {
+            //2.1.1 calculate size of level
+            int size = queue.size();
+            //2.1.2 logic on level: here problem ask to make next pointer of each level to its next right node, so create this next
+            Node next = null;
+
+            //2.2 FOR loop for walkthrough on each node of level (3 step)
+            for (int i = 0; i < size; i++) {
+                //2.2.1 get curr node in queue with remove
+                Node node = queue.remove();
+                //2.2.2 make some logic on nodes. Here it is considered to be the next precedent if it exists. The scalaire contains next
+                if (next != null)
+                    next.next = node;
+                next = node;
+                //2.2.3 add children if it exist
+                if (node.left != null)
+                    queue.add(node.left);
+                if (node.right != null)
+                    queue.add(node.right);
             }
         }
         return (root);
-    }
-
-    public void buildLevels(Node root, int depth, List<List<Node>> levels) {
-        if (root == null)
-            return;
-        if (levels.size() <= depth) {
-            levels.add(new ArrayList<>());
-        }
-        levels.get(depth).add(root);
-        buildLevels(root.left, depth + 1, levels);
-        buildLevels(root.right, depth + 1, levels);
     }
 }
