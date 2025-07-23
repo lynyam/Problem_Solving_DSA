@@ -15,29 +15,43 @@
  */
 class Solution {
     public List<List<Integer>> verticalOrder(TreeNode root) {
-        HashMap<Integer, List<int[]>> colonnes = new HashMap<>();
         List<List<Integer>> result = new ArrayList<>();
-        int min = helper(root, 0, 0, colonnes);
-        while (colonnes.size() > 0) {
-            List<int[]> colonne = colonnes.get(min);
-            Collections.sort(colonne, (a, b) -> Integer.compare(a[1],b[1]));
-            List<Integer> temp = new ArrayList<>();
-            for (int[] node : colonne)
-                temp.add(node[0]);
-            result.add(temp);
-            colonnes.remove(min);
-            min++;
+        if (root == null)
+            return (result);
+
+        //Initialisation of Queue and add root
+        Queue<Pair<TreeNode, Integer>> queue = new LinkedList<>();
+        queue.add(new Pair(root, 0));
+        int min = 0;
+        HashMap<Integer, List<Integer>> colonnes = new HashMap();
+
+        //walkthrough when level exist
+        while (!queue.isEmpty()) {
+            //get number of node in level
+            int size = queue.size();
+
+            //Loop each node to put in the right list
+            for (int i = 0; i < size; i++) {
+                Pair<TreeNode, Integer> state = queue.remove();
+                TreeNode node = state.getKey();
+                int col = state.getValue();
+                min = Math.min(min, col);
+                if (!colonnes.containsKey(col))
+                    colonnes.put(col, new ArrayList<>());
+                colonnes.get(col).add(node.val);
+                if (node.left != null)
+                    queue.add(new Pair(node.left, col - 1));
+                if (node.right != null)
+                    queue.add(new Pair(node.right, col + 1));
+            }
+        }
+        for (int i = 0; i < colonnes.size(); i++)
+            result.add(new ArrayList<Integer>());
+        min = Math.abs(min);
+        for (int key : colonnes.keySet()) {
+            result.set(key + min, colonnes.get(key));
         }
         return (result);
-    }
 
-    public int helper(TreeNode root, int offSet, int depth, Map<Integer, List<int[]>> colonnes) {
-        if (root == null) return Integer.MAX_VALUE;
-        if (!colonnes.containsKey(offSet)) {
-            colonnes.put(offSet, new ArrayList<>()); 
-        }
-        colonnes.get(offSet).add(new int[] {root.val, depth});
-        return Math.min(offSet, Math.min(helper(root.left, offSet - 1, depth + 1, colonnes), helper(root.right, offSet + 1, depth + 1, colonnes)));
     }
-
 }
