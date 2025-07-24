@@ -21,8 +21,8 @@ class Solution {
 
     public boolean dfs(TreeNode root, int k, Set<Integer> set) {
         if (root == null) return false;
-        if (set.contains(root.val)) return (true);
-        set.add(k - root.val);
+        if (set.contains(k - root.val)) return (true);
+        set.add(root.val);
         return dfs(root.left, k, set) || dfs(root.right, k, set);
     }
 }
