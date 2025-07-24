@@ -32,7 +32,6 @@ class Solution {
         if (prev == null)
             result = root;
         if (prev != null) {
-            System.out.println(prev.val);
             prev.right = root;
             prev.left = null;
         }
