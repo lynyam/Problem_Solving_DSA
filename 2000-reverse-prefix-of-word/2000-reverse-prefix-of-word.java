@@ -1,26 +1,19 @@
 class Solution {
     public String reversePrefix(String word, char ch) {
-        int j = 0;
+        int i = 0;
         int n = word.length();
-        char[] arr = word.toCharArray();
-
-        while (j < n) {
-            if (arr[j] == ch) {
-                reverse(arr, 0, j);
-                break ;
-            }
-            j++;
-        }
-        return (new String(arr));
-    }
-
-    public void reverse(char[] arr, int i, int j) {
-        while (i < j) {
-            char temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+        while (i < n) {
+            if (word.charAt(i) == ch)
+                break;
             i++;
-            j--;
         }
+        if (i == n) return (word);
+        return (new StringBuilder())
+                .append(
+                    (new StringBuilder())
+                        .append(
+                                word.substring(0, i + 1))
+                    .reverse())
+                .append(word.substring(i + 1)).toString();
     }
 }
