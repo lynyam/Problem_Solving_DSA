@@ -8,12 +8,14 @@ class Solution {
             i++;
         }
         if (i == n) return (word);
-        return (new StringBuilder())
-                .append(
-                    (new StringBuilder())
-                        .append(
-                                word.substring(0, i + 1))
-                    .reverse())
-                .append(word.substring(i + 1)).toString();
+        char[] wordArr = word.toCharArray();
+        int j = 0;
+        while (j < i) {
+            wordArr[i] = wordArr[j];
+            wordArr[j] = word.charAt(i);
+            i--;
+            j++;
+        }
+        return (new String(wordArr));
     }
 }
