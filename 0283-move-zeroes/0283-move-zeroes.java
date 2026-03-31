@@ -7,13 +7,19 @@ class Solution {
         while (current < n) {
             int element = nums[current];
             if (element != 0) {
-                nums[next++] = element;
+                if (nums[next] == 0) {
+                    swap(nums, next, current);
+                }
+                next++;
             }
             current++;
         }
-        while (next < n) {
-            nums[next++] = 0;
-        }
+    }
+
+    public void swap(int[] nums, int next, int current) {
+        int temp = nums[next];
+        nums[next] = nums[current];
+        nums[current] = temp;
     }
 }
 
@@ -21,3 +27,6 @@ class Solution {
 // 0 |1 0 3 }12 
 // 1 3 12 |3  }
 // 1 3 12 0 0 
+// 0 1 0 3 12
+// 1 3 12 |0 0
+// |2 3 4 5 0 
