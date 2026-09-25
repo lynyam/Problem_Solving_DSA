@@ -16,6 +16,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0917-reverse-only-letters](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0917-reverse-only-letters/) | Easy |
+| [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
 | [1768-merge-strings-alternately](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1768-merge-strings-alternately/) | Easy |
 | [2000-reverse-prefix-of-word](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2000-reverse-prefix-of-word/) | Easy |
 ## Array
@@ -44,4 +45,16 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
+## Math
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
+## Euclidean Algorithm
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
+## Greatest Common Divisor
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
 <!---LeetCode Topics End-->
