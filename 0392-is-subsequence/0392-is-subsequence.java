@@ -1,19 +1,19 @@
 class Solution {
-	public boolean isSubsequence(String s, String t) {
-		int n1 = s.length();
-		int n2 = t.length();
-		int i = 0;
-		int j = 0;
+    public boolean isSubsequence(String s, String t) {
+        int i = 0;
+        int j = 0;
 
-
-		while (i < n1 && j < n2) {//0(n1 + n2)
-			char c1 = s.charAt(i);
-			char c2 = t.charAt(j);
-			if (c1 == c2) {
-				i++;
+        while (i < s.length()) {
+            while (j < t.length()) {
+                if (s.charAt(i) == t.charAt(j)) {
+                    i++;
+                    j++;
+                    break;
+                }
+                j++;
             }
-            j++;
+            if (i < s.length() && j == t.length()) return (false);
         }
-        return (i == n1);
+        return (true);
     }
 }
