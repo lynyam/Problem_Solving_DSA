@@ -1,22 +1,28 @@
 class Solution {
-	int waysToSplitArray(int[] nums) {
-		int n = nums.length;
-        double prefix = nums[0];
-        double curr = 0;
-		int i = 1;
-		int answer = 0;
+    public int waysToSplitArray(int[] nums) {
+        //valid split index i
+        /*
+        - sum[0..i+1] >= sum[n-(i+1)]
+        - 0 <= i <n-1
+        - return number of valid splits
+        */
+        int n = nums.length;
+        if (n <= 0) return (0);
+        int i = 1;
+        long[] prefixSum = new long[n];
+        prefixSum[0] = nums[0];
 
-		while (i < n) {
-			prefix += (double)nums[i];//  3 5 8 10
-			i++;
-		}
-		i = 0;
-		while (i < n - 1) {
-            curr += nums[i];
-			if (curr >= prefix - curr)//5 ==5
-				answer++;
-			i++;
-		}
-		return (answer);
+        while (i < n) {
+            prefixSum[i] = prefixSum[i - 1] + nums[i];
+            i++;
+        }
+
+        int result = 0;
+        i = 0;
+        while (i < n - 1) {
+            if (2 * prefixSum[i] >= prefixSum[n-1]) result++;
+            i++;
+        }
+        return (result);
     }
 }
