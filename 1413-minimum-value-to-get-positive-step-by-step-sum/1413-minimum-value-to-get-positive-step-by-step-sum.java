@@ -1,12 +1,12 @@
 class Solution {
-	public int minStartValue(int[] nums) {
-		int ans = 1;
-		int curr = 0;
-		for (int i = 0; i < nums.length; i++) {
-			curr += nums[i];//1
-			if (curr <= 0);
-                ans = Math.max(ans, 1 - curr);//5
+    public int minStartValue(int[] nums) {
+        int result = Integer.MAX_VALUE;
+        int curr = 0;
+        for (int num : nums) {
+            curr += num;
+            result = Math.min(result, curr);
         }
-        return (ans);
+        if (result >= 0) return (1);
+        return 1 - result;
     }
 }
