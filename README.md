@@ -34,6 +34,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
 | [1413-minimum-value-to-get-positive-step-by-step-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1413-minimum-value-to-get-positive-step-by-step-sum/) | Easy |
 | [1480-running-sum-of-1d-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1480-running-sum-of-1d-array/) | Easy |
+| [2090-k-radius-subarray-averages](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2090-k-radius-subarray-averages/) | Medium |
 | [2270-number-of-ways-to-split-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2270-number-of-ways-to-split-array/) | Medium |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
 ## Hash Table
@@ -79,6 +80,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0643-maximum-average-subarray-i](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0643-maximum-average-subarray-i/) | Easy |
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
+| [2090-k-radius-subarray-averages](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2090-k-radius-subarray-averages/) | Medium |
 ## Prefix Sum
 | Problem Name | Difficulty |
 | ------- | ------- |
