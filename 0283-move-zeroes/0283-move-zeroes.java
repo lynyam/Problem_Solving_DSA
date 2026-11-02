@@ -7,12 +7,13 @@ class Solution {
         while (j < n) {
             if (nums[j] != 0 && j >=i) {
                 nums[i] = nums[j];
+                if (j > i) nums[j] = 0;
                 i++;
             }
             j++;
         }
-        while (i < n) {
-            nums[i++] = 0;
-        }
+        //while (i < n) {
+            //nums[i++] = 0;
+        //}
     }
 }
