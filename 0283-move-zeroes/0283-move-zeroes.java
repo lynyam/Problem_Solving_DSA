@@ -12,8 +12,5 @@ class Solution {
             }
             j++;
         }
-        //while (i < n) {
-            //nums[i++] = 0;
-        //}
     }
 }
