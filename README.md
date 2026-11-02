@@ -9,6 +9,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0283-move-zeroes](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0283-move-zeroes/) | Easy |
 | [0344-reverse-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0344-reverse-string/) | Easy |
 | [0392-is-subsequence](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0392-is-subsequence/) | Easy |
+| [0557-reverse-words-in-a-string-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0557-reverse-words-in-a-string-iii/) | Easy |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
 | [0917-reverse-only-letters](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0917-reverse-only-letters/) | Easy |
 | [0977-squares-of-a-sorted-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0977-squares-of-a-sorted-array/) | Easy |
@@ -20,6 +21,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0344-reverse-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0344-reverse-string/) | Easy |
 | [0392-is-subsequence](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0392-is-subsequence/) | Easy |
+| [0557-reverse-words-in-a-string-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0557-reverse-words-in-a-string-iii/) | Easy |
 | [0917-reverse-only-letters](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0917-reverse-only-letters/) | Easy |
 | [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
 | [1768-merge-strings-alternately](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1768-merge-strings-alternately/) | Easy |
