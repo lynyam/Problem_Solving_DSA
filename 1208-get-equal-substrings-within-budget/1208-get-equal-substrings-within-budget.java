@@ -1,20 +1,20 @@
 class Solution {
     public int equalSubstring(String s, String t, int maxCost) {
-        int left = 0;
-        int right = 0;
-        int cost = 0;
         int n = s.length();
-        int ans = 0;
+        int left, right;
+        left = right = 0;
+        int result = 0;
+        int curr = 0;
 
         while (right < n) {
-            cost += Math.abs(s.charAt(right) - t.charAt(right));
-            while (cost > maxCost) {
-                cost -= Math.abs(s.charAt(left) - t.charAt(left));
+            curr += Math.abs(s.charAt(right) - t.charAt(right));
+            while (curr > maxCost) {
+                curr -= Math.abs(s.charAt(left) - t.charAt(left));
                 left++;
             }
-            ans = Math.max(ans, right - left + 1);
+            result = Math.max(result, right - left + 1);
             right++;
         }
-        return (ans);
+        return result;
     }
 }
