@@ -7,24 +7,17 @@ class Solution {
         StringBuilder sb = new StringBuilder(n);
 
         while (i < n) {
-            if (s.charAt(i) == ' ') {
-                if (i != 0)
-                    right = i - 1;
+            if (s.charAt(i) == ' ' || i == n - 1) {
+                right = s.charAt(i) == ' ' ? i - 1 : i;
                 while (right >= left) {
                     sb.append(s.charAt(right));
                     right--;
                 }
                 left = i + 1;
-                sb.append(' ');
+                if (i < n - 1)
+                    sb.append(' ');
             }
             i++;
-        }
-        if (i == n) {
-            right = i - 1;
-            while (right >= left) {
-                sb.append(s.charAt(right));
-                right--;
-            }
         }
         return sb.toString();
     }
