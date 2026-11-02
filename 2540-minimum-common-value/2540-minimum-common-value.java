@@ -1,19 +1,12 @@
 class Solution {
     public int getCommon(int[] nums1, int[] nums2) {
-        int index1 = 0;
-        int index2 = 0;
-
-        while (index1 < nums1.length && index2 < nums2.length) {
-            int n1 = nums1[index1];
-            int n2 = nums2[index2];
-            if (n1 == n2) return (n1);
-            if (n1 < n2) {
-                index1++;
-            } else 
-                index2++;
+        int i = 0;
+        int j = 0;
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] == nums2[j]) return (nums1[i]);
+            if (nums1[i] < nums2[j]) i++;
+            else j++;
         }
-        return (-1);
+        return -1;
     }
 }
-//1 4 |6 N1
-//2 3 |6   N2
