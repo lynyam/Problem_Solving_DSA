@@ -1,33 +1,30 @@
 class Solution {
     public String reverseOnlyLetters(String s) {
-        int start = 0;
-        int end = s.length() - 1;
-        char[] result = s.toCharArray();
+        int left, right;
+        right = s.length() - 1;
+        left = 0;
+        char[] temp = s.toCharArray();
 
-        while (start < end) {
-            char up = s.charAt(start);
-            char down = s.charAt(end);
-
-            if (isLetter(up) && isLetter(down)) {
-                result[start] = down;
-                result[end] = up;
-                start++;
-                end--;
-            } else if (!isLetter(up)) {
-                start++;
-            } else if (!isLetter(down)) {
-                end--;
+        while (left < right) {
+            if (isEngLetter(temp[left]) && 
+                isEngLetter(temp[right])) {
+                    temp[left] = s.charAt(right);
+                    temp[right] = s.charAt(left);
+                    right--;
+                    left++;
+                continue;
             }
+            if (!isEngLetter(temp[right]))
+                right--;
+            if (!isEngLetter(temp[left]))
+                left++;
         }
-        StringBuilder sb = new StringBuilder();
-        for (char c : result) {
-            sb.append(c);
-        }
-        return (sb.toString());
+        return new String(temp);
     }
 
-    public boolean isLetter(char c) {
-        return ((c >= 'a' && c <= 'z') ||
-            (c >= 'A' && c <= 'Z'));
+
+    private boolean isEngLetter(char c) {
+        return (c >= 'a' && c <= 'z') ||
+            (c >= 'A' && c <= 'Z');
     }
 }
