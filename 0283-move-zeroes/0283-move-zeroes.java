@@ -5,7 +5,7 @@ class Solution {
         int n = nums.length;
 
         while (j < n) {
-            if (nums[j] != 0) {
+            if (nums[j] != 0 && j >=i) {
                 nums[i] = nums[j];
                 i++;
             }
