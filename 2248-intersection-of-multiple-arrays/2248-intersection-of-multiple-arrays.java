@@ -1,21 +1,26 @@
 class Solution {
-	public List<Integer> intersection(int[][] nums) {
-		int n = nums.length;
-		HashMap<Integer, Integer> frequency = new HashMap<>();//0(nk) space
-		for (int[] arr : nums) {//0(n)
-			for (int num : arr) {//0(k)
-				frequency.put(num, frequency.getOrDefault(num, 0) + 1);
+    public List<Integer> intersection(int[][] nums) {
+        int n = nums.length;
+        //System.out.println((m));
+        int i = 0;
+        Map<Integer, Integer> counts = new HashMap<>();
+        
+        while (i < n) {
+            int j = 0;
+            while (j < nums[i].length) {
+                //System.out.println(nums[i][j]);
+                counts.put(nums[i][j], counts.getOrDefault(nums[i][j], 0) + 1);
+                j++;
             }
+            i++;
         }
-        List<Integer> result = new ArrayList<>();
-        for (int key : frequency.keySet()) {
-            if (frequency.get(key) == n) {
-                result.add(key);
-            }
+
+        List<Integer> ans = new ArrayList<>();
+        for (int key : counts.keySet()) {
+            if (counts.get(key).equals(n))
+                ans.add(key);
         }
-        Collections.sort(result);//0(klogk)
-        return (result);//0(nk * klogk) = 0(k(n + logk))
+        Collections.sort(ans);
+        return ans;
     }
 }
-
-
