@@ -31,6 +31,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
 | [0209-minimum-size-subarray-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0209-minimum-size-subarray-sum/) | Medium |
 | [0283-move-zeroes](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0283-move-zeroes/) | Easy |
 | [0303-range-sum-query-immutable](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0303-range-sum-query-immutable/) | Easy |
@@ -49,6 +50,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
 ## Binary Search
 | Problem Name | Difficulty |
