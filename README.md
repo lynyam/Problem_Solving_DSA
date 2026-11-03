@@ -28,6 +28,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1456-maximum-number-of-vowels-in-a-substring-of-given-length](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1456-maximum-number-of-vowels-in-a-substring-of-given-length/) | Medium |
 | [1768-merge-strings-alternately](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1768-merge-strings-alternately/) | Easy |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
+| [1941-check-if-all-characters-have-equal-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1941-check-if-all-characters-have-equal-number-of-occurrences/) | Easy |
 | [2000-reverse-prefix-of-word](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2000-reverse-prefix-of-word/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 ## Array
@@ -59,6 +60,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
+| [1941-check-if-all-characters-have-equal-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1941-check-if-all-characters-have-equal-number-of-occurrences/) | Easy |
 | [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
@@ -138,6 +140,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Counting
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1941-check-if-all-characters-have-equal-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1941-check-if-all-characters-have-equal-number-of-occurrences/) | Easy |
 | [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 <!---LeetCode Topics End-->
