@@ -35,6 +35,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
 | [0209-minimum-size-subarray-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0209-minimum-size-subarray-sum/) | Medium |
+| [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0283-move-zeroes](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0283-move-zeroes/) | Easy |
 | [0303-range-sum-query-immutable](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0303-range-sum-query-immutable/) | Easy |
 | [0643-maximum-average-subarray-i](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0643-maximum-average-subarray-i/) | Easy |
@@ -53,6 +54,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
+| [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
@@ -60,6 +62,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0209-minimum-size-subarray-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0209-minimum-size-subarray-sum/) | Medium |
+| [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0713-subarray-product-less-than-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0713-subarray-product-less-than-k/) | Medium |
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
 | [1208-get-equal-substrings-within-budget](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1208-get-equal-substrings-within-budget/) | Medium |
@@ -75,11 +78,13 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Sorting
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
 | [0977-squares-of-a-sorted-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0977-squares-of-a-sorted-array/) | Easy |
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
 ## Euclidean Algorithm
 | Problem Name | Difficulty |
@@ -123,6 +128,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Bit Manipulation
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 ## Counting
 | Problem Name | Difficulty |
