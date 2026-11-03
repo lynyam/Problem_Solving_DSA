@@ -49,6 +49,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1480-running-sum-of-1d-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1480-running-sum-of-1d-array/) | Easy |
 | [1732-find-the-highest-altitude](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1732-find-the-highest-altitude/) | Easy |
 | [2090-k-radius-subarray-averages](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2090-k-radius-subarray-averages/) | Medium |
+| [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 | [2270-number-of-ways-to-split-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2270-number-of-ways-to-split-array/) | Medium |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
 ## Hash Table
@@ -58,6 +59,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
+| [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
 ## Binary Search
@@ -83,6 +85,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
 | [0977-squares-of-a-sorted-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0977-squares-of-a-sorted-array/) | Easy |
+| [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -135,5 +138,6 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Counting
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 <!---LeetCode Topics End-->
