@@ -45,6 +45,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0977-squares-of-a-sorted-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0977-squares-of-a-sorted-array/) | Easy |
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
 | [1413-minimum-value-to-get-positive-step-by-step-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1413-minimum-value-to-get-positive-step-by-step-sum/) | Easy |
+| [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
 | [1480-running-sum-of-1d-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1480-running-sum-of-1d-array/) | Easy |
 | [1732-find-the-highest-altitude](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1732-find-the-highest-altitude/) | Easy |
 | [2090-k-radius-subarray-averages](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2090-k-radius-subarray-averages/) | Medium |
@@ -55,6 +56,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
+| [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
