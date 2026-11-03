@@ -1,11 +1,19 @@
 class Solution {
-	public boolean areOccurrencesEqual(String s) {
-		if (s.isEmpty()) return (true);
-		HashMap<Character, Integer> frequency = new HashMap<>();
-		
-		for (char c : s.toCharArray()) {
-			frequency.put(c, frequency.getOrDefault(c, 0) + 1);
+    public boolean areOccurrencesEqual(String s) {
+        int[] counts = new int[26];
+        int test = 0;
+        for (char c : s.toCharArray()) {
+            counts[c - 'a']++;
         }
-        return  (new HashSet<Integer>(frequency.values()).size() == 1);
+        for (int c : counts) {
+            if (c == 0)
+                continue;
+            if (test == 0) {
+                test = c;
+                continue;
+            }
+            if (test != c) return false;
+        }
+        return (true);
     }
 }
