@@ -1,11 +1,11 @@
 class Solution {
     public char repeatedCharacter(String s) {
-        boolean[] alphabet = new boolean[26];
+        Set<Character> alphabet = new HashSet<>();
 
         for (char c : s.toCharArray()) {
-            if (alphabet[c - 'a'])
+            if (alphabet.contains(c))
                 return (c);
-            alphabet[c - 'a'] = true;
+            alphabet.add(c);
         }
         return ' ';
     }
