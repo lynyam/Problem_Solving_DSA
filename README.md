@@ -39,6 +39,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0283-move-zeroes](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0283-move-zeroes/) | Easy |
 | [0303-range-sum-query-immutable](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0303-range-sum-query-immutable/) | Easy |
+| [0560-subarray-sum-equals-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [0643-maximum-average-subarray-i](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0643-maximum-average-subarray-i/) | Easy |
 | [0713-subarray-product-less-than-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0713-subarray-product-less-than-k/) | Medium |
 | [0724-find-pivot-index](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0724-find-pivot-index/) | Easy |
@@ -58,6 +59,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
+| [0560-subarray-sum-equals-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
 | [1941-check-if-all-characters-have-equal-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1941-check-if-all-characters-have-equal-number-of-occurrences/) | Easy |
@@ -120,6 +122,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0209-minimum-size-subarray-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0209-minimum-size-subarray-sum/) | Medium |
 | [0303-range-sum-query-immutable](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0303-range-sum-query-immutable/) | Easy |
+| [0560-subarray-sum-equals-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [0713-subarray-product-less-than-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0713-subarray-product-less-than-k/) | Medium |
 | [0724-find-pivot-index](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0724-find-pivot-index/) | Easy |
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
