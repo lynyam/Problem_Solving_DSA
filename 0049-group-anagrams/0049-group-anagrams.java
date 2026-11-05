@@ -17,10 +17,7 @@ class Solution {
         Map<String, List<String>> store = new HashMap<>();
 
         for (String str : strs) {
-            //i will just check str sort
-            char[] temp = str.toCharArray();
-            Arrays.sort(temp);
-            String tempStr = new String(temp);
+            String tempStr = canonicalId(str);
             store.putIfAbsent(tempStr, new ArrayList<String>());
             store.get(tempStr).add(str);
         }
@@ -32,4 +29,15 @@ class Solution {
         return (result);
     }
     
+    private String canonicalId(String str) {
+        int[] temp = new int[26];
+        StringBuilder sb = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            temp[c - 'a']++;
+        }
+        for (int nb: temp) {
+            sb.append(nb).append('#');
+        }
+        return sb.toString();
+    }
 }
