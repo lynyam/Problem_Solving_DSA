@@ -21,12 +21,7 @@ class Solution {
             store.putIfAbsent(tempStr, new ArrayList<String>());
             store.get(tempStr).add(str);
         }
-
-        List<List<String>> result = new ArrayList<>();
-        for(String key : store.keySet()) {
-            result.add(store.get(key));
-        }
-        return (result);
+        return (new ArrayList(store.values()));
     }
     
     private String canonicalId(String str) {
