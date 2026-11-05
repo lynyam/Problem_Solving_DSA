@@ -19,6 +19,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## String
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0049-group-anagrams](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0049-group-anagrams/) | Medium |
 | [0344-reverse-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0344-reverse-string/) | Easy |
 | [0392-is-subsequence](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0392-is-subsequence/) | Easy |
 | [0557-reverse-words-in-a-string-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0557-reverse-words-in-a-string-iii/) | Easy |
@@ -35,6 +36,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
+| [0049-group-anagrams](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0049-group-anagrams/) | Medium |
 | [0209-minimum-size-subarray-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0209-minimum-size-subarray-sum/) | Medium |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0283-move-zeroes](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0283-move-zeroes/) | Easy |
@@ -59,6 +61,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
+| [0049-group-anagrams](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0049-group-anagrams/) | Medium |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0560-subarray-sum-equals-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
@@ -88,6 +91,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Sorting
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0049-group-anagrams](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0049-group-anagrams/) | Medium |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
 | [0977-squares-of-a-sorted-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0977-squares-of-a-sorted-array/) | Easy |
