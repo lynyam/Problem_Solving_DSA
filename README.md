@@ -59,6 +59,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 | [2270-number-of-ways-to-split-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2270-number-of-ways-to-split-array/) | Medium |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
+| [3005-count-elements-with-maximum-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/3005-count-elements-with-maximum-frequency/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -75,6 +76,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
 | [2540-minimum-common-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2540-minimum-common-value/) | Easy |
+| [3005-count-elements-with-maximum-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/3005-count-elements-with-maximum-frequency/) | Easy |
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -159,4 +161,5 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [2225-find-players-with-zero-or-one-losses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2225-find-players-with-zero-or-one-losses/) | Medium |
 | [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 | [2351-first-letter-to-appear-twice](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2351-first-letter-to-appear-twice/) | Easy |
+| [3005-count-elements-with-maximum-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/3005-count-elements-with-maximum-frequency/) | Easy |
 <!---LeetCode Topics End-->
