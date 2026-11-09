@@ -50,6 +50,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0713-subarray-product-less-than-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0713-subarray-product-less-than-k/) | Medium |
 | [0724-find-pivot-index](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0724-find-pivot-index/) | Easy |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
+| [0930-binary-subarrays-with-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0930-binary-subarrays-with-sum/) | Medium |
 | [0977-squares-of-a-sorted-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0977-squares-of-a-sorted-array/) | Easy |
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
 | [1207-unique-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1207-unique-number-of-occurrences/) | Easy |
@@ -77,6 +78,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0451-sort-characters-by-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0451-sort-characters-by-frequency/) | Medium |
 | [0560-subarray-sum-equals-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [0771-jewels-and-stones](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0771-jewels-and-stones/) | Easy |
+| [0930-binary-subarrays-with-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0930-binary-subarrays-with-sum/) | Medium |
 | [1207-unique-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1207-unique-number-of-occurrences/) | Easy |
 | [1394-find-lucky-integer-in-an-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1394-find-lucky-integer-in-an-array/) | Easy |
 | [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
@@ -141,6 +143,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0209-minimum-size-subarray-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0209-minimum-size-subarray-sum/) | Medium |
 | [0643-maximum-average-subarray-i](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0643-maximum-average-subarray-i/) | Easy |
 | [0713-subarray-product-less-than-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0713-subarray-product-less-than-k/) | Medium |
+| [0930-binary-subarrays-with-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0930-binary-subarrays-with-sum/) | Medium |
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
 | [1208-get-equal-substrings-within-budget](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1208-get-equal-substrings-within-budget/) | Medium |
 | [1456-maximum-number-of-vowels-in-a-substring-of-given-length](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1456-maximum-number-of-vowels-in-a-substring-of-given-length/) | Medium |
@@ -154,6 +157,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0560-subarray-sum-equals-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [0713-subarray-product-less-than-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0713-subarray-product-less-than-k/) | Medium |
 | [0724-find-pivot-index](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0724-find-pivot-index/) | Easy |
+| [0930-binary-subarrays-with-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0930-binary-subarrays-with-sum/) | Medium |
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
 | [1208-get-equal-substrings-within-budget](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1208-get-equal-substrings-within-budget/) | Medium |
 | [1413-minimum-value-to-get-positive-step-by-step-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1413-minimum-value-to-get-positive-step-by-step-sum/) | Easy |
