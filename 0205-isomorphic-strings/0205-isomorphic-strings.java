@@ -1,30 +1,23 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-        HashMap<Character, Character> store = new HashMap<>();
-        HashSet<Character> seen = new HashSet<>();
-        int n = s.length();
+        if (s.length() != t.length()) return false;
+        Map<Character, Character> mapping = new HashMap<>();
+        HashSet<Character> mapped = new HashSet<>();
         int i = 0;
 
-        if (n != t.length())
-            return (false);
-        while (i < n) {
-            char c1 = s.charAt(i);
-            char c2 = t.charAt(i);
-            if ((store.containsKey(c1) && !store.get(c1).equals(c2)) || 
-                (!store.containsKey(c1) && seen.contains(c2)))
+        while (i < s.length()) {
+            char s_char = s.charAt(i);
+            char t_char = t.charAt(i);
+
+            if (!mapping.containsKey(s_char) && mapped.contains(t_char))
+                    return (false);
+            if (mapping.containsKey(s_char) && !mapping.get(s_char).equals(t_char))
                 return (false);
-            //else if (!store.containsKey(c1)) {
-                store.put(c1, c2);
-                seen.add(c2);
-            //}
+            mapping.put(s_char, t_char);
+            mapped.add(t_char);
             i++;
         }
-        return (true);
+        return true;
     }
+    //- if s[i] == t[i] of
 }
-/**
-    - s String
-    - t String
-    - s ans t isomorphic
-        - char in s can be replaced to get t
- */
