@@ -59,6 +59,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
 | [1480-running-sum-of-1d-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1480-running-sum-of-1d-array/) | Easy |
 | [1512-number-of-good-pairs](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1512-number-of-good-pairs/) | Easy |
+| [1695-maximum-erasure-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1695-maximum-erasure-value/) | Medium |
 | [1732-find-the-highest-altitude](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1732-find-the-highest-altitude/) | Easy |
 | [2090-k-radius-subarray-averages](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2090-k-radius-subarray-averages/) | Medium |
 | [2225-find-players-with-zero-or-one-losses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2225-find-players-with-zero-or-one-losses/) | Medium |
@@ -83,6 +84,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1394-find-lucky-integer-in-an-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1394-find-lucky-integer-in-an-array/) | Easy |
 | [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
 | [1512-number-of-good-pairs](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1512-number-of-good-pairs/) | Easy |
+| [1695-maximum-erasure-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1695-maximum-erasure-value/) | Medium |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
 | [1941-check-if-all-characters-have-equal-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1941-check-if-all-characters-have-equal-number-of-occurrences/) | Easy |
 | [2225-find-players-with-zero-or-one-losses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2225-find-players-with-zero-or-one-losses/) | Medium |
@@ -147,6 +149,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1004-max-consecutive-ones-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1004-max-consecutive-ones-iii/) | Medium |
 | [1208-get-equal-substrings-within-budget](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1208-get-equal-substrings-within-budget/) | Medium |
 | [1456-maximum-number-of-vowels-in-a-substring-of-given-length](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1456-maximum-number-of-vowels-in-a-substring-of-given-length/) | Medium |
+| [1695-maximum-erasure-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1695-maximum-erasure-value/) | Medium |
 | [2090-k-radius-subarray-averages](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2090-k-radius-subarray-averages/) | Medium |
 | [2958-length-of-longest-subarray-with-at-most-k-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2958-length-of-longest-subarray-with-at-most-k-frequency/) | Medium |
 ## Prefix Sum
