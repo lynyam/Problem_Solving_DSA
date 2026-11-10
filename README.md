@@ -23,6 +23,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0049-group-anagrams](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0049-group-anagrams/) | Medium |
 | [0205-isomorphic-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0205-isomorphic-strings/) | Easy |
 | [0242-valid-anagram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0242-valid-anagram/) | Easy |
+| [0290-word-pattern](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0290-word-pattern/) | Easy |
 | [0344-reverse-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0344-reverse-string/) | Easy |
 | [0383-ransom-note](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0383-ransom-note/) | Easy |
 | [0392-is-subsequence](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0392-is-subsequence/) | Easy |
@@ -79,6 +80,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0205-isomorphic-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0205-isomorphic-strings/) | Easy |
 | [0242-valid-anagram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0242-valid-anagram/) | Easy |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
+| [0290-word-pattern](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0290-word-pattern/) | Easy |
 | [0383-ransom-note](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0383-ransom-note/) | Easy |
 | [0451-sort-characters-by-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0451-sort-characters-by-frequency/) | Medium |
 | [0560-subarray-sum-equals-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0560-subarray-sum-equals-k/) | Medium |
