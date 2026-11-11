@@ -36,6 +36,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
 | [1208-get-equal-substrings-within-budget](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1208-get-equal-substrings-within-budget/) | Medium |
 | [1456-maximum-number-of-vowels-in-a-substring-of-given-length](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1456-maximum-number-of-vowels-in-a-substring-of-given-length/) | Medium |
+| [1657-determine-if-two-strings-are-close](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1657-determine-if-two-strings-are-close/) | Medium |
 | [1768-merge-strings-alternately](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1768-merge-strings-alternately/) | Easy |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
 | [1941-check-if-all-characters-have-equal-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1941-check-if-all-characters-have-equal-number-of-occurrences/) | Easy |
@@ -93,6 +94,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1394-find-lucky-integer-in-an-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1394-find-lucky-integer-in-an-array/) | Easy |
 | [1426-counting-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1426-counting-elements/) | Easy |
 | [1512-number-of-good-pairs](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1512-number-of-good-pairs/) | Easy |
+| [1657-determine-if-two-strings-are-close](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1657-determine-if-two-strings-are-close/) | Medium |
 | [1695-maximum-erasure-value](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1695-maximum-erasure-value/) | Medium |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
 | [1941-check-if-all-characters-have-equal-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1941-check-if-all-characters-have-equal-number-of-occurrences/) | Easy |
@@ -129,6 +131,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0791-custom-sort-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0791-custom-sort-string/) | Medium |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
 | [0977-squares-of-a-sorted-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0977-squares-of-a-sorted-array/) | Easy |
+| [1657-determine-if-two-strings-are-close](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1657-determine-if-two-strings-are-close/) | Medium |
 | [2225-find-players-with-zero-or-one-losses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2225-find-players-with-zero-or-one-losses/) | Medium |
 | [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
 ## Math
@@ -194,6 +197,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0451-sort-characters-by-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0451-sort-characters-by-frequency/) | Medium |
 | [1394-find-lucky-integer-in-an-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1394-find-lucky-integer-in-an-array/) | Easy |
 | [1512-number-of-good-pairs](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1512-number-of-good-pairs/) | Easy |
+| [1657-determine-if-two-strings-are-close](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1657-determine-if-two-strings-are-close/) | Medium |
 | [1941-check-if-all-characters-have-equal-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1941-check-if-all-characters-have-equal-number-of-occurrences/) | Easy |
 | [2225-find-players-with-zero-or-one-losses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2225-find-players-with-zero-or-one-losses/) | Medium |
 | [2248-intersection-of-multiple-arrays](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2248-intersection-of-multiple-arrays/) | Easy |
