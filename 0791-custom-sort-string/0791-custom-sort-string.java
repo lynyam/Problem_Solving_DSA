@@ -1,43 +1,26 @@
 class Solution {
     public String customSortString(String order, String s) {
-        HashMap<Character, Integer> store = new HashMap<>();
-
+        //first intution
+        // count char and their quantitie in s with map 0(length(s)) space and time
+        //looping on order and if char exist in map add it to new rebuilt s 0(length(s) + length(order)) time
+        
+        int[] counts = new int[26];
         for (char c : s.toCharArray()) {
-            store.put(c, store.getOrDefault(c, 0) + 1);
+            counts[c - 'a']++;
         }
-        StringBuilder sb = new StringBuilder();
-        for (char ci : order.toCharArray()) {
-            int freq = store.getOrDefault(ci, 0);
-            int i = 0;
-            while (i < freq) {
-                sb.append(ci);
-                i++;
-            }
-            if (freq > 0)
-                store.remove(ci);
-        }
-        for (char key : store.keySet()) {
-            int freq = store.getOrDefault(key, 0);
-            int i = 0;
-            while (i < freq) {
-                sb.append(key);
-                i++;
+        StringBuilder result = new StringBuilder();
+        for (char c : order.toCharArray()) {
+            while (counts[c - 'a'] > 0) {
+                result.append(c);
+                counts[c - 'a']--;
             }
         }
-        return (sb.toString());
+        for (char c : s.toCharArray()) {
+            while (counts[c - 'a'] > 0) {
+                result.append(c);
+                counts[c - 'a']--;
+            }
+        }
+        return result.toString();
     }
 }
-/**
-    - order String
-    - s String
-    - order[i] unique sort in custom order
-    - Permute s so that the match the order that order sorted
-        - if x occure befor y in order, then x should occur before y in permuted string
-    - ret any permutation of s stisted proprity
-    -ex:
-         order = "cba", s = "abcd" =>  "cbad"
-    - Resultat
-        HM<> 0(s) z t
-        while (or) 0(o + s)
-
- */
