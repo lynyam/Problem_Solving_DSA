@@ -31,6 +31,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0557-reverse-words-in-a-string-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0557-reverse-words-in-a-string-iii/) | Easy |
 | [0567-permutation-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0567-permutation-in-string/) | Medium |
 | [0771-jewels-and-stones](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0771-jewels-and-stones/) | Easy |
+| [0791-custom-sort-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0791-custom-sort-string/) | Medium |
 | [0917-reverse-only-letters](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0917-reverse-only-letters/) | Easy |
 | [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
 | [1208-get-equal-substrings-within-budget](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1208-get-equal-substrings-within-budget/) | Medium |
@@ -86,6 +87,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0560-subarray-sum-equals-k](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0560-subarray-sum-equals-k/) | Medium |
 | [0567-permutation-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0567-permutation-in-string/) | Medium |
 | [0771-jewels-and-stones](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0771-jewels-and-stones/) | Easy |
+| [0791-custom-sort-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0791-custom-sort-string/) | Medium |
 | [0930-binary-subarrays-with-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0930-binary-subarrays-with-sum/) | Medium |
 | [1207-unique-number-of-occurrences](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1207-unique-number-of-occurrences/) | Easy |
 | [1394-find-lucky-integer-in-an-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1394-find-lucky-integer-in-an-array/) | Easy |
@@ -124,6 +126,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0242-valid-anagram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0242-valid-anagram/) | Easy |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [0451-sort-characters-by-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0451-sort-characters-by-frequency/) | Medium |
+| [0791-custom-sort-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0791-custom-sort-string/) | Medium |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
 | [0977-squares-of-a-sorted-array](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0977-squares-of-a-sorted-array/) | Easy |
 | [2225-find-players-with-zero-or-one-losses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2225-find-players-with-zero-or-one-losses/) | Medium |
