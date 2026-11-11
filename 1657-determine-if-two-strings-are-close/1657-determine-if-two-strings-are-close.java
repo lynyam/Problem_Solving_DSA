@@ -1,22 +1,40 @@
 class Solution {
-    public boolean closeStrings(String word1, String word2) {//0(n1 + n2 + k1 + k1logk1 + k2 + k2logk2) t  = 0(n1 + n2 +k1logk1 + k2logk2)//0(n1 + n2 + k1+k2) z
-        HashMap<Character, Integer> store1 = new HashMap<>();//0(n) z
-        HashMap<Character, Integer> store2 = new HashMap<>();//0(n2) z
-        if (word1.length() != word2.length())
-            return (false);
+    public boolean closeStrings(String word1, String word2) {
+        int n1, n2;
+        n1 = word1.length();
+        n2 = word2.length();
+        boolean result = false;
+        if (n1 != n2) return result;
+        Map<Character, Integer> counts1 = new HashMap<>();
+        Map<Character, Integer> counts2 = new HashMap<>();
 
-        for (char c : word1.toCharArray()) { //0(n1) t
-            store1.put(c, store1.getOrDefault(c, 0) + 1);
+        //aacabb -> bbcbaa
+        for (char c : word1.toCharArray()) {
+            counts1.put(c, counts1.getOrDefault(c, 0) + 1);
         }
-        for (char c1 : word2.toCharArray()) { //0(n2) t
-            store2.put(c1, store2.getOrDefault(c1, 0) + 1);
+        for (char c : word2.toCharArray()) {
+            counts2.put(c, counts2.getOrDefault(c, 0) + 1);
         }
-        List list1  = new ArrayList<Integer>(store1.values()); //0(k1) t z
-        List list2 = new ArrayList<Integer>(store2.values());// 0(k2) tz
-        Collections.sort(list1); //0(k1logk1) t
-        Collections.sort(list2); //0(k2logk2) t
-        if (!list1.equals(list2))
-            return (false);
-        return(store1.keySet().equals(store2.keySet()));
+        //aacabb -> bbcbaa
+        System.out.println(counts1);
+        System.out.println(counts2);
+        System.out.println(counts1.keySet().equals(counts2.keySet()));
+        List<Integer> list1 = new ArrayList<>(counts1.values());
+        List<Integer> list2 = new ArrayList<>(counts2.values());
+
+        Collections.sort(list1);
+        Collections.sort(list2);
+        result = counts1.equals(counts2) || (
+            counts1.keySet().equals(counts2.keySet())
+                && list1.equals(list2)
+        );
+        return result;
+        
+
+
     }
 }
+//abcde -> aecdb => check the have same char. 1) same size, 2)(K, v) and check it equal
+//aacabb -> bbcbaa => 
+
+ 
