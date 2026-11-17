@@ -6,6 +6,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Two Pointers
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0141-linked-list-cycle](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0141-linked-list-cycle/) | Easy |
 | [0283-move-zeroes](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0283-move-zeroes/) | Easy |
 | [0344-reverse-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0344-reverse-string/) | Easy |
 | [0392-is-subsequence](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0392-is-subsequence/) | Easy |
@@ -79,6 +80,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0001-two-sum](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0001-two-sum/) | Easy |
 | [0049-group-anagrams](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0049-group-anagrams/) | Medium |
+| [0141-linked-list-cycle](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0141-linked-list-cycle/) | Easy |
 | [0205-isomorphic-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0205-isomorphic-strings/) | Easy |
 | [0242-valid-anagram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0242-valid-anagram/) | Easy |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
@@ -211,4 +213,12 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0451-sort-characters-by-frequency](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0451-sort-characters-by-frequency/) | Medium |
+## Linked List
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0141-linked-list-cycle](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0141-linked-list-cycle/) | Easy |
+## Floyd's Cycle Finding Algorithm
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0141-linked-list-cycle](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0141-linked-list-cycle/) | Easy |
 <!---LeetCode Topics End-->
