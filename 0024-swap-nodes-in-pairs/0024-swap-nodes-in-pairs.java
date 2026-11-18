@@ -23,10 +23,8 @@ class Solution {
             if (prev != null)
                 prev.next = next;//
             prev = curr;//1
-                    curr = curr.next;//3
+            curr = curr.next;//3
         }
-        if (prev != null)
-        prev.next  = curr;
         return (newHead);
     }
 }
