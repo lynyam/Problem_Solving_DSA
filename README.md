@@ -219,6 +219,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0024-swap-nodes-in-pairs](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0024-swap-nodes-in-pairs/) | Medium |
 | [0083-remove-duplicates-from-sorted-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0083-remove-duplicates-from-sorted-list/) | Easy |
+| [0092-reverse-linked-list-ii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0092-reverse-linked-list-ii/) | Medium |
 | [0141-linked-list-cycle](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0141-linked-list-cycle/) | Easy |
 | [0876-middle-of-the-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0876-middle-of-the-linked-list/) | Easy |
 ## Floyd's Cycle Finding Algorithm
