@@ -10,39 +10,36 @@
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if (right - left == 0 || head == null)
-            return (head);
-        ListNode newHead = head;
-        ListNode leftNode = head;
-        ListNode rightNode = head;
-        ListNode bleft = head;
-        ListNode curr = head;
-        int i = 1;
-        while (i <= right && curr != null) {
-            if (i + 1 == left)
-                bleft = curr;
-            if (i == left)
-                leftNode = curr;
-            if (i == right)
-                rightNode = curr;
-            i++;
-            curr = curr.next;
+        int index = 1;
+        ListNode dummy = head;
+        ListNode prev = null;
+
+        while (index < left) {//here I don't check if dummy != null bcse contraint say 1<=left,right<= n
+            index++;
+            prev = dummy;
+            dummy = dummy.next;
         }
-        ListNode prev = rightNode.next;
-        curr = leftNode;
-        ListNode nextNode = null;
-        i = 0;
-        while (curr != null && i <= right - left) {
-            nextNode = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = nextNode;
-            i++;
+        //with our example dummy = N(2) and index = 2 and prev = N(1) here
+        //Now let's start step 2
+        ListNode backupPrev = prev;//n(1)
+        ListNode tempHead = dummy; //N(2) here
+
+        while (index <= right) {
+            ListNode nextNode = dummy.next;
+            dummy.next = prev;
+            prev = dummy;
+            dummy = nextNode;
+            index++;
         }
-        if (left == 1) 
-            return (prev);
-        bleft.next = prev;
-        return (newHead);
+        //index = 5 prev = N(4) dummy = N(5)
+        //lets start step 3
+        tempHead.next = dummy;
+        if (left > 1) {
+            backupPrev.next = prev;
+            return head;
+        }
+        return prev;
+
 
     }
 }
