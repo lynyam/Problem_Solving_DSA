@@ -9,6 +9,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0019-remove-nth-node-from-end-of-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0019-remove-nth-node-from-end-of-list/) | Medium |
 | [0082-remove-duplicates-from-sorted-list-ii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0082-remove-duplicates-from-sorted-list-ii/) | Medium |
 | [0141-linked-list-cycle](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0141-linked-list-cycle/) | Easy |
+| [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 | [0283-move-zeroes](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0283-move-zeroes/) | Easy |
 | [0344-reverse-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0344-reverse-string/) | Easy |
 | [0392-is-subsequence](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0392-is-subsequence/) | Easy |
@@ -123,6 +124,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 | [2000-reverse-prefix-of-word](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2000-reverse-prefix-of-word/) | Easy |
 ## Greedy
 | Problem Name | Difficulty |
@@ -227,6 +229,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0083-remove-duplicates-from-sorted-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0083-remove-duplicates-from-sorted-list/) | Easy |
 | [0092-reverse-linked-list-ii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0092-reverse-linked-list-ii/) | Medium |
 | [0141-linked-list-cycle](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0141-linked-list-cycle/) | Easy |
+| [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 | [0876-middle-of-the-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0876-middle-of-the-linked-list/) | Easy |
 | [1721-swapping-nodes-in-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1721-swapping-nodes-in-a-linked-list/) | Medium |
 | [2095-delete-the-middle-node-of-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2095-delete-the-middle-node-of-a-linked-list/) | Medium |
@@ -238,4 +241,5 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0024-swap-nodes-in-pairs](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0024-swap-nodes-in-pairs/) | Medium |
+| [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 <!---LeetCode Topics End-->
