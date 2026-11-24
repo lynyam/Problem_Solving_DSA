@@ -232,6 +232,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 | [0876-middle-of-the-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0876-middle-of-the-linked-list/) | Easy |
 | [1721-swapping-nodes-in-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1721-swapping-nodes-in-a-linked-list/) | Medium |
+| [2074-reverse-nodes-in-even-length-groups](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2074-reverse-nodes-in-even-length-groups/) | Medium |
 | [2095-delete-the-middle-node-of-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2095-delete-the-middle-node-of-a-linked-list/) | Medium |
 ## Floyd's Cycle Finding Algorithm
 | Problem Name | Difficulty |
