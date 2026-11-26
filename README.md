@@ -150,6 +150,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0268-missing-number](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0268-missing-number/) | Easy |
 | [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
+| [1290-convert-binary-number-in-a-linked-list-to-integer](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1290-convert-binary-number-in-a-linked-list-to-integer/) | Easy |
 | [1512-number-of-good-pairs](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1512-number-of-good-pairs/) | Easy |
 ## Euclidean Algorithm
 | Problem Name | Difficulty |
@@ -234,6 +235,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0203-remove-linked-list-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0203-remove-linked-list-elements/) | Easy |
 | [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 | [0876-middle-of-the-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0876-middle-of-the-linked-list/) | Easy |
+| [1290-convert-binary-number-in-a-linked-list-to-integer](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1290-convert-binary-number-in-a-linked-list-to-integer/) | Easy |
 | [1721-swapping-nodes-in-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1721-swapping-nodes-in-a-linked-list/) | Medium |
 | [2074-reverse-nodes-in-even-length-groups](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2074-reverse-nodes-in-even-length-groups/) | Medium |
 | [2095-delete-the-middle-node-of-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2095-delete-the-middle-node-of-a-linked-list/) | Medium |
