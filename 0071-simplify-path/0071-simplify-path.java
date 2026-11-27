@@ -1,22 +1,22 @@
 class Solution {
     public String simplifyPath(String path) {
-        List<String> wordsList = new ArrayList<>();
-        String[] words = path.split("/");
+        String[] directories = path.split("/");
+        List<String> canonicalPath = new ArrayList<>();
 
-        for (String s : words) {
-            if (wordsList.size() > 0 && s.equals("..")) {
-                wordsList.remove(wordsList.size() - 1);
-            } else if (!s.isEmpty() && !s.equals(".") && !s.equals("..")) {
-                wordsList.add(s);
+        for (String dir : directories) {
+            if (canonicalPath.size() > 0 && dir.equals("..")) {
+                canonicalPath.remove(canonicalPath.size() - 1);
+            } else if (dir.equals("..") || dir.equals(".") || dir.isEmpty()) {
+                continue;
+            } else {
+                canonicalPath.add(dir);
             }
         }
-        //System.out.println(wordsList);
-        StringBuilder sb = new StringBuilder();
-        int i = 0;
-        for (String s : wordsList) {
-            sb.append("/");
-            sb.append(s);
+        StringBuilder result = new StringBuilder();
+        for (String dir : canonicalPath) {
+            result.append('/');
+            result.append(dir);
         }
-        return (sb.length() > 0 ? sb.toString() : "/");
+        return result.length() == 0 ? new String("/") : result.toString();
     }
 }
