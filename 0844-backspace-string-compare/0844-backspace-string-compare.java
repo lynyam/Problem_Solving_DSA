@@ -1,17 +1,17 @@
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        return (backspace(s).equals(backspace(t)));
+        return typedIntoEditor(s).equals(typedIntoEditor(t));
     }
 
-    public String backspace(String s) {
+    private String typedIntoEditor(String s) {
         StringBuilder sb = new StringBuilder();
         for (char c : s.toCharArray()) {
-            if (!sb.isEmpty() && c == '#') {
+            if (sb.length() > 0 && c == '#') {
                 sb.deleteCharAt(sb.length() - 1);
             } else if (c != '#') {
                 sb.append(c);
             }
         }
-        return (sb.toString());
+        return sb.toString();
     }
 }
