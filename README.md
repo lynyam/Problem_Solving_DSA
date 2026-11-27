@@ -28,6 +28,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## String
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0020-valid-parentheses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0020-valid-parentheses/) | Easy |
 | [0049-group-anagrams](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0049-group-anagrams/) | Medium |
 | [0205-isomorphic-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0205-isomorphic-strings/) | Easy |
 | [0242-valid-anagram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0242-valid-anagram/) | Easy |
@@ -125,6 +126,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0020-valid-parentheses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0020-valid-parentheses/) | Easy |
 | [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 | [2000-reverse-prefix-of-word](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2000-reverse-prefix-of-word/) | Easy |
 | [2130-maximum-twin-sum-of-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2130-maximum-twin-sum-of-a-linked-list/) | Medium |
@@ -251,4 +253,8 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0024-swap-nodes-in-pairs](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0024-swap-nodes-in-pairs/) | Medium |
 | [0203-remove-linked-list-elements](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0203-remove-linked-list-elements/) | Easy |
 | [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
+## Bracket Sequences
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0020-valid-parentheses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0020-valid-parentheses/) | Easy |
 <!---LeetCode Topics End-->
