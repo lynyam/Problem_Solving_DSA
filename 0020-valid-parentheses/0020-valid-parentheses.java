@@ -1,18 +1,20 @@
 class Solution {
     public boolean isValid(String s) {
-        StringBuilder sb = new StringBuilder();
-        
+        List<Character> stack = new ArrayList<>();
         for (char c : s.toCharArray()) {
-            if (!sb.isEmpty() && isMatch(sb.charAt(sb.length() - 1), c)) {
-                sb.deleteCharAt(sb.length() - 1);
-            } else 
-                sb.append(c);
+            if (stack.size() > 0 && 
+            isMatch(stack.get(stack.size() - 1), c)) {
+                stack.remove(stack.size() - 1);
+            } else {
+                stack.add(c);
+            }
         }
-        return (sb.length() == 0);
+        return stack.size() == 0;
     }
 
-    public boolean isMatch(char c1, char c2) {
-        return ((c1 == '(' && c2 == ')') || (c1 == '{' && c2 == '}') || 
-            (c1 == '[' && c2 == ']'));
+    private boolean isMatch(char left, char right) {
+        return left == '[' && right == ']' ||
+                left == '(' && right == ')' ||
+                left == '{' && right == '}';
     }
 }
