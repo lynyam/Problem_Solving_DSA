@@ -31,6 +31,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0020-valid-parentheses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0020-valid-parentheses/) | Easy |
 | [0049-group-anagrams](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0049-group-anagrams/) | Medium |
+| [0071-simplify-path](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0071-simplify-path/) | Medium |
 | [0205-isomorphic-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0205-isomorphic-strings/) | Easy |
 | [0242-valid-anagram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0242-valid-anagram/) | Easy |
 | [0290-word-pattern](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0290-word-pattern/) | Easy |
@@ -130,6 +131,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0020-valid-parentheses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0020-valid-parentheses/) | Easy |
+| [0071-simplify-path](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0071-simplify-path/) | Medium |
 | [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 | [0844-backspace-string-compare](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0844-backspace-string-compare/) | Easy |
 | [1047-remove-all-adjacent-duplicates-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1047-remove-all-adjacent-duplicates-in-string/) | Easy |
