@@ -15,6 +15,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0392-is-subsequence](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0392-is-subsequence/) | Easy |
 | [0557-reverse-words-in-a-string-iii](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0557-reverse-words-in-a-string-iii/) | Easy |
 | [0567-permutation-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0567-permutation-in-string/) | Medium |
+| [0844-backspace-string-compare](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0844-backspace-string-compare/) | Easy |
 | [0876-middle-of-the-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0876-middle-of-the-linked-list/) | Easy |
 | [0881-boats-to-save-people](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0881-boats-to-save-people/) | Medium |
 | [0917-reverse-only-letters](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0917-reverse-only-letters/) | Easy |
@@ -41,6 +42,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0567-permutation-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0567-permutation-in-string/) | Medium |
 | [0771-jewels-and-stones](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0771-jewels-and-stones/) | Easy |
 | [0791-custom-sort-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0791-custom-sort-string/) | Medium |
+| [0844-backspace-string-compare](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0844-backspace-string-compare/) | Easy |
 | [0917-reverse-only-letters](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0917-reverse-only-letters/) | Easy |
 | [1047-remove-all-adjacent-duplicates-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1047-remove-all-adjacent-duplicates-in-string/) | Easy |
 | [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
@@ -129,6 +131,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0020-valid-parentheses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0020-valid-parentheses/) | Easy |
 | [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
+| [0844-backspace-string-compare](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0844-backspace-string-compare/) | Easy |
 | [1047-remove-all-adjacent-duplicates-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1047-remove-all-adjacent-duplicates-in-string/) | Easy |
 | [2000-reverse-prefix-of-word](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2000-reverse-prefix-of-word/) | Easy |
 | [2130-maximum-twin-sum-of-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2130-maximum-twin-sum-of-a-linked-list/) | Medium |
@@ -259,4 +262,8 @@ This repo store all problems i solved on DSA for ITW prepartion
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0020-valid-parentheses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0020-valid-parentheses/) | Easy |
+## Simulation
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0844-backspace-string-compare](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0844-backspace-string-compare/) | Easy |
 <!---LeetCode Topics End-->
