@@ -1,14 +1,14 @@
 class Solution {
     public String makeGood(String s) {
-        StringBuilder sb = new StringBuilder();
-
+        StringBuilder result = new StringBuilder();
         for (char c : s.toCharArray()) {
-            if (!sb.isEmpty() && Math.abs(c - sb.charAt(sb.length() - 1)) == 32) {
-                sb.deleteCharAt(sb.length() - 1);
+            if (result.length() > 0 
+            && Math.abs(result.charAt(result.length() - 1) - c) == 32) {
+                result.deleteCharAt(result.length() - 1);
             } else {
-                sb.append(c);
+                result.append(c);
             }
         }
-        return (sb.toString());
+        return result.toString();
     }
 }
