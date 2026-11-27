@@ -49,6 +49,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
 | [1208-get-equal-substrings-within-budget](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1208-get-equal-substrings-within-budget/) | Medium |
 | [1456-maximum-number-of-vowels-in-a-substring-of-given-length](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1456-maximum-number-of-vowels-in-a-substring-of-given-length/) | Medium |
+| [1544-make-the-string-great](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1544-make-the-string-great/) | Easy |
 | [1657-determine-if-two-strings-are-close](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1657-determine-if-two-strings-are-close/) | Medium |
 | [1768-merge-strings-alternately](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1768-merge-strings-alternately/) | Easy |
 | [1832-check-if-the-sentence-is-pangram](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1832-check-if-the-sentence-is-pangram/) | Easy |
@@ -135,6 +136,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
 | [0844-backspace-string-compare](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0844-backspace-string-compare/) | Easy |
 | [1047-remove-all-adjacent-duplicates-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1047-remove-all-adjacent-duplicates-in-string/) | Easy |
+| [1544-make-the-string-great](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1544-make-the-string-great/) | Easy |
 | [2000-reverse-prefix-of-word](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2000-reverse-prefix-of-word/) | Easy |
 | [2130-maximum-twin-sum-of-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2130-maximum-twin-sum-of-a-linked-list/) | Medium |
 ## Greedy
