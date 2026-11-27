@@ -42,6 +42,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | [0771-jewels-and-stones](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0771-jewels-and-stones/) | Easy |
 | [0791-custom-sort-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0791-custom-sort-string/) | Medium |
 | [0917-reverse-only-letters](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0917-reverse-only-letters/) | Easy |
+| [1047-remove-all-adjacent-duplicates-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1047-remove-all-adjacent-duplicates-in-string/) | Easy |
 | [1071-greatest-common-divisor-of-strings](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1071-greatest-common-divisor-of-strings/) | Easy |
 | [1208-get-equal-substrings-within-budget](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1208-get-equal-substrings-within-budget/) | Medium |
 | [1456-maximum-number-of-vowels-in-a-substring-of-given-length](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1456-maximum-number-of-vowels-in-a-substring-of-given-length/) | Medium |
@@ -128,6 +129,7 @@ This repo store all problems i solved on DSA for ITW prepartion
 | ------- | ------- |
 | [0020-valid-parentheses](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0020-valid-parentheses/) | Easy |
 | [0234-palindrome-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/0234-palindrome-linked-list/) | Easy |
+| [1047-remove-all-adjacent-duplicates-in-string](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/1047-remove-all-adjacent-duplicates-in-string/) | Easy |
 | [2000-reverse-prefix-of-word](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2000-reverse-prefix-of-word/) | Easy |
 | [2130-maximum-twin-sum-of-a-linked-list](https://github.com/lyn200M/Problem_Solving_DSA/tree/main/2130-maximum-twin-sum-of-a-linked-list/) | Medium |
 ## Greedy
